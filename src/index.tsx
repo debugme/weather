@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { ShowProvider } from './providers';
+import { WeatherProvider } from './providers';
 import { Home } from "./pages";
 import { Layout } from './components';
 
@@ -24,8 +24,8 @@ const root = createRoot(container)
 
 root.render(
   <StrictMode>
-    <ShowProvider>
+    <WeatherProvider>
       <RouterProvider router={router} />
-    </ShowProvider>
+    </WeatherProvider>
   </StrictMode >
 );

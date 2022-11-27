@@ -21,7 +21,7 @@ const initialValue = {
 
 const WeatherContext = createContext<WeatherValue>(initialValue)
 
-export const ShowProvider: FC<PropsWithChildren> = (props) => {
+export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const {
     searchTerm: initialSearchTerm,
     weatherList: initialShowList,
