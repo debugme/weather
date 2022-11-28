@@ -10,12 +10,12 @@ export type WeatherListProps = {
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
-  const dateList = [...new Set(list.map(item => item.date))]
-  const [selectedDate, setSelectedDate] = useState(String(dateList[0]))
-  const filteredList = list.filter(weather => weather.date === selectedDate)
-
   if (list.length === 0)
     return null
+
+  const dateList = [...new Set(list.map(item => item.date))]
+  const [selectedDate, setSelectedDate] = useState(list[0].date)
+  const filteredList = list.filter(weather => weather.date === selectedDate)
 
   return (
     <Fragment>

@@ -12,6 +12,9 @@ const buildCard = (weather: Weather, index: number) => <WeatherCard key={`card-$
 export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
   const { list } = props
 
+  if (list.length === 0)
+    return null
+
   const cardList = list.map(buildCard)
 
   return (
