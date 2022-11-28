@@ -3,7 +3,7 @@ import { FC } from "react"
 import { Weather } from "../../types"
 
 export const WeatherCard: FC<Weather> = (props) => {
-  const { time, image, description, temperature, sunrise, sunset } = props
+  const { time, image, description, temperature, sunrise, sunset, wind } = props
 
   return (
     <article className="w-[320px] rounded-lg border-none bg-secondary-50">
@@ -18,6 +18,10 @@ export const WeatherCard: FC<Weather> = (props) => {
         <div className="flex justify-between py-1 items-center">
           <h6>temperature</h6>
           <p>{temperature}</p>
+        </div>
+        <div className="flex justify-between py-1">
+          <h6>wind</h6>
+          <p>{wind}</p>
         </div>
         <div className="flex justify-between py-1">
           <h6>sunrise</h6>

@@ -22,6 +22,9 @@ export type WeatherInfo = {
         description: string,
         icon: string
       }],
+      wind: {
+        speed: number
+      }
       dt_txt: string
     }
   ],
@@ -36,9 +39,10 @@ export type Weather = {
   time: string
   image: string
   temperature: string
-  description: String
+  description: string
   sunrise: string
   sunset: string
+  wind: string
 }
 
 export type LocationInfo = {

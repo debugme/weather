@@ -10,14 +10,15 @@ const buildWeatherList = (info: Nullable<WeatherInfo>) => {
   const sunrise = formatTime(new Date(city.sunrise * 1000))
   const sunset = formatTime(new Date(city.sunset * 1000))
   const weatherList: Weather[] = list.map(item => {
-    const { dt_txt, main: { temp }, weather: [first] } = item
+    const { dt_txt, main: { temp }, weather: [first], wind: { speed } } = item
     const { description, icon } = first
     const temperature = `${temp}℃`
     const timestamp = new Date(dt_txt)
     const date = formatDate(timestamp)
     const time = formatTime(timestamp)
     const image = `https://openweathermap.org/img/wn/${icon}@2x.png`
-    const weather = { date, time, image, temperature, description, sunrise, sunset }
+    const wind = `${speed} mph`
+    const weather = { date, time, image, temperature, description, sunrise, sunset, wind }
     return weather
   })
 

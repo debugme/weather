@@ -2,11 +2,12 @@
 Weather is a web application that allows a user to get weather forecasts for different cities.
 
 This information includes the following for each day for which a forecast is retrieved
-- date - the date the forecast is for
-- time - the time the forecast is for
-- temperature - the temperature for the day
-- sunrise - the time at which the sun rises
-- sunset - the time at which the sun sets
+- date - the forecast day
+- time - the forecast time
+- temperature - the temperature
+- wind - the wind speed
+- sunrise - the sunrise time
+- sunset -  the sunset time
 
 
 ## How to Run
