@@ -13,6 +13,13 @@ This information includes the following for each day for which a forecast is ret
 
 
 ## How to Run
+
+Add your API key in a file called `.env.local` in your project root folder
+
+```
+VITE_APP_ID=aa0a0a0a0a0a0a00a0a0a0a0a0a0aaa0
+```
+
 Before you can run the application you need to install its dependencies
 
 ```
@@ -32,7 +39,7 @@ http://localhost:5173/
 ```
 
 ## Technologies
-This application was written using a carefully curated set of libraries
+This application was written using an intentionally minimal set of libraries
 
 - [React](https://reactjs.org/) - the industry standard for building modern web applications 
 - [TypeScript](https://www.typescriptlang.org/) - used to provide type safety over plain JavaScript
