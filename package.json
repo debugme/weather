@@ -1,12 +1,12 @@
 {
-  "name": "feelz",
+  "name": "weather",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "author": {
     "name": "Asad Razvi",
     "email": "debugme@hotmail.com",
-    "url": "https://github.com/debugme"
+    "url": "https://github.com/debugme/weather"
   },
   "scripts": {
     "dev": "vite",

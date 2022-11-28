@@ -2,59 +2,32 @@ import { FC } from "react"
 
 import { Weather } from "../../types"
 
-import { Sun, Moon } from "../images"
-
 export const WeatherCard: FC<Weather> = (props) => {
-  const { date, time, image, description, temperature, sunrise, sunset } = props
+  const { time, image, description, temperature, sunrise, sunset } = props
 
   return (
-    <article className="w-full md:w-[280px] rounded-lg border bg-secondary-50 flex flex-col gap-4 py-8">
-
-      <section className="flex gap-4 justify-between items-center px-4">
-        <div className="text-2xl">{date}</div>
-        <div className="text-xl">{time}</div>
+    <article className="w-[320px] rounded-lg border-none bg-secondary-50">
+      <section className="h-24 rounded-t-lg bg-gradient-to-r from-primary-300 to-primary-400 pl-4 flex justify-between items-center">
+        <span className="text-secondary-600">
+          <h2 className="text-2xl">{time}</h2>
+          <h4 className="text-lg">{description}</h4>
+        </span>
+        <img className="w-24 h-24" src={image} />
       </section>
-
-      <figure className="flex gap-4 justify-between items-center px-4">
-        <section className="w-8 h-8 grid place-items-center">
-          <span className="flex gap-2 items-center">
-            <img className="w-6 h-6" src={image} />
-            <span className="text-sm">Forecast</span>
-          </span>
-        </section>
-        <figcaption className="text-sm">{description}</figcaption>
-      </figure>
-
-      <figure className="flex gap-4 justify-between items-center px-4">
-        <section className="w-8 h-8 grid place-items-center">
-          <span className="flex gap-2 items-center">
-            <Sun className="w-6 h-6" />
-            <span className="text-sm">Sunrise</span>
-          </span>
-        </section>
-        <figcaption className="text-sm">{sunrise}</figcaption>
-      </figure>
-
-      <figure className="flex gap-4 justify-between items-center px-4">
-        <section className="w-8 h-8 grid place-items-center">
-          <span className="flex gap-2 items-center">
-            <Moon className="w-6 h-6" />
-            <span className="text-sm">Sunset</span>
-          </span>
-        </section>
-        <figcaption className="text-sm">{sunset}</figcaption>
-      </figure>
-
-      <figure className="flex gap-4 justify-between items-center px-4">
-        <section className="w-8 h-8 grid place-items-center">
-          <span className="flex gap-2 items-center">
-            <Sun className="w-6 h-6" />
-            <span className="text-sm">Temperature</span>
-          </span>
-        </section>
-        <figcaption className="text-sm">{temperature}</figcaption>
-      </figure>
-
+      <section className="rounded-b-lg bg-secondary-200 p-4 text-md">
+        <div className="flex justify-between py-1 items-center">
+          <h6>temperature</h6>
+          <p>{temperature}</p>
+        </div>
+        <div className="flex justify-between py-1">
+          <h6>sunrise</h6>
+          <p>{sunrise}</p>
+        </div>
+        <div className="flex justify-between py-1">
+          <h6>sunset</h6>
+          <p>{sunset}</p>
+        </div>
+      </section>
     </article>
   )
 }
