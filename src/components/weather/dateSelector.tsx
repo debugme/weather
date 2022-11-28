@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment } from "react"
 
 export type DateSelectorProps = {
   list: string[]
@@ -11,11 +11,7 @@ export const DateSelector: FC<DateSelectorProps> = (props) => {
 
   const chipList = list.map(text => {
     const label = text.split(" ").slice(0, 2).join(" ")
-    const className = (selected === text ? "bg-primary-300" : "bg-secondary-300") + " py-2 rounded-lg"
-
-    console.log("comparing ", selected, text);
-    
-    
+    const className = `py-2 rounded-lg ${selected === text ? "bg-primary-300" : "bg-secondary-300"}`
     const onClick: React.MouseEventHandler = (event) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
     }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { LocationInfo, Nullable, Weather, WeatherInfo } from "../types";
 import { formatDate, formatTime } from "../utilities";
 
