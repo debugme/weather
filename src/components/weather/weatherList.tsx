@@ -1,7 +1,8 @@
-import { FC, Fragment } from "react"
+import { FC, Fragment, useState } from "react"
 
 import { Weather } from "../../types"
-import { WeatherCard } from "./weatherCard"
+import { DateSelector } from "./dateSelector"
+import { WeatherCardList } from "./weatherCardList"
 
 export type WeatherListProps = {
   list: Weather[]
@@ -9,18 +10,18 @@ export type WeatherListProps = {
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
+  const dateList = [...new Set(list.map(item => item.date))]
+  const [selectedDate, setSelectedDate] = useState(String(dateList[0]))
+  const filteredList = list.filter(weather => weather.date === selectedDate)
 
-  const cardList = list.map((weather, index) => <WeatherCard key={`card-${index}`} {...weather} />)
-
-  if (cardList.length === 0)
+  if (list.length === 0)
     return null
 
   return (
     <Fragment>
       <h2 className="block text-3xl text-secondary-600 mt-10">Weather</h2>
-      <section className="mt-8 flex flex-wrap gap-14">
-        {cardList}
-      </section>
+      <DateSelector list={dateList} selected={selectedDate} setSelected={setSelectedDate} />
+      <WeatherCardList list={filteredList} />
     </Fragment>
   )
 }
