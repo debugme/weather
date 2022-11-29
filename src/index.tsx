@@ -22,6 +22,14 @@ const router = createBrowserRouter(routeList)
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
+window.addEventListener("online", () => {
+  location.reload()
+})
+
+window.addEventListener("offline", () => {
+  location.reload()
+})
+
 root.render(
   <StrictMode>
     <WeatherProvider>
