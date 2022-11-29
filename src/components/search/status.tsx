@@ -22,11 +22,12 @@ export const Status: FC<StatusProps> = (props) => {
   if (searchTerm.length === 0)
     return <NoSearch />
 
+  if (resultCount === 0)
+    return <NoResult />
+
   if (failure)
     return <NoSearch />
 
-  if (resultCount === 0)
-    return <NoResult />
 
   return null
 }

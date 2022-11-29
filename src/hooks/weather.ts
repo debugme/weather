@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
 
 import { LocationInfo, Nullable, Weather, WeatherInfo } from "../types";
-import { formatDate, formatTime } from "../utilities";
+import { getDateFormatter, getTimeFormatter } from "../utilities";
 
-const buildWeatherList = (info: Nullable<WeatherInfo>) => {
-  if (!info)
+const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: LocationInfo) => {
+  if (!weatherInfo)
     return []
-  const { list, city } = info
-  const sunrise = formatTime(new Date(city.sunrise * 1000))
-  const sunset = formatTime(new Date(city.sunset * 1000))
+
+  const { list, city } = weatherInfo
+  const { country } = locationInfo
+  const dateFormatter = getDateFormatter()
+  const timeFormatter = getTimeFormatter(country)
+  const sunrise = timeFormatter.format(new Date(city.sunrise * 1000))
+  const sunset = timeFormatter.format(new Date(city.sunset * 1000))
+
   const weatherList: Weather[] = list.map(item => {
     const { dt_txt, main: { temp }, weather: [first], wind: { speed } } = item
     const { description, icon } = first
     const temperature = `${temp}℃`
     const timestamp = new Date(dt_txt)
-    const date = formatDate(timestamp)
-    const time = formatTime(timestamp)
+    const date = dateFormatter.format(timestamp)
+    const time = timeFormatter.format(timestamp)
     const image = `https://openweathermap.org/img/wn/${icon}@2x.png`
     const wind = `${speed} mph`
     const weather = { date, time, image, temperature, description, sunrise, sunset, wind }
     return weather
   })
-
+  
   return weatherList
 }
 
@@ -64,7 +69,7 @@ export const useWeatherAPI = (searchTerm: string) => {
       setLoading(true)
       const locationInfo = await getLocationInfo(searchTerm, appId)
       const weatherInfo = await getWeatherInfo(locationInfo, signal, appId)
-      const data = buildWeatherList(weatherInfo)
+      const data = buildWeatherList(weatherInfo, locationInfo)
       setData(data)
     } catch (error) {
       setError(Error(String(error)))

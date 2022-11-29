@@ -3,7 +3,7 @@ import { Message } from "./message"
 
 export const NoServer = () => {
   return (
-    <Message title="Oh gosh!" subtitle="We're broke">
+    <Message title="Oh dear!" subtitle="internet broken">
       <Broke className="w-3/4 flex-grow h-auto" />
     </Message>
   )

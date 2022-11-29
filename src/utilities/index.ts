@@ -1,5 +1,16 @@
-const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' })
-const timeFormatter = new Intl.DateTimeFormat('en-GB', { timeStyle: 'short' })
+import countries from "./countries.json"
 
-export const formatDate = (date: Date) => dateFormatter.format(date)
-export const formatTime = (date: Date) => timeFormatter.format(date)
+const locale = "en-UK"
+const dateOptions: Intl.DateTimeFormatOptions = { dateStyle: 'medium' }
+const dateFormatter = new Intl.DateTimeFormat(locale, dateOptions)
+
+export const getDateFormatter = () => {
+  return dateFormatter
+}
+
+export const getTimeFormatter = (country: string) => {
+  const timeZone = (countries as Record<string, string>)[country]
+  const timeOptions: Intl.DateTimeFormatOptions = { timeStyle: 'short', timeZone }
+  const timeFormatter = new Intl.DateTimeFormat(locale, timeOptions)  
+  return timeFormatter
+}

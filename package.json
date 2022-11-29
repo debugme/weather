@@ -1,12 +1,12 @@
 {
-  "name": "weather",
+  "name": "cloudz",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "author": {
     "name": "Asad Razvi",
     "email": "debugme@hotmail.com",
-    "url": "https://github.com/debugme/weather"
+    "url": "https://github.com/debugme"
   },
   "scripts": {
     "dev": "vite",
@@ -19,7 +19,7 @@
     "react-router-dom": "6.4.3"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
+    "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@vitejs/plugin-react": "2.2.0",

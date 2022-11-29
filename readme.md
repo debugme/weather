@@ -1,5 +1,5 @@
 ## Introduction
-Weather is a web application that allows a user to get weather forecasts for different cities.
+Cloudz™️ is a web application that allows a user to get weather forecasts for different cities.
 
 <img width="1205" alt="weather" src="https://user-images.githubusercontent.com/2932374/204339168-9f52c333-fa87-4922-80d7-eba26619f564.png">
 

@@ -31,7 +31,7 @@ export type WeatherInfo = {
   city: {
     sunrise: number,
     sunset: number
-  },
+  }
 }
 
 export type Weather = {
