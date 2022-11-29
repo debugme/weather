@@ -3,7 +3,7 @@ import { Message } from "./message"
 
 export const NoSearch = () => {
   return (
-    <Message title="Let's go!" subtitle="Search a city">
+    <Message title="Let's go!" subtitle="Check weather">
       <Begin className="w-full flex-grow h-auto" />
     </Message>
   )

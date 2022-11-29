@@ -49,8 +49,6 @@ const getLocationInfo = async (searchTerm: string, appId: string) => {
   const directUrl = `${directEndpoint}?${directQuery}&${appId}`
   const directResponse = await fetch(directUrl)
   const list: LocationInfo[] = await directResponse.json()
-  console.log(list);
-  
   return list[0]
 }
 
