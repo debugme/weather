@@ -45,6 +45,7 @@ export type Weather = {
   wind: string
   city: string
   country: string
+  countryCode: string
 }
 
 export type LocationInfo = {

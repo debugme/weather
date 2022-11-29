@@ -24,7 +24,19 @@ const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: Loca
     const time = timeFormatter.format(timestamp)
     const image = `https://openweathermap.org/img/wn/${icon}@2x.png`
     const wind = `${speed} mph`
-    const weather = { date, time, image, temperature, description, sunrise, sunset, wind, city: name, country: countryName }
+    const weather = { 
+      date, 
+      time, 
+      image, 
+      temperature, 
+      description, 
+      sunrise, 
+      sunset, 
+      wind, 
+      city: name, 
+      country: countryName, 
+      countryCode: country 
+    }
     return weather
   })
   
