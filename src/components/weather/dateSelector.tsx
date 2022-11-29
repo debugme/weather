@@ -21,7 +21,7 @@ export const DateSelector: FC<DateSelectorProps> = (props) => {
 
   return (
     <Fragment>
-      <h4 className="block text-xl text-secondary-600 mt-4">Select day</h4>
+      <h4 className="block text-xl text-secondary-600 mt-4">Pick a day</h4>
       <div className="grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 p-4 bg-secondary-400 justify-items-around rounded-lg mt-4">
         {chipList}
       </div>

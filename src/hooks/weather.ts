@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { LocationInfo, Nullable, Weather, WeatherInfo } from "../types";
-import { getDateFormatter, getTimeFormatter } from "../utilities";
+import { getDateFormatter, getTimeFormatter, getCountryName } from "../utilities";
 
 const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: LocationInfo) => {
   if (!weatherInfo)
     return []
 
   const { list, city } = weatherInfo
-  const { country } = locationInfo
+  const { country, name } = locationInfo
+  const countryName = getCountryName(country)
   const dateFormatter = getDateFormatter()
   const timeFormatter = getTimeFormatter(country)
   const sunrise = timeFormatter.format(new Date(city.sunrise * 1000))
@@ -23,7 +24,7 @@ const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: Loca
     const time = timeFormatter.format(timestamp)
     const image = `https://openweathermap.org/img/wn/${icon}@2x.png`
     const wind = `${speed} mph`
-    const weather = { date, time, image, temperature, description, sunrise, sunset, wind }
+    const weather = { date, time, image, temperature, description, sunrise, sunset, wind, city: name, country: countryName }
     return weather
   })
   
@@ -36,6 +37,8 @@ const getLocationInfo = async (searchTerm: string, appId: string) => {
   const directUrl = `${directEndpoint}?${directQuery}&${appId}`
   const directResponse = await fetch(directUrl)
   const list: LocationInfo[] = await directResponse.json()
+  console.log(list);
+  
   return list[0]
 }
 

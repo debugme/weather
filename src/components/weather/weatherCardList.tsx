@@ -15,11 +15,15 @@ export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
   if (list.length === 0)
     return null
 
+  const { city, country } = list[0]
+
+  const title = city && country ? `${city}, ${country}` : "Your results"
+
   const cardList = list.map(buildCard)
 
   return (
     <Fragment>
-      <h4 className="block text-xl text-secondary-600 mt-10">Your results</h4>
+      <h4 className="block text-xl text-secondary-600 mt-10">{title}</h4>
       <section className="mt-5 flex flex-wrap gap-14">
         {cardList}
       </section>

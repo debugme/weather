@@ -43,6 +43,8 @@ export type Weather = {
   sunrise: string
   sunset: string
   wind: string
+  city: string
+  country: string
 }
 
 export type LocationInfo = {

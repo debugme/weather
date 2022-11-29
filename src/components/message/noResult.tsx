@@ -3,7 +3,7 @@ import { Message } from "./message"
 
 export const NoResult = () => {
   return (
-    <Message title="No luck!" subtitle="Try again">
+    <Message title="No results!" subtitle="Try again">
       <Empty className="w-full flex-grow h-auto" />
     </Message>
   )

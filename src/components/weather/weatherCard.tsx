@@ -9,7 +9,7 @@ export const WeatherCard: FC<Weather> = (props) => {
     <article className="w-[320px] rounded-lg border-none bg-secondary-50">
       <section className="h-24 rounded-t-lg bg-gradient-to-r from-primary-300 to-primary-400 pl-4 flex justify-between items-center">
         <span className="text-secondary-600">
-          <h2 className="text-2xl">{time}</h2>
+          <h2 className="text-2xl">{time}<span className="text-xs ml-2">local time</span></h2>
           <h4 className="text-lg">{description}</h4>
         </span>
         <img className="w-24 h-24" src={image} />
