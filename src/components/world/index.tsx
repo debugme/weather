@@ -17,9 +17,8 @@ export const World: FC<WorldProps> = (props) => {
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => {
-            const fill = country === geo.properties.name ? "black" : "#ca8a04"
             return (
-              <Geography key={geo.rsmKey} geography={geo} fill={fill} />
+              <Geography key={geo.rsmKey} geography={geo} fill="#ca8a04" />
             )
           })
         }

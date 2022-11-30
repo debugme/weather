@@ -10,13 +10,9 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
   const title = `${city}, ${country}`
 
   return (
-    <span className="bg-gradient-to-r from-primary-300 to-primary-400 w-full mt-4 flex justify-start items-center gap-4 text-secondary-700 px-4 py-2 rounded-lg">
-      <span>
-        <World country={country} latitude={latitude} longitude={longitude} />
-      </span>
-      <span>
-        <h4 className="text-center block text-xl ">{title}</h4>
-      </span>
+    <span className="h-56 md:h-60 lg:h-72 bg-gradient-to-r from-primary-300 to-primary-400 w-full mt-4 flex justify-center  items-center text-secondary-700 px-8 py-2 rounded-t-lg">
+      <World country={country} latitude={latitude} longitude={longitude} />
+      <h4 className="text-center block text-sm w-16">{title}</h4>
     </span>
   )
 }
