@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react"
 
 import { Weather } from "../../types"
-import { ChipList } from "./chipList"
+import { ChipList } from "../chipList"
 import { WeatherCardList } from "./weatherCardList"
 
 export type WeatherListProps = {
@@ -20,8 +20,7 @@ export const WeatherList: FC<WeatherListProps> = (props) => {
 
   return (
     <Fragment>
-      <h2 className="block text-3xl text-secondary-600 mt-10">Calendar</h2>
-      <ChipList list={dateList} selected={selectedDate} setSelected={setSelectedDate} normaliser={dateNormaliser} />
+      <ChipList title="Calendar" list={dateList} selected={selectedDate} setSelected={setSelectedDate} normaliser={dateNormaliser} />
       <WeatherCardList list={filteredList} />
     </Fragment>
   )

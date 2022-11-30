@@ -1,10 +1,10 @@
 import { ChangeEventHandler, FC, useRef, useState } from "react";
 
+import { ChipList } from '../chipList'
 import { Nullable } from "../../types";
 import { Search as SearchIcon } from "../images"
 import { Field } from './field'
 import { Spinner } from './spinner'
-import { Popular } from './popular'
 import { Status } from './status'
 
 export type SearchProps = {
@@ -14,6 +14,8 @@ export type SearchProps = {
   failure: Nullable<Error>
   resultCount: number
 }
+
+const list = ["Lagos", "Tokyo", "Paris", "Crete", "Milan", "Dubai"]
 
 export const Search: FC<SearchProps> = (props) => {
   const { searchTerm, setSearchTerm, failure, resultCount, isLoading } = props
@@ -38,7 +40,7 @@ export const Search: FC<SearchProps> = (props) => {
   return (
     <label className="relative w-full sm:mx-auto" htmlFor="searchBox">
       <Field value={searchTerm} onChange={onChange} />
-      <Popular setSearchTerm={setSearchTerm} />
+      <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />
       <SearchIcon className="absolute top-4 left-3 w-6 h-6 text-secondary-700" />
       <Spinner showSpinner={showSpinner} />
       <Status searchTerm={searchTerm} isLoading={isLoading} failure={failure} resultCount={resultCount} />

@@ -1,6 +1,7 @@
 import { FC, Fragment } from "react"
 
 export type ChipListProps = {
+  title: string
   list: string[]
   selected: string
   setSelected: (_: string) => void
@@ -8,7 +9,7 @@ export type ChipListProps = {
 }
 
 export const ChipList: FC<ChipListProps> = (props) => {
-  const { list, selected, setSelected, normaliser = v => v } = props
+  const { title, list, selected, setSelected, normaliser = v => v } = props
 
   const chipList = list.map(text => {
     const label = normaliser(text)
@@ -22,6 +23,7 @@ export const ChipList: FC<ChipListProps> = (props) => {
 
   return (
     <Fragment>
+      <h2 className="text-3xl text-secondary-600 w-20 mt-8">{title}</h2>
       <div className="grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 p-4 bg-secondary-400 justify-items-around rounded-lg mt-4">
         {chipList}
       </div>
