@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FC, useRef, useState } from "react";
 
 import { Nullable } from "../../types";
-import { Search as SearchIcon} from "../images"
+import { Search as SearchIcon } from "../images"
 import { Field } from './field'
 import { Spinner } from './spinner'
 import { Popular } from './popular'
@@ -37,8 +37,8 @@ export const Search: FC<SearchProps> = (props) => {
 
   return (
     <label className="relative w-full sm:mx-auto" htmlFor="searchBox">
-      <Field value={searchTerm} onChange={onChange}/>
-      <Popular setSearchTerm={setSearchTerm} resultCount={resultCount}/>
+      <Field value={searchTerm} onChange={onChange} />
+      <Popular setSearchTerm={setSearchTerm} resultCount={resultCount} />
       <SearchIcon className="absolute top-4 left-3 w-6 h-6 text-secondary-700" />
       <Spinner showSpinner={showSpinner} />
       <Status searchTerm={searchTerm} isLoading={isLoading} failure={failure} resultCount={resultCount} />

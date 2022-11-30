@@ -37,6 +37,7 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const debouncedSearchTerm = useDebounce(searchTerm.trim(), 300) 
 
   const updateSearchTerm = (searchTerm: string) => {
+    setWeatherList([])
     setIsLoading(true)
     setSearchTerm(searchTerm)
   }
