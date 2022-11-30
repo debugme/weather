@@ -4,13 +4,12 @@ import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps
 import geoUrl from "./map.json"
 
 export type WorldProps = {
-  country: string
   latitude: number
   longitude: number
 }
 
 export const World: FC<WorldProps> = (props) => {
-  const { country, latitude, longitude } = props
+  const { latitude, longitude } = props
 
   return (
     <ComposableMap className="w-full">
@@ -18,13 +17,13 @@ export const World: FC<WorldProps> = (props) => {
         {({ geographies }) =>
           geographies.map((geo) => {
             return (
-              <Geography key={geo.rsmKey} geography={geo} fill="#ca8a04" />
+              <Geography key={geo.rsmKey} geography={geo} fill="#e2e8f0" />
             )
           })
         }
       </Geographies>
       <Marker coordinates={[longitude, latitude]}>
-        <circle r={16} fill="red" stroke="white" strokeWidth={4} />
+        <circle r={12} fill="red" stroke="white" strokeWidth={3} />
       </Marker>
     </ComposableMap>
   )
