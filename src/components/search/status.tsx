@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Nullable } from "../../types";
-import { NoResult, NoSearch, NoServer } from "..";
+import { NoResult, NoSearch, NoServer, Loading } from "..";
 
 export type StatusProps = {
   searchTerm: string;
@@ -17,7 +17,7 @@ export const Status: FC<StatusProps> = (props) => {
     return <NoServer />
 
   if (isLoading)
-    return null
+    return <Loading />
 
   if (searchTerm.length === 0)
     return <NoSearch />
