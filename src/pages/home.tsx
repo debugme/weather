@@ -1,4 +1,5 @@
 import { Search, WeatherList } from "../components"
+import { WorldMap } from "../components/weather/worldMap"
 import { useWeather } from "../providers"
 
 export const Home = () => {
@@ -6,6 +7,7 @@ export const Home = () => {
   
   return (
     <section className="flex flex-col w-3/4 mx-auto">
+      <WorldMap {...weatherList[0]} />
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

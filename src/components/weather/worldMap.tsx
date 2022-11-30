@@ -3,10 +3,10 @@ import { FC } from "react"
 import { Weather } from "../../types"
 import { World } from "../world"
 
-export type WorldMapProps = Pick<Weather, "city" | "country" | "latitude" | "longitude">
+export type WorldMapProps = Partial<Pick<Weather, "city" | "country" | "latitude" | "longitude">>
 
 export const WorldMap: FC<WorldMapProps> = (props) => {
-  const { city, country, latitude, longitude } = props
+  const { city = "London", country = "UK", latitude = 51.509865, longitude = -0.118092 } = props
   const title = `${city}, ${country}`
 
   return (
