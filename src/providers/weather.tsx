@@ -16,6 +16,7 @@ const initialValue = {
   weatherList: [],
   setWeatherList: (_: Weather[]) => { },
   isLoading: false,
+  setIsLoading: (_: boolean) => { },
   failure: null
 }
 
@@ -35,6 +36,11 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const [failure, setFailure] = useState<Nullable<Error>>(initialFailure)
   const debouncedSearchTerm = useDebounce(searchTerm.trim(), 300) 
 
+  const updateSearchTerm = (searchTerm: string) => {
+    setIsLoading(true)
+    setSearchTerm(searchTerm)
+  }
+
   const { data, error, loading } = useWeatherAPI(debouncedSearchTerm)
 
   useEffect(() => {
@@ -45,7 +51,7 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
 
   const value = {
     searchTerm,
-    setSearchTerm,
+    setSearchTerm: updateSearchTerm,
     weatherList,
     setWeatherList,
     isLoading,
