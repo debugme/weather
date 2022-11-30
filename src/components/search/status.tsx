@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 
 import { Nullable } from "../../types";
 import { NoResult, NoSearch, NoServer } from "..";
@@ -13,22 +13,25 @@ export type StatusProps = {
 export const Status: FC<StatusProps> = (props) => {
   const { failure, isLoading, searchTerm, resultCount } = props
 
-  if (!window.navigator.onLine)
-    return <NoServer />
-
   if (isLoading)
     return null
 
-  if (searchTerm.length === 0)
-    return <NoSearch />
+  const message = !window.navigator.onLine
+    ? <NoServer />
+    : searchTerm.length === 0
+    ? <NoSearch />
+    : resultCount === 0
+    ? <NoResult />
+    : failure
+    ? <NoSearch />
+    : null
 
-  if (resultCount === 0)
-    return <NoResult />
+  return (
+    <Fragment>
+      <h2 className="block text-3xl text-secondary-600 mt-10">Status</h2>
+      {message}
+    </Fragment>
+  )
 
-  if (failure)
-    return <NoSearch />
-
-
-  return null
 }
 
