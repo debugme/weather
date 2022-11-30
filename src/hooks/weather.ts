@@ -8,7 +8,7 @@ const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: Loca
     return []
 
   const { list, city } = weatherInfo
-  const { country, name } = locationInfo
+  const { country, name, lat, lon } = locationInfo
   const countryName = getCountryName(country)
   const dateFormatter = getDateFormatter()
   const timeFormatter = getTimeFormatter(country)
@@ -18,24 +18,21 @@ const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: Loca
   const weatherList: Weather[] = list.map(item => {
     const { dt_txt, main: { temp }, weather: [first], wind: { speed } } = item
     const { description, icon } = first
-    const temperature = `${temp}℃`
     const timestamp = new Date(dt_txt)
-    const date = dateFormatter.format(timestamp)
-    const time = timeFormatter.format(timestamp)
-    const image = `https://openweathermap.org/img/wn/${icon}@2x.png`
-    const wind = `${speed} mph`
     const weather = { 
-      date, 
-      time, 
-      image, 
-      temperature, 
+      date: dateFormatter.format(timestamp), 
+      time: timeFormatter.format(timestamp), 
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`, 
+      temperature: `${temp}℃`, 
       description, 
       sunrise, 
       sunset, 
-      wind, 
+      wind: `${speed} mph`, 
       city: name, 
       country: countryName, 
-      countryCode: country 
+      countryCode: country,
+      latitude: lat,
+      longitude: lon
     }
     return weather
   })

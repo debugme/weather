@@ -1,6 +1,6 @@
 import { FC, Fragment, MouseEventHandler } from "react"
 
-const popular = ["Tokyo", "Taipei", , "Hong Kong", "Shanghai", "Jakarta", "Manilla"]
+const popular = ["Lagos", "Tokyo", "Paris", "Milan", "Shanghai", "Istanbul", "California"]
 
 export type PopularProps = {
   setSearchTerm: (searchTerm: string) => void

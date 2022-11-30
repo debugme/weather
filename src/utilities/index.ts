@@ -1,12 +1,13 @@
 import countries from "./data.json"
 
 const locale = "en-UK"
-const dateOptions: Intl.DateTimeFormatOptions = { dateStyle: 'medium' }
-const dateFormatter = new Intl.DateTimeFormat(locale, dateOptions)
 
 type Countries = Record<string, { countryName: string, timeZone: string }>
 
-export const getDateFormatter = () => {
+export const getDateFormatter = (countryCode?: string) => {
+  const { timeZone } = (countries as Countries)[countryCode || "GB"]
+  const dateOptions: Intl.DateTimeFormatOptions = { dateStyle: 'medium', timeZone }
+  const dateFormatter = new Intl.DateTimeFormat(locale, dateOptions)
   return dateFormatter
 }
 
