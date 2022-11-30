@@ -38,7 +38,7 @@ export const Search: FC<SearchProps> = (props) => {
   return (
     <label className="relative w-full sm:mx-auto" htmlFor="searchBox">
       <Field value={searchTerm} onChange={onChange} />
-      <Popular setSearchTerm={setSearchTerm} resultCount={resultCount} />
+      <Popular setSearchTerm={setSearchTerm} />
       <SearchIcon className="absolute top-4 left-3 w-6 h-6 text-secondary-700" />
       <Spinner showSpinner={showSpinner} />
       <Status searchTerm={searchTerm} isLoading={isLoading} failure={failure} resultCount={resultCount} />

@@ -1,14 +1,13 @@
 import { FC, Fragment, MouseEventHandler } from "react"
 
-const popular = ["Lagos", "Tokyo", "Paris", "Milan", "Shanghai", "Istanbul", "California"]
+const popular = ["Lagos", "Tokyo", "Paris", "Crete", "Milan", "Dubai"]
 
 export type PopularProps = {
   setSearchTerm: (searchTerm: string) => void
-  resultCount: number
 }
 
 export const Popular: FC<PopularProps> = (props) => {
-  const { setSearchTerm, resultCount } = props
+  const { setSearchTerm } = props
 
   const onClick: MouseEventHandler<HTMLElement> = (event) => {
     const searchTerm = event.currentTarget.innerText
