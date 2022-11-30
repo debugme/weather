@@ -13,7 +13,7 @@ export const Field: FC<FieldProps> = (props) => {
       className="text-secondary-600 placeholder-secondary-400 selection:text-primary-800 selection:bg-primary-300 bg-secondary-50 w-full py-4 pl-11 rounded-md border-none outline-secondary-400"
       type="search"
       placeholder="Search cities"
-      title="Type in a search term"
+      title="Search cities"
       value={value}
       onChange={onChange}
     />
