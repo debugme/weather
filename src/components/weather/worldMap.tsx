@@ -5,8 +5,13 @@ import { World } from "../world"
 
 export type WorldMapProps = Partial<Pick<Weather, "city" | "country" | "latitude" | "longitude">>
 
+const uk = {
+  latitude: 51.509865,
+  longitude: -0.118092
+}
+
 export const WorldMap: FC<WorldMapProps> = (props) => {
-  const { city = "", country = "", latitude = 51.509865, longitude = -0.118092 } = props
+  const { city = "", country = "", latitude = uk.latitude, longitude = uk.longitude } = props
   const title = city && country ? `${city}, ${country}` : ""
 
   return (

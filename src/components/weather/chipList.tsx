@@ -1,16 +1,17 @@
 import { FC, Fragment } from "react"
 
-export type DateSelectorProps = {
+export type ChipListProps = {
   list: string[]
   selected: string
   setSelected: (_: string) => void
+  normaliser?: (_: string) => string
 }
 
-export const DateSelector: FC<DateSelectorProps> = (props) => {
-  const { list, selected, setSelected } = props
+export const ChipList: FC<ChipListProps> = (props) => {
+  const { list, selected, setSelected, normaliser = v => v } = props
 
   const chipList = list.map(text => {
-    const label = text.split(" ").slice(0, 2).join(" ")
+    const label = normaliser(text)
     const className = `py-2 rounded-lg ${selected === text ? "bg-primary-300" : "bg-secondary-300"}`
     const onClick: React.MouseEventHandler = (event) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
