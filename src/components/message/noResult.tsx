@@ -4,7 +4,7 @@ import { Message } from "./message"
 export const NoResult = () => {
   return (
     <Message title="No results!" subtitle="Try again">
-      <Empty className="w-full flex-grow h-auto" />
+      <Empty className="flex-grow w-full h-auto" />
     </Message>
   )
 }

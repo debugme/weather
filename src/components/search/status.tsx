@@ -28,7 +28,7 @@ export const Status: FC<StatusProps> = (props) => {
 
   return (
     <Fragment>
-      {message ? <h2 className="block text-3xl text-secondary-600 mt-10">Status</h2> : null }
+      {message ? <h2 className="block mt-10 text-3xl text-secondary-600">Status</h2> : null }
       {message}
     </Fragment>
   )

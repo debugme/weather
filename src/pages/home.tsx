@@ -7,7 +7,7 @@ export const Home = () => {
   
   return (
     <section className="flex flex-col w-3/4 mx-auto">
-      <h2 className="block text-3xl text-secondary-600 mt-10">City</h2>
+      <h2 className="block text-3xl text-secondary-600">City</h2>
       <WorldMap {...weatherList[0]} />
       <Search
         searchTerm={searchTerm}

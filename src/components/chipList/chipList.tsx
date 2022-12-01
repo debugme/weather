@@ -23,8 +23,8 @@ export const ChipList: FC<ChipListProps> = (props) => {
 
   return (
     <Fragment>
-      <h2 className="text-3xl text-secondary-600 w-20 mt-8">{title}</h2>
-      <div className="grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 p-4 bg-secondary-400 justify-items-around rounded-lg mt-4">
+      <h2 className="w-20 mt-8 text-3xl text-secondary-600">{title}</h2>
+      <div className="p-4 mt-4 rounded-lg grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 bg-secondary-400 justify-items-around">
         {chipList}
       </div>
     </Fragment>

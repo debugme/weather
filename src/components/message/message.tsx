@@ -13,7 +13,7 @@ export const Message: FC<MessageProps> = (props) => {
       <div className="flex flex-wrap ">
         <div>{children}</div>
         <div className="pr-4 text-secondary-600">
-          <h5 className="text-xs md:text-base lg:text-lg uppercase">{subtitle}</h5>
+          <h5 className="text-xs uppercase md:text-base lg:text-lg">{subtitle}</h5>
           <h3 className="text-2xl md:text-4xl lg:text-5xl">{title}</h3>
         </div>
       </div>

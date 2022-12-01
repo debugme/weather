@@ -7,8 +7,8 @@ import { Footer } from "./footer";
 export const Layout = () => (
   <Fragment>
     <Header />
-    <main className="bg-secondary-300 overflow-scroll py-8">
-      <section className="flex flex-col mx-auto pt-2 max-w-screen-2xl">
+    <main className="py-8 overflow-scroll bg-secondary-300">
+      <section className="flex flex-col pt-2 mx-auto max-w-screen-2xl">
         <Outlet />
       </section>
     </main>

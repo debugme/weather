@@ -42,7 +42,7 @@ export const Footer = () => {
   const onClick = useMemo(() => () => setShowInfo(showInfo => !showInfo), [])
 
   return (
-    <footer className="bg-secondary-700 text-secondary-700 flex justify-end items-center px-6 cursor-pointer" onClick={onClick} title="Click to toggle breakpoint information">
+    <footer className="flex items-center justify-end px-6 cursor-pointer bg-secondary-700 text-secondary-700" onClick={onClick} title="Click to toggle breakpoint information">
       {showInfo ? <Devices /> : null}
       {showInfo ? <Breakpoints /> : null}
     </footer>

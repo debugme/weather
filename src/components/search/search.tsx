@@ -41,7 +41,7 @@ export const Search: FC<SearchProps> = (props) => {
     <label className="relative w-full sm:mx-auto" htmlFor="searchBox">
       <Field value={searchTerm} onChange={onChange} />
       <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />
-      <SearchIcon className="absolute top-4 left-3 w-6 h-6 text-secondary-700" />
+      <SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
       <Spinner showSpinner={showSpinner} />
       <Status searchTerm={searchTerm} isLoading={isLoading} failure={failure} resultCount={resultCount} />
     </label>
