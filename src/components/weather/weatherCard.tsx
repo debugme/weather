@@ -6,7 +6,7 @@ export const WeatherCard: FC<Weather> = (props) => {
   const { time, image, description, temperature, sunrise, sunset, wind } = props
 
   return (
-    <article className="w-[260px] rounded-lg border-none bg-secondary-50">
+    <article className="border-none rounded-lg bg-secondary-50">
       <section className="flex items-center justify-between h-24 pl-4 rounded-t-lg bg-gradient-to-r from-primary-300 to-primary-400">
         <span className="text-secondary-600">
           <h2 className="text-2xl">{time}</h2>

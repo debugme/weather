@@ -20,7 +20,7 @@ export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
   return (
     <Fragment>
       <h2 className="block mt-10 text-3xl text-secondary-600">Forecast</h2>
-      <section className="flex flex-wrap p-4 mt-5 mr-auto rounded-lg gap-4 bg-secondary-400">
+      <section className="grid w-full gap-4 p-4 mt-5 mr-auto rounded-lg grid-cols-home bg-secondary-400">
         {cardList}
       </section>
     </Fragment>

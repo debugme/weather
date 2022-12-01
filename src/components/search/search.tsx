@@ -15,7 +15,7 @@ export type SearchProps = {
   resultCount: number
 }
 
-const list = ["Lagos", "Tokyo", "Paris", "Crete", "Milan", "Dubai"]
+const list = ["lagos", "tokyo", "paris", "crete", "milan", "dubai"]
 
 export const Search: FC<SearchProps> = (props) => {
   const { searchTerm, setSearchTerm, failure, resultCount, isLoading } = props
