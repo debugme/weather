@@ -12,12 +12,13 @@ export const World: FC<WorldProps> = (props) => {
   const { latitude, longitude } = props
 
   return (
-    <ComposableMap className="w-full">
+    <span>
+    <ComposableMap className="w-full border fill-secondary-200">
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => {
             return (
-              <Geography key={geo.rsmKey} geography={geo} fill="#e2e8f0" />
+              <Geography key={geo.rsmKey} geography={geo} />
             )
           })
         }
@@ -26,5 +27,6 @@ export const World: FC<WorldProps> = (props) => {
         <circle r={12} fill="red" stroke="white" strokeWidth={3} />
       </Marker>
     </ComposableMap>
+    </span>
   )
 }
