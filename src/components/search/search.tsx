@@ -5,7 +5,6 @@ import { Nullable } from "../../types";
 import { Search as SearchIcon } from "../images"
 import { Field } from './field'
 import { Spinner } from './spinner'
-import { Status } from './status'
 
 export type SearchProps = {
   searchTerm: string;
@@ -43,7 +42,6 @@ export const Search: FC<SearchProps> = (props) => {
       <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />
       <SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
       <Spinner showSpinner={showSpinner} />
-      <Status searchTerm={searchTerm} isLoading={isLoading} failure={failure} resultCount={resultCount} />
     </label>
   )
 }
