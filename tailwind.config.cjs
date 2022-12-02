@@ -13,6 +13,7 @@ module.exports = {
         },
         gridTemplateColumns: {
           home: "repeat(auto-fit, 260px)",
+          map: "3fr 1fr",
         },
         colors: {
           "primary": {
@@ -29,6 +30,9 @@ module.exports = {
             500: "#64748b",
             600: "#475569",
             700: "#334155",
+          },
+          "accent": {
+            500: "#ef4444"
           }
         }
       }

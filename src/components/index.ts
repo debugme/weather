@@ -1,5 +1,5 @@
 export { Layout } from "./layout"
 export { Search } from "./search"
 export { WeatherList } from "./weather"
-export { World } from "./world"
+export { WorldMap } from "./world"
 export { ChipList } from "./chipList"
