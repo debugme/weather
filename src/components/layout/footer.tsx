@@ -37,7 +37,7 @@ export const Devices = () => {
 }
 
 export const Footer = () => {
-  const [showInfo, setShowInfo] = useState(false)
+  const [showInfo, setShowInfo] = useState(true)
 
   const onClick = useMemo(() => () => setShowInfo(showInfo => !showInfo), [])
 
