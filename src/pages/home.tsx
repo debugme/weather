@@ -3,7 +3,7 @@ import { useWeather } from "../providers"
 import { Weather } from "../types"
 
 export const Home = () => {
-  const { weatherList, searchTerm, setSearchTerm, isLoading, failure } = useWeather()
+  const { weatherList, searchTerm, setSearchTerm, isLoading } = useWeather()
   
   const worldMapProps = getWorldMapProps(searchTerm, isLoading, weatherList)
 
@@ -11,7 +11,7 @@ export const Home = () => {
     <section className="flex flex-col w-3/4 mx-auto">
       <h2 className="block text-3xl text-secondary-600">Search</h2>
       <WorldMap {...worldMapProps} />
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} resultCount={weatherList.length} />
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
       <WeatherList list={weatherList} />
     </section>
   )

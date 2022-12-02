@@ -9,13 +9,12 @@ export type SearchProps = {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void
   isLoading: boolean
-  resultCount: number
 }
 
 const list = ["lagos", "tokyo", "paris", "crete", "milan", "dubai"]
 
 export const Search: FC<SearchProps> = (props) => {
-  const { searchTerm, setSearchTerm, isLoading, resultCount } = props
+  const { searchTerm, setSearchTerm, isLoading } = props
 
   const timerId = useRef<NodeJS.Timeout>()
   const [showSpinner, setShowSpinner] = useState(false)
@@ -37,7 +36,7 @@ export const Search: FC<SearchProps> = (props) => {
   return (
     <label className="relative w-full sm:mx-auto" htmlFor="searchBox">
       <Field value={searchTerm} onChange={onChange} />
-      {resultCount ? null : <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />}
+      <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />
       <SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
       <Spinner showSpinner={showSpinner || isLoading} />
     </label>
