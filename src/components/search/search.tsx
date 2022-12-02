@@ -11,7 +11,7 @@ export type SearchProps = {
   isLoading: boolean
 }
 
-const list = ["lagos", "tokyo", "paris", "crete", "milan", "dubai"]
+const list = ["Milan", "Lagos", "Tokyo", "Kitui", "Arica", "Dubai"]
 
 export const Search: FC<SearchProps> = (props) => {
   const { searchTerm, setSearchTerm, isLoading } = props
