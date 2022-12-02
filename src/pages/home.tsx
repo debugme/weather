@@ -11,13 +11,7 @@ export const Home = () => {
     <section className="flex flex-col w-3/4 mx-auto">
       <h2 className="block text-3xl text-secondary-600">Search</h2>
       <WorldMap {...worldMapProps} />
-      <Search
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        isLoading={isLoading}
-        failure={failure}
-        resultCount={weatherList.length}
-      />
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
       <WeatherList list={weatherList} />
     </section>
   )
@@ -35,7 +29,7 @@ const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: W
   const worldMapProps = searchTerm.length === 0
     ? uk
     : isLoading
-    ? { ...uk, city: "Searching", country: "Please wait", showMarker: false }
+    ? { ...uk, city: "", country: "", showMarker: false }
     : weatherList.length === 0
     ? { ...uk, city: "No results", country: "Try again" }
     : { ...uk, ...weatherList[0] }

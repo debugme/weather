@@ -28,7 +28,7 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
         </ComposableMap>
       </span>
       <span className="flex flex-col justify-center items-start pl-4">
-        <h4 className="block text-md md:text-xl lg:text-3xl ">{city}</h4>
+        <h4 className="block text-sm md:text-xl lg:text-3xl ">{city}</h4>
         <p className="block text-xs md:text-sm lg:text-lg ">{country}</p>
       </span>
     </span>
