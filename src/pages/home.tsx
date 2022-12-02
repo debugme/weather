@@ -10,7 +10,7 @@ export const Home = () => {
   return (
     <section className="flex flex-col w-3/4 mx-auto">
       <h2 className="block text-3xl text-secondary-600">Search</h2>
-      <WorldMap {...worldMapProps} />
+      <span className="hidden lg:block"><WorldMap {...worldMapProps} /></span>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
       <WeatherList list={weatherList} />
     </section>

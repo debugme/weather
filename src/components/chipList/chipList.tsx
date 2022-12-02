@@ -13,7 +13,7 @@ export const ChipList: FC<ChipListProps> = (props) => {
 
   const chipList = list.map(text => {
     const label = normaliser(text)
-    const className = `py-2 rounded-lg ${selected === text ? "bg-primary-300" : "bg-secondary-300"}`
+    const className = `py-2 rounded-lg ${selected === text ? "bg-gradient-to-b from-primary-300 to-primary-400" : "bg-secondary-300"}`
     const onClick: React.MouseEventHandler = (event) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
     }
