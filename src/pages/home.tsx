@@ -11,7 +11,7 @@ export const Home = () => {
     <section className="flex flex-col w-3/4 mx-auto">
       <h2 className="block text-3xl text-secondary-600">Search</h2>
       <WorldMap {...worldMapProps} />
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} resultCount={weatherList.length} />
       <WeatherList list={weatherList} />
     </section>
   )
