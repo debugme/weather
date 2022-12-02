@@ -1,7 +1,7 @@
 ## Introduction
 Cloudz™️ is a web application that allows a user to get weather forecasts for different cities.
 
-<img width="1205" alt="weather" src="https://user-images.githubusercontent.com/2932374/204339168-9f52c333-fa87-4922-80d7-eba26619f564.png">
+<img width="963" alt="cloudz" src="https://user-images.githubusercontent.com/2932374/205350652-7329d333-5f5c-4c9e-b793-147b2c20b51f.png">
 
 This information includes the following for each day for which a forecast is retrieved
 - date - the forecast day
