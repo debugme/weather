@@ -1,13 +1,12 @@
 import { Fragment, useMemo, useState } from "react"
+import { useSettings } from "../../providers"
 import { Toggle } from "../toggle"
 
 import { Avatar } from "./avatar"
 import { Menu } from "./menu"
 
 export const Settings = () => {
-  const [showInfo, setShowInfo] = useState(false)
-  const toggleBreakpoints = useMemo(() => () => setShowInfo(showInfo => !showInfo), [])
-  const toggleTheme = useMemo(() => () => document.body.classList.toggle("tokyo"), [])
+  const { toggleBreakpoints, toggleTheme } = useSettings()
 
   return (
     <div className="block absolute z-10 bg-secondary-700 top-[72px] bottom-[72px] w-full">

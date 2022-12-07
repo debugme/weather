@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { useSettings } from "../../providers"
 import {
   Cellphone,
   Tablet,
@@ -36,17 +36,12 @@ export const Devices = () => {
   )
 }
 
-
-export type FooterProps = {
-  showInfo: boolean
-}
-
-export const Footer: FC<FooterProps> = (props) => {
-  const { showInfo } = props
+export const Footer = () => {
+  const { showBreakpoints } = useSettings()
   return (
     <footer className="flex items-center justify-end px-6 cursor-pointer bg-secondary-700 text-secondary-700">
-      {showInfo ? <Devices /> : null}
-      {showInfo ? <Breakpoints /> : null}
+      {showBreakpoints ? <Devices /> : null}
+      {showBreakpoints ? <Breakpoints /> : null}
     </footer>
   )
 }

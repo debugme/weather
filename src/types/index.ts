@@ -57,3 +57,9 @@ export type LocationInfo = {
   country: string
   state: string
 }
+
+export type SettingsValue = {
+  showBreakpoints: boolean
+  toggleBreakpoints: () => void
+  toggleTheme: () => void  
+}
