@@ -2,14 +2,14 @@ import { FC, useState } from "react"
 
 export type ToggleProps = {
   isOn: boolean
-  onClick: (isEnabled: boolean) => void
+  onClick: () => void
 }
 
 export const Toggle: FC<ToggleProps> = (props) => {
   const [isEnabled, setEnabled] = useState(props.isOn)
   
   const onClick = () => { 
-    props.onClick(!isEnabled)
+    props.onClick()
     setEnabled(isEnabled => !isEnabled) 
   }
 

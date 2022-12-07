@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { FC } from "react"
 import {
   Cellphone,
   Tablet,
@@ -36,13 +36,15 @@ export const Devices = () => {
   )
 }
 
-export const Footer = () => {
-  const [showInfo, setShowInfo] = useState(false)
 
-  const onClick = useMemo(() => () => setShowInfo(showInfo => !showInfo), [])
+export type FooterProps = {
+  showInfo: boolean
+}
 
+export const Footer: FC<FooterProps> = (props) => {
+  const { showInfo } = props
   return (
-    <footer className="flex items-center justify-end px-6 cursor-pointer bg-secondary-700 text-secondary-700" onClick={onClick} title="Click to toggle breakpoint information">
+    <footer className="flex items-center justify-end px-6 cursor-pointer bg-secondary-700 text-secondary-700">
       {showInfo ? <Devices /> : null}
       {showInfo ? <Breakpoints /> : null}
     </footer>
