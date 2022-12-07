@@ -4,7 +4,6 @@ import { Weather } from "../types"
 
 export const Home = () => {
   const { weatherList, searchTerm, setSearchTerm, isLoading } = useWeather()
-  
   const worldMapProps = getWorldMapProps(searchTerm, isLoading, weatherList)
 
   return (
