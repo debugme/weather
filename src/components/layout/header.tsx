@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from "react"
+import { Fragment, useEffect, useMemo, useState } from "react"
 import { useSettings } from "../../providers"
 import { Toggle } from "../toggle"
 
@@ -27,6 +27,18 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault()
+        setIsOpen(false)
+      }
+    }
+    const cleaner = () => document.removeEventListener("keydown", handler)
+    document.addEventListener("keydown", handler)
+    return cleaner
+  }, [])  
 
   return (
     <Fragment>
