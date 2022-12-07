@@ -17,7 +17,7 @@ export const Home = () => {
 }
 
 const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: Weather[]) => {
-  const uk = {
+  const gb = {
     city: "London",
     country: "Great Britain",
     latitude: 51.509865,
@@ -26,12 +26,12 @@ const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: W
   }
 
   const worldMapProps = searchTerm.length === 0
-    ? uk
+    ? gb
     : isLoading
-    ? { ...uk, city: "", country: "", showMarker: false }
+    ? { ...gb, city: "", country: "", showMarker: false }
     : weatherList.length === 0
-    ? { ...uk, city: "No results", country: "Try again" }
-    : { ...uk, ...weatherList[0] }
+    ? { ...gb, city: "No results", country: "Try again" }
+    : { ...gb, ...weatherList[0] }
 
   return worldMapProps
 }
