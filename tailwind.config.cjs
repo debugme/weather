@@ -39,7 +39,7 @@ module.exports = {
     },
     themes: [
       {
-        name: "tokyo",
+        name: "warm",
         extend: {
           colors: {
             "primary": {

@@ -61,5 +61,7 @@ export type LocationInfo = {
 export type SettingsValue = {
   showBreakpoints: boolean
   toggleBreakpoints: () => void
-  toggleTheme: () => void  
+  theme: string
+  setTheme: (_: string) => void
+  themeList: string[]
 }

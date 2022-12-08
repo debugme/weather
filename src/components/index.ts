@@ -1,6 +1,7 @@
 export { ChipList } from "./chipList"
 export { Layout } from "./layout"
 export { Search } from "./search"
+export { Selector } from "./selector"
 export { Toggle } from "./toggle"
 export { WeatherList } from "./weather"
 export { WorldMap } from "./world"

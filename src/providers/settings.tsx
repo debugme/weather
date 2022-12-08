@@ -1,24 +1,40 @@
-import { createContext, FC, PropsWithChildren, useContext, useMemo, useState } from "react"
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, useState } from "react"
 
 import { SettingsValue } from "../types"
+
+const themeList = ["cool", "warm"]
 
 const initialValue = {
   showBreakpoints: false,
   toggleBreakpoints: () => {},
-  toggleTheme: () => {}
+  theme: themeList[0],
+  setTheme: (_: string) => {},
+  themeList
 }
 
 const SettingsContext = createContext<SettingsValue>(initialValue)
 
 export const SettingsProvider: FC<PropsWithChildren> = (props) => {
-  const [showBreakpoints, setShowBreakpoints] = useState(false)
+  const {
+    showBreakpoints: initialShowBreakpoints,
+    theme: initialTheme,
+    themeList
+  } = initialValue
+
+  const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
+  const [theme, setTheme] = useState(initialTheme)
+
   const toggleBreakpoints = useMemo(() => () => setShowBreakpoints(showBreakpoints => !showBreakpoints), [])
-  const toggleTheme = useMemo(() => () => document.body.classList.toggle("tokyo"), [])  
+ 
+  useEffect(() => {
+    document.body.classList.remove(...themeList)
+    document.body.classList.add(theme)
+  }, [theme])
 
   const { children } = props
   const { Provider } = SettingsContext
 
-  const value = { showBreakpoints, toggleBreakpoints, toggleTheme }
+  const value = { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList }
 
   return (
     <Provider value={value}>{children}</Provider>
