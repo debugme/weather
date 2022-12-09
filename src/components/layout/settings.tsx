@@ -6,7 +6,7 @@ export const Settings = () => {
   const { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList } = useSettings()
 
   return (
-    <div className="block absolute z-10 bg-secondary-700 top-[72px] bottom-[72px] w-full">
+    <div className="block absolute z-10 bg-secondary-700 top-header bottom-footer w-full">
       
       <h2 className="text-secondary-300 text-2xl px-8 pt-2">Settings</h2>
       

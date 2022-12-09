@@ -35,6 +35,10 @@ module.exports = {
           "accent": {
             500: "#ef4444"
           }
+        },
+        spacing: {
+          header: "72px",
+          footer: "72px",
         }
       }
     },
