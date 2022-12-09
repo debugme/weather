@@ -19,7 +19,7 @@ export const Selector: FC<SelectorProps> = (props) => {
 
   const itemList = options.map(text => {
     const isActive = (text === selectedOption)
-    const className = `${isActive ? "text-secondary-400 bg-secondary-700" : "text-secondary-700"}`
+    const className = `${isActive ? "text-secondary-800 bg-primary-400" : "text-primary-400"}`
     return (
       <li key={text} className={`py-1 px-3 rounded-xl cursor-pointer ${className}`}>
         <h4 onClick={onClick}>{text}</h4>
@@ -28,7 +28,7 @@ export const Selector: FC<SelectorProps> = (props) => {
   })
 
   return (
-    <ul className="bg-secondary-400 flex max-w-fit py-2 px-2 rounded-2xl gap-2">
+    <ul className="flex max-w-fit py-2 px-2 rounded-2xl gap-2">
       {itemList}
     </ul>
   )

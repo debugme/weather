@@ -65,7 +65,7 @@ I like to build applications that provide feedback on actions and clarity of con
 - Search - a spinner in the search field reassures the user that something is happening
 - Spacing - elements are spaced out and and easy to differentiate from each other 
 - Typography - the font used allows for easy reading on both small and large screens
-- Theming - you can click on the avatar to toggle between warm and cool themes
+- Theming - you can toggle between warm and cool themes via the settings menu
 
 ## Developer Experience
 Each breakpoint required potentially different styles.
