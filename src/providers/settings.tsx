@@ -2,7 +2,7 @@ import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, u
 
 import { SettingsValue } from "../types"
 
-const themeList = ["cool", "warm"]
+const themeList = ["slate", "stone"]
 
 const initialValue = {
   showBreakpoints: false,

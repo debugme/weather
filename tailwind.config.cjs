@@ -44,7 +44,7 @@ module.exports = {
     },
     themes: [
       {
-        name: "warm",
+        name: "stone",
         extend: {
           colors: {
             "primary": {

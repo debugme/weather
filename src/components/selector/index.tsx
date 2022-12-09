@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useMemo, useState } from "react"
+import { FC, MouseEventHandler, useMemo } from "react"
 
 export type SelectorProps = {
   selectedOption: string
@@ -19,16 +19,16 @@ export const Selector: FC<SelectorProps> = (props) => {
 
   const itemList = options.map(text => {
     const isActive = (text === selectedOption)
-    const className = `${isActive ? "text-secondary-800 bg-primary-400" : "text-primary-400"}`
+    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "text-primary-600"}`
     return (
-      <li key={text} className={`py-1 px-3 rounded-xl cursor-pointer ${className}`}>
+      <li key={text} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
         <h4 onClick={onClick}>{text}</h4>
       </li>
     )
   })
 
   return (
-    <ul className="flex max-w-fit py-2 px-2 rounded-2xl gap-2">
+    <ul className="flex max-w-fit py-2 pr-2 rounded-2xl gap-3">
       {itemList}
     </ul>
   )
