@@ -19,7 +19,7 @@ export const Selector: FC<SelectorProps> = (props) => {
 
   const itemList = options.map(text => {
     const isActive = (text === selectedOption)
-    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "text-primary-600"}`
+    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "border border-primary-600 text-primary-600"}`
     return (
       <li key={text} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
         <h4 onClick={onClick}>{text}</h4>
