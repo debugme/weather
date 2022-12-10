@@ -12,7 +12,7 @@ export const Settings = () => {
       
       <div className="my-8" />
       
-      <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-800 w-80">
+      <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-600 w-80">
         <span className="py-3 text-secondary-300 rounded-lg">Tooling</span>
         <p className="text-secondary-400 pb-4">Show developer tools</p>
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />
@@ -20,7 +20,7 @@ export const Settings = () => {
 
       <div className="my-8" />
 
-      <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-800 w-80">
+      <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-600 w-80">
         <span className="py-3 text-secondary-300 rounded-lg">Theming</span>
         <p className="text-secondary-400 pb-4">Choose your theme</p>
         <Selector selectedOption={theme} setSelectedOption={setTheme} options={themeList} />
