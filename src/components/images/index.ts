@@ -1,8 +1,5 @@
 export { Avatar } from "./avatar"
-export { Begin } from "./begin"
-export { Broke } from "./broke"
 export { Close } from "./close"
-export { Empty } from "./empty"
 export { Menu } from "./menu"
 export { Search } from "./search"
 export { Spinner } from "./spinner"

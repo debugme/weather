@@ -1,5 +1,5 @@
 import { useSettings } from "../../providers"
-import { Selector } from "../selector"
+import { ThemeSelector } from "../selector"
 import { Toggle } from "../toggle"
 
 export const Settings = () => {
@@ -12,7 +12,7 @@ export const Settings = () => {
       <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-600 w-80">
         <span className="py-3 text-secondary-300 rounded-lg">Theming</span>
         <p className="text-secondary-400 pb-4 text-sm">Choose your theme</p>
-        <Selector selectedOption={theme} setSelectedOption={setTheme} options={themeList} />
+        <ThemeSelector selectedOption={theme} setSelectedOption={setTheme} options={themeList} />
       </section>
       <div className="my-8" />
       <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-600 w-80">
