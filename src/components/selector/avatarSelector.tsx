@@ -24,7 +24,10 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
     const className = `${isActive ? "text-secondary-800 bg-primary-600" : "border border-primary-600 text-primary-600"}`
     return (
       <li key={label} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
-        <h4>{label}</h4>
+        <span className="flex flex-col items-center">
+          {avatar}
+          <h4 className="text-xs text-center mt-2">{label}</h4>
+        </span>
       </li>
     )
   })
