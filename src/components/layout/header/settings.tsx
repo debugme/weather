@@ -8,7 +8,7 @@ export const Settings = () => {
   const { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList, avatarInfo, setAvatarInfo, avatarInfoList, handle, setHandle } = useSettings()
 
   return (
-    <div className="block absolute z-10 bg-secondary-700 top-header bottom-footer w-full bg-gradient-to-tr from-secondary-800 via-secondary-700 to-secondary-600">
+    <div className="mt-4 block absolute z-10 bg-secondary-700 top-header bottom-footer w-full bg-gradient-to-tr from-secondary-800 via-secondary-700 to-secondary-600">
       <h2 className="text-secondary-300 text-2xl px-8 pt-2">Settings</h2>
 
       <div className="my-8" />
