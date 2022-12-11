@@ -59,7 +59,7 @@ export type LocationInfo = {
 }
 
 export type AvatarInfo = {
-  label: string
+  id: string
   avatar: JSX.Element
 }
 

@@ -9,9 +9,9 @@ import { Avatar3Icon } from "./avatar3Icon"
 const themeList = ["slate", "grey", "zinc", "stone"]
 
 const avatarInfoList: AvatarInfo[] = [
-  { label: "Tom Grunge", avatar: <Avatar1Icon /> },
-  { label: "Bob Styles", avatar: <Avatar2Icon /> },
-  { label: "Joe Emotiv", avatar: <Avatar3Icon /> },
+  { id: "avatar1", avatar: <Avatar1Icon /> },
+  { id: "avatar2", avatar: <Avatar2Icon /> },
+  { id: "avatar3", avatar: <Avatar3Icon /> },
 ]
 
 const initialValue = {
@@ -41,8 +41,8 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const [theme, setTheme] = useState(initialTheme)
   const [avatarInfo, _setAvatarInfo] = useState(initialAvatarInfo)
 
-  const setAvatarInfo = (label: string) => {
-    const avatar = avatarInfoList.find(avatarInfo => avatarInfo.label === label)!
+  const setAvatarInfo = (id: string) => {
+    const avatar = avatarInfoList.find(avatarInfo => avatarInfo.id === id)!
     _setAvatarInfo(avatar)
   }
 
