@@ -4,7 +4,7 @@ import { SettingsValue } from "../types"
 
 const themeList = ["slate", "grey", "zinc", "stone"]
 
-const avatarList = ["avatar1"]
+const avatarList = ["avatar1", "avatar2", "avatar3"]
 
 const initialValue = {
   showBreakpoints: false,
