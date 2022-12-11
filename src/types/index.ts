@@ -72,4 +72,6 @@ export type SettingsValue = {
   avatarInfo: AvatarInfo
   setAvatarInfo: (_: string) => void
   avatarInfoList: AvatarInfo[]  
+  handle: string
+  setHandle: (_: string) => void
 }

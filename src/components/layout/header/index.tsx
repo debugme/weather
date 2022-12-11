@@ -6,7 +6,7 @@ import { Settings } from "./settings"
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { avatarInfo: { avatar } } = useSettings()
+  const { avatarInfo: { avatar }, handle } = useSettings()
 
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
@@ -29,7 +29,7 @@ export const Header = () => {
       <header className="flex items-center justify-between px-6 bg-secondary-700">
         <Menu isOpen={isOpen} onClick={onClick} />
         <span className="flex items-center justify-center gap-2">
-          <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-primary-300">Tom Grunge</h3>
+          <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-primary-300">{handle}</h3>
           <span>{avatar}</span>
         </span>
       </header>
