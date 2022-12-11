@@ -64,4 +64,7 @@ export type SettingsValue = {
   theme: string
   setTheme: (_: string) => void
   themeList: string[]
+  avatar: string
+  setAvatar: (_: string) => void
+  avatarList: string[]  
 }

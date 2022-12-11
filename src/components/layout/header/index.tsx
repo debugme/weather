@@ -1,11 +1,24 @@
 import { Fragment, useEffect, useMemo, useState } from "react"
+import { useSettings } from "../../../providers"
 
-import { Avatar } from "./avatar"
+import { Avatar1Icon } from "./avatar1Icon"
 import { Menu } from "./menu"
 import { Settings } from "./settings"
 
+const getAvatarIcon = (avatar: string) => {
+  switch(avatar) {
+    case "avatar1":
+      return Avatar1Icon
+    default:
+      return Avatar1Icon
+  }
+}
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { avatar } = useSettings()
+
+  const AvatarIcon = getAvatarIcon(avatar)
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
 
@@ -16,8 +29,9 @@ export const Header = () => {
         setIsOpen(isOpen => !isOpen)
       }
     }
-    const cleaner = () => document.removeEventListener("keydown", handler)
     document.addEventListener("keydown", handler)
+    
+    const cleaner = () => document.removeEventListener("keydown", handler)
     return cleaner
   }, [])  
 
@@ -25,7 +39,7 @@ export const Header = () => {
     <Fragment>
       <header className="flex items-center justify-between px-6 bg-secondary-700 font-cursive">
         <Menu isOpen={isOpen} onClick={onClick} />
-        <Avatar />
+        <AvatarIcon />
       </header>
       {isOpen ? <Settings /> : null}
     </Fragment>

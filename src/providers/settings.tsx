@@ -4,12 +4,19 @@ import { SettingsValue } from "../types"
 
 const themeList = ["slate", "grey", "zinc", "stone"]
 
+const avatarList = ["avatar1"]
+
 const initialValue = {
   showBreakpoints: false,
   toggleBreakpoints: () => {},
+
   theme: themeList[0],
   setTheme: (_: string) => {},
-  themeList
+  themeList,
+
+  avatar: avatarList[0],
+  setAvatar: (_: string) => {},
+  avatarList
 }
 
 const SettingsContext = createContext<SettingsValue>(initialValue)
@@ -18,11 +25,13 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const {
     showBreakpoints: initialShowBreakpoints,
     theme: initialTheme,
+    avatar: initialAvatar,
     themeList
   } = initialValue
 
   const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
   const [theme, setTheme] = useState(initialTheme)
+  const [avatar, setAvatar] = useState(initialAvatar)
 
   const toggleBreakpoints = useMemo(() => () => setShowBreakpoints(showBreakpoints => !showBreakpoints), [])
  
@@ -34,7 +43,7 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const { Provider } = SettingsContext
 
-  const value = { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList }
+  const value = { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList, avatar, setAvatar, avatarList }
 
   return (
     <Provider value={value}>{children}</Provider>
