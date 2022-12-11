@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Spinner as SpinnerIcon } from "../images"
+import { SpinnerIcon } from "./spinnerIcon"
 
 export type SpinnerProps = {
   showSpinner: boolean

@@ -1,6 +1,6 @@
-import { useSettings } from "../../providers"
-import { ThemeSelector } from "../selector"
-import { Toggle } from "../toggle"
+import { useSettings } from "../../../providers"
+import { ThemeSelector } from "../../selector"
+import { Toggle } from "../../toggle"
 
 export const Settings = () => {
   const { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList } = useSettings()

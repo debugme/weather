@@ -1,10 +1,8 @@
-import { useSettings } from "../../providers"
-import {
-  Cellphone,
-  Tablet,
-  Laptop,
-  Desktop
-} from "../images"
+import { useSettings } from "../../../providers"
+import { Cellphone } from "./cellphone"
+import { Desktop } from "./desktop"
+import { Laptop } from "./laptop"
+import { Tablet } from "./tablet"
 
 export const Breakpoints = () => {
   return (

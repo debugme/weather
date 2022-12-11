@@ -1,4 +1,4 @@
-import { Avatar as AvatarIcon } from "../images"
+import { AvatarIcon } from "./avatarIcon"
 
 export const Avatar = () => {
   return (

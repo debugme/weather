@@ -1,5 +1,7 @@
 import { FC } from "react"
-import { Menu as MenuIcon, Close as CloseIcon } from "../images"
+import { CloseIcon } from "./closeIcon"
+
+import { MenuIcon } from "./menuIcon"
 
 export type MenuProps = {
   isOpen: boolean

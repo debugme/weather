@@ -1,8 +1,8 @@
 import { ChangeEventHandler, FC, useRef, useState } from "react";
 
 import { ChipList } from '../chipList'
-import { Search as SearchIcon } from "../images"
 import { Field } from './field'
+import { SearchIcon } from "./searchIcon";
 import { Spinner } from './spinner'
 
 export type SearchProps = {
