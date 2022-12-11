@@ -1,30 +1,13 @@
 import { Fragment, useEffect, useMemo, useState } from "react"
 import { useSettings } from "../../../providers"
 
-import { Avatar1Icon } from "./avatar1Icon"
-import { Avatar2Icon } from "./avatar2Icon"
-import { Avatar3Icon } from "./avatar3Icon"
 import { Menu } from "./menu"
 import { Settings } from "./settings"
 
-const getAvatarIcon = (avatar: string) => {
-  switch(avatar) {
-    case "avatar1":
-      return Avatar1Icon
-    case "avatar2":
-      return Avatar2Icon
-    case "avatar3":
-      return Avatar3Icon
-    default:
-      return Avatar1Icon
-  }
-}
-
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { avatar } = useSettings()
+  const { avatarInfo: { label, avatar } } = useSettings()
 
-  const AvatarIcon = getAvatarIcon(avatar)
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
 
@@ -36,16 +19,19 @@ export const Header = () => {
       }
     }
     document.addEventListener("keydown", handler)
-    
+
     const cleaner = () => document.removeEventListener("keydown", handler)
     return cleaner
-  }, [])  
+  }, [])
 
   return (
     <Fragment>
       <header className="flex items-center justify-between px-6 bg-secondary-700 font-cursive">
         <Menu isOpen={isOpen} onClick={onClick} />
-        <AvatarIcon />
+        <span className="flex items-center justify-center gap-2">
+          <h3 className="text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-primary-300">{label}</h3>
+          {avatar}
+        </span>
       </header>
       {isOpen ? <Settings /> : null}
     </Fragment>

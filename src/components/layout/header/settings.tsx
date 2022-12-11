@@ -3,7 +3,7 @@ import { AvatarSelector, ThemeSelector } from "../../selector"
 import { Toggle } from "../../toggle"
 
 export const Settings = () => {
-  const { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList, avatar, setAvatar, avatarList } = useSettings()
+  const { showBreakpoints, toggleBreakpoints, theme, setTheme, themeList, avatarInfo, setAvatarInfo, avatarInfoList } = useSettings()
 
   return (
     <div className="block absolute z-10 bg-secondary-700 top-header bottom-footer w-full">
@@ -13,7 +13,7 @@ export const Settings = () => {
       <section className="flex flex-col pb-4 px-4 mx-8 mt-4 rounded-lg bg-secondary-600 w-80">
         <span className="py-3 text-secondary-300 rounded-lg">Avatar</span>
         <p className="text-secondary-400 pb-4 text-sm">Choose your avatar</p>
-        <AvatarSelector selectedOption={avatar} setSelectedOption={setAvatar} options={avatarList} />
+        <AvatarSelector selectedOption={avatarInfo} setSelectedOption={setAvatarInfo} options={avatarInfoList} />
       </section>
 
       <div className="my-8" />

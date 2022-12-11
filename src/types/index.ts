@@ -58,13 +58,18 @@ export type LocationInfo = {
   state: string
 }
 
+export type AvatarInfo = {
+  label: string
+  avatar: JSX.Element
+}
+
 export type SettingsValue = {
   showBreakpoints: boolean
   toggleBreakpoints: () => void
   theme: string
   setTheme: (_: string) => void
   themeList: string[]
-  avatar: string
-  setAvatar: (_: string) => void
-  avatarList: string[]  
+  avatarInfo: AvatarInfo
+  setAvatarInfo: (_: string) => void
+  avatarInfoList: AvatarInfo[]  
 }

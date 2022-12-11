@@ -1,9 +1,10 @@
 import { FC, MouseEventHandler, useMemo } from "react"
+import { AvatarInfo } from "../../types"
 
 export type AvatarSelectorProps = {
-  selectedOption: string
+  selectedOption: AvatarInfo
   setSelectedOption: (_: string) => void
-  options: string[]
+  options: AvatarInfo[]
 }
 
 export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
@@ -17,12 +18,13 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
 
   const onClick = useMemo(() => handler, [])
 
-  const itemList = options.map(text => {
-    const isActive = (text === selectedOption)
+  const itemList = options.map(avatarInfo => {
+    const { label, avatar } = avatarInfo
+    const isActive = (avatarInfo === selectedOption)
     const className = `${isActive ? "text-secondary-800 bg-primary-600" : "border border-primary-600 text-primary-600"}`
     return (
-      <li key={text} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
-        <h4>{text}</h4>
+      <li key={label} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
+        <h4>{label}</h4>
       </li>
     )
   })
