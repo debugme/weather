@@ -7,14 +7,14 @@ export type ToggleProps = {
 
 export const Toggle: FC<ToggleProps> = (props) => {
   const [isEnabled, setEnabled] = useState(props.isOn)
-  
-  const onClick = () => { 
+
+  const onClick = () => {
     props.onClick()
-    setEnabled(isEnabled => !isEnabled) 
+    setEnabled(isEnabled => !isEnabled)
   }
 
-  const toggleBoxClassList = `relative w-16 border border-primary-600 h-7 rounded-2xl cursor-pointer ${isEnabled ? "bg-primary-600" : "bg-secondary-600"}`
-  const toggleClassList = `transition-all absolute h-4 w-7 rounded-full top-[5px] ${isEnabled ? "right-[5px] bg-secondary-600" : "left-[5px] bg-primary-600"}`
+  const toggleBoxClassList = `relative w-16 border border-primary-600 h-7 rounded-2xl cursor-pointer ${isEnabled ? "border-primary-600" : "border-secondary-500"}`
+  const toggleClassList = `transition-all absolute h-4 w-7 rounded-full top-[5px]  ${isEnabled ? "right-[5px] bg-primary-600" : "left-[5px] bg-secondary-400"}`
 
   return (
     <div className={toggleBoxClassList} onClick={onClick}>
