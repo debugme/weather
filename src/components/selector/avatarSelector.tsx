@@ -21,9 +21,9 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
   const itemList = options.map(avatarInfo => {
     const { id, avatar } = avatarInfo
     const isActive = (avatarInfo === selectedOption)
-    const colors = `${isActive ? "text-secondary-800 bg-primary-600" : " text-primary-600"}`
+    const colors = `${isActive ? "border-primary-600" : "border-secondary-500"}`
     return (
-      <li key={id} data-avatarid={id} onClick={onClick} className={`w-full py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border border-primary-600 ${colors}`}>
+      <li key={id} data-avatarid={id} onClick={onClick} className={`w-full py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border-2 ${colors}`}>
         {avatar}
       </li>
     )

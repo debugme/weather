@@ -19,9 +19,9 @@ export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
 
   const itemList = options.map(text => {
     const isActive = (text === selectedOption)
-    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "text-primary-600"}`
+    const className = `${isActive ? "text-secondary-300 border-primary-600" : "text-secondary-400 border-secondary-500"}`
     return (
-      <li key={text} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer border border-primary-600 w-full ${className}`}>
+      <li key={text} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer border-2 w-full ${className}`}>
         <h4 className="text-sm">{text}</h4>
       </li>
     )
