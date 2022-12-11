@@ -10,7 +10,7 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
   const { city, country, latitude, longitude, showMarker } = props
 
   return (
-    <span className="grid grid-cols-map w-full mt-4 rounded-t-lg bg-secondary-400 text-secondary-700">
+    <span className="grid grid-cols-map w-full mt-4 rounded-t-lg bg-secondary-600 text-secondary-300">
       <div>
         <ComposableMap 
         projectionConfig={{ scale: 140 }}
