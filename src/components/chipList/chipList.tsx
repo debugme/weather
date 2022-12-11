@@ -13,7 +13,7 @@ export const ChipList: FC<ChipListProps> = (props) => {
 
   const chipList = list.map(text => {
     const label = normaliser(text)
-    const className = `py-2 rounded-lg ${selected === text ? "bg-gradient-to-b from-primary-300 to-primary-400" : "bg-secondary-300"}`
+    const className = `py-2 rounded-lg ${selected === text ? "bg-gradient-to-b from-primary-300 to-primary-400" : "bg-secondary-400"}`
     const onClick: React.MouseEventHandler = (event) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
     }
@@ -24,7 +24,7 @@ export const ChipList: FC<ChipListProps> = (props) => {
   return (
     <Fragment>
       <h2 className="w-20 mt-8 text-3xl text-secondary-400">{title}</h2>
-      <div className="p-4 mt-4 rounded-lg grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 bg-secondary-400 justify-items-around">
+      <div className="p-4 mt-4 rounded-lg grid grid-cols-3 md:grid-cols-6 place-items-stretch gap-4 bg-secondary-600 justify-items-around">
         {chipList}
       </div>
     </Fragment>
