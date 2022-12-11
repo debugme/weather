@@ -13,7 +13,7 @@ export const Header = () => {
     const handler = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault()
-        setIsOpen(false)
+        setIsOpen(isOpen => !isOpen)
       }
     }
     const cleaner = () => document.removeEventListener("keydown", handler)
