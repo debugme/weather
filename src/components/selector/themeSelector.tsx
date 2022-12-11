@@ -19,16 +19,16 @@ export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
 
   const itemList = options.map(text => {
     const isActive = (text === selectedOption)
-    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "border border-primary-600 text-primary-600"}`
+    const className = `${isActive ? "text-secondary-800 bg-primary-600" : "text-primary-600"}`
     return (
-      <li key={text} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer ${className}`}>
+      <li key={text} onClick={onClick} className={`py-1 px-3 rounded-2xl cursor-pointer border border-primary-600 w-full ${className}`}>
         <h4 className="text-sm">{text}</h4>
       </li>
     )
   })
 
   return (
-    <ul className="flex max-w-fit py-2 pr-2 rounded-2xl gap-3">
+    <ul className="flex py-2 pr-2 rounded-2xl gap-3">
       {itemList}
     </ul>
   )
