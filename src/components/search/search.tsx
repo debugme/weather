@@ -3,7 +3,7 @@ import { ChangeEventHandler, FC, useRef, useState } from "react";
 import { ChipList } from '../chipList'
 import { Field } from './field'
 import { SearchIcon } from "./searchIcon";
-import { Spinner } from './spinner'
+import { SpinnerIcon } from './spinnerIcon'
 
 export type SearchProps = {
   searchTerm: string;
@@ -40,7 +40,7 @@ export const Search: FC<SearchProps> = (props) => {
         <ChipList title="Popular" list={list} selected={searchTerm} setSelected={setSearchTerm} />
       </span>
       <SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
-      {(showSpinner || isLoading) ? <Spinner /> : null}
+      {(showSpinner || isLoading) ? <SpinnerIcon /> : null}
     </label>
   )
 }
