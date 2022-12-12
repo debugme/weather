@@ -17,12 +17,13 @@ module.exports = {
         },
         colors: {
           "primary": {
-            300: "#fde047",
-            400: "#facc15",
-            500: "#eab308",
-            600: "#ca8a04",
-            800: "#854d0e",
-          },
+            300: "#fcd34d",
+            400: "#fbbf24",
+            500: "#f59e0b",
+            600: "#d97706",
+            800: "#92400e",
+          },         
+          
           "secondary": {
             50: "#f8fafc",
             200: "#e2e8f0",
@@ -48,6 +49,13 @@ module.exports = {
         name: "grey",
         extend: {
           colors: {
+            "primary": {
+              300: "#fcd34d",
+              400: "#fbbf24",
+              500: "#f59e0b",
+              600: "#d97706",
+              800: "#92400e",
+            },
             "secondary": {
               50: "#f9fafb",
               200: "#e5e7eb",
@@ -65,6 +73,13 @@ module.exports = {
         name: "zinc",
         extend: {
           colors: {
+            "primary": {
+              300: "#fde047",
+              400: "#facc15",
+              500: "#eab308",
+              600: "#ca8a04",
+              800: "#854d0e",
+            },         
             "secondary": {
               50: "#fafafa",
               200: "#e4e4e7",
@@ -82,6 +97,13 @@ module.exports = {
         name: "plain",
         extend: {
           colors: {
+            "primary": {
+              300: "#fde047",
+              400: "#facc15",
+              500: "#eab308",
+              600: "#ca8a04",
+              800: "#854d0e",
+            },             
             "secondary": {
               50: "#fafafa",
               200: "#e5e5e5",
@@ -99,6 +121,13 @@ module.exports = {
         name: "stone",
         extend: {
           colors: {
+            "primary": {
+              300: "#fde047",
+              400: "#facc15",
+              500: "#eab308",
+              600: "#ca8a04",
+              800: "#854d0e",
+            },             
             "secondary": {
               50: "#fafaf9",
               200: "#e7e5e4",

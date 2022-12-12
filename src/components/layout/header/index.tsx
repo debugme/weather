@@ -29,8 +29,8 @@ export const Header = () => {
       <header className="flex items-center justify-between px-6 bg-secondary-700">
         <Menu isOpen={isOpen} onClick={onClick} />
         <span className="flex items-center justify-center gap-2">
-          <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-primary-300">{handle}</h3>
-          <span className="rounded-full bg-gradient-to-tr from-secondary-700 via-secondary-400 to-secondary-700">{avatar}</span>
+          <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600">{handle}</h3>
+          <span className="rounded-full bg-gradient-to-tr from-primary-800 via-primary-500 to-primary-800">{avatar}</span>
         </span>
       </header>
       {isOpen ? <Settings /> : null}
