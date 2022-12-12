@@ -23,14 +23,14 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
     const isActive = (avatarInfo === selectedOption)
     const colors = `${isActive ? "border-primary-600" : "border-secondary-500"}`
     return (
-      <li key={id} data-avatarid={id} onClick={onClick} className={`w-full py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border-2 ${colors}`}>
+      <li key={id} data-avatarid={id} onClick={onClick} className={`w-1/6 py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border-2 ${colors}`}>
         {avatar}
       </li>
     )
   })
 
   return (
-    <ul className="flex justify-between py-2 rounded-2xl gap-3">
+    <ul className="flex flex-wrap justify-between py-2 rounded-2xl gap-3">
       {itemList}
     </ul>
   )

@@ -30,7 +30,7 @@ export const Header = () => {
         <Menu isOpen={isOpen} onClick={onClick} />
         <span className="flex items-center justify-center gap-2">
           <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-primary-300">{handle}</h3>
-          <span className="rounded-full bg-gradient-to-tr from-secondary-700 via-secondary-500 to-secondary-700">{avatar}</span>
+          <span className="rounded-full bg-gradient-to-tr from-secondary-700 via-secondary-400 to-secondary-700">{avatar}</span>
         </span>
       </header>
       {isOpen ? <Settings /> : null}

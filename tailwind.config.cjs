@@ -78,6 +78,23 @@ module.exports = {
         }
       },
       {
+        name: "plain",
+        extend: {
+          colors: {
+            "secondary": {
+              50: "#fafafa",
+              200: "#e5e5e5",
+              300: "#d4d4d4",
+              400: "#a3a3a3",
+              500: "#737373",
+              600: "#525252",
+              700: "#404040",
+              800: "#262626",
+            }
+          }
+        }
+      },
+      {
         name: "stone",
         extend: {
           colors: {
