@@ -20,6 +20,7 @@ const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: W
   const gb = {
     city: "London",
     country: "Great Britain",
+    countryCode: "GB",
     latitude: 51.509865,
     longitude: -0.118092,
     showMarker: true

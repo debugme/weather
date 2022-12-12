@@ -4,6 +4,8 @@ const locale = "en-UK"
 
 type Countries = Record<string, { countryName: string, timeZone: string }>
 
+type TimeStyle = "full" | "long" | "medium" | "short"
+
 export const getDateFormatter = (countryCode?: string) => {
   const { timeZone } = (countries as Countries)[countryCode || "GB"]
   const dateOptions: Intl.DateTimeFormatOptions = { dateStyle: 'medium', timeZone }
@@ -11,9 +13,9 @@ export const getDateFormatter = (countryCode?: string) => {
   return dateFormatter
 }
 
-export const getTimeFormatter = (countryCode: string) => {
+export const getTimeFormatter = (countryCode: string, timeStyle?: TimeStyle) => {
   const { timeZone } = (countries as Countries)[countryCode]
-  const timeOptions: Intl.DateTimeFormatOptions = { timeStyle: 'short', timeZone }
+  const timeOptions: Intl.DateTimeFormatOptions = { timeStyle: (timeStyle || 'short'), timeZone }
   const timeFormatter = new Intl.DateTimeFormat(locale, timeOptions)  
   return timeFormatter
 }
