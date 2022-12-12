@@ -12,7 +12,7 @@ export const Menu: FC<MenuProps> = (props) => {
   const { isOpen, onClick } = props
   const Icon = isOpen ? CloseIcon : MenuIcon
   return (
-    <span onClick={onClick} title="Click to toggle theme">
+    <span onClick={onClick}>
       <Icon className="h-9 text-secondary-400 cursor-pointer" />
     </span>
   )

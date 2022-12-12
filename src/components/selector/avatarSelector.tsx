@@ -30,7 +30,7 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
   })
 
   return (
-    <ul className="flex py-2 pr-2 rounded-2xl gap-3">
+    <ul className="flex justify-between py-2 rounded-2xl gap-3">
       {itemList}
     </ul>
   )

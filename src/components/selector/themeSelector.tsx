@@ -28,7 +28,7 @@ export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
   })
 
   return (
-    <ul className="flex py-2 pr-2 rounded-2xl gap-3">
+    <ul className="flex justify-between py-2 rounded-2xl gap-3">
       {itemList}
     </ul>
   )
