@@ -8,7 +8,6 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { avatarInfo: { avatar }, handle } = useSettings()
 
-
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
 
   useEffect(() => {
