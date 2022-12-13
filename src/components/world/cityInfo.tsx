@@ -20,5 +20,5 @@ export const CityInfo: FC<CityInfoProps> = (props) => {
     return cleanUp
   }, [countryCode])
 
-  return <p className="text-2xl tracking-widest pt-3 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600">{localTime}</p>
+  return <p className="text-2xl tracking-widest pt-3 text-transparent bg-clip-text bg-primary-500">{localTime}</p>
 }
