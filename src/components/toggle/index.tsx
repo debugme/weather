@@ -18,7 +18,7 @@ export const Toggle: FC<ToggleProps> = (props) => {
 
   return (
     <div className={toggleBoxClassList} onClick={onClick}>
-      <span className={toggleClassList} />
+      <button className={toggleClassList} tabIndex={0}/>
     </div>
   )
 }
