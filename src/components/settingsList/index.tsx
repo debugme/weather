@@ -13,7 +13,7 @@ export const SettingsList = () => {
   const { showBreakpoints, toggleBreakpoints } = useSettings()
 
   return (
-    <div className="mt-4 flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <SettingsSection title="Name" subtitle="Choose your name">
         <Handle text={handle} setText={setHandle} />
       </SettingsSection>
