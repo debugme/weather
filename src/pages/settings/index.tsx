@@ -1,6 +1,5 @@
-import { useSettings } from "../../../providers"
-import { AvatarSelector, ThemeSelector } from "../../selector"
-import { Toggle } from "../../toggle"
+import { AvatarSelector, ThemeSelector, Toggle } from "../../components"
+import { useSettings } from "../../providers"
 
 import { Handle } from "./handle"
 

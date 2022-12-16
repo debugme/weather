@@ -1,16 +1,18 @@
 import { Fragment, useEffect, useMemo, useState } from "react"
+import { useNavigate } from "react-router-dom";
+
 import { useSettings } from "../../../providers"
 
 import { Menu } from "./menu"
-import { Settings } from "./settings"
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { avatarInfo: { avatar }, handle } = useSettings()
+  const navigate = useNavigate()
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
 
-  useEffect(() => {
+  const onEscape = () => {
     const handler = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault()
@@ -18,10 +20,14 @@ export const Header = () => {
       }
     }
     document.addEventListener("keydown", handler)
-
     const cleaner = () => document.removeEventListener("keydown", handler)
     return cleaner
-  }, [])
+  }
+
+  const onMenuToggle = () => navigate(isOpen ? "/settings" : "/")
+
+  useEffect(onEscape, [])
+  useEffect(onMenuToggle, [isOpen])
 
   return (
     <Fragment>
@@ -32,7 +38,6 @@ export const Header = () => {
           <span className="rounded-full bg-primary-500">{avatar}</span>
         </span>
       </header>
-      {isOpen ? <Settings /> : null}
     </Fragment>
   )
 }

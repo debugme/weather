@@ -1,7 +1,7 @@
 export { ChipList } from "./chipList"
 export { Layout } from "./layout"
 export { Search } from "./search"
-export { ThemeSelector } from "./selector"
+export { AvatarSelector, ThemeSelector } from "./selector"
 export { Toggle } from "./toggle"
 export { WeatherList } from "./weather"
 export { WorldMap } from "./world"

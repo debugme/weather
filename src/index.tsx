@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { SettingsProvider, WeatherProvider } from './providers';
-import { Home } from "./pages";
+import { Home, Settings } from "./pages";
 import { Layout } from './components';
 
 import './index.css'
@@ -13,9 +13,14 @@ const HomeRoute = {
   element: <Home />
 }
 
+const SettingsRoute = {
+  path: '/settings',
+  element: <Settings />
+}
+
 const routeList = [{
   element: <Layout />,
-  children: [HomeRoute]
+  children: [HomeRoute, SettingsRoute]
 }]
 
 const router = createBrowserRouter(routeList)
