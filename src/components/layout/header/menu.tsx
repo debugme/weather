@@ -12,8 +12,8 @@ export const Menu: FC<MenuProps> = (props) => {
   const { isOpen, onClick } = props
   const Icon = isOpen ? CloseIcon : MenuIcon
   return (
-    <span onClick={onClick}>
+    <button onClick={onClick} tabIndex={0}>
       <Icon className="h-9 text-secondary-400 cursor-pointer" />
-    </span>
+    </button>
   )
 }

@@ -18,7 +18,7 @@ export const ChipList: FC<ChipListProps> = (props) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
     }
 
-    return <button key={text} data-id={text} className={className} onClick={onClick}>{label}</button>
+    return <button key={text} data-id={text} className={className} onClick={onClick} tabIndex={0}>{label}</button>
   })
 
   return (

@@ -16,6 +16,7 @@ export const Field: FC<FieldProps> = (props) => {
       title="Type in a city name"
       value={value}
       onChange={onChange}
+      tabIndex={0}
     />
   )
 }

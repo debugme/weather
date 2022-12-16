@@ -22,7 +22,7 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
             {({ geographies }) =>
               geographies.map((geo) => {
                 return (
-                  <Geography key={geo.rsmKey} geography={geo} />
+                  <Geography key={geo.rsmKey} geography={geo} tabIndex={-1}/>
                 )
               })
             }
