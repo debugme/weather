@@ -69,9 +69,13 @@ export type SettingsValue = {
   theme: string
   setTheme: (_: string) => void
   themeList: string[]
+  language: string
+  setLanguage: (_: string) => void
+  languageList: string[]
   avatarInfo: AvatarInfo
   setAvatarInfo: (_: string) => void
   avatarInfoList: AvatarInfo[]  
   handle: string
   setHandle: (_: string) => void
+  t: (_: string) => string
 }

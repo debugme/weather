@@ -1,12 +1,12 @@
 import { FC, MouseEventHandler, useMemo } from "react"
 
-export type ThemeSelectorProps = {
+export type LanguageSelectorProps = {
   selectedOption: string
   setSelectedOption: (_: string) => void
   options: string[]
 }
 
-export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
+export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
   const { selectedOption, options, setSelectedOption } = props
 
   const handler: MouseEventHandler<HTMLLIElement> = (event) => {
