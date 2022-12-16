@@ -21,8 +21,8 @@ export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
     const isActive = (text === selectedOption)
     const className = `${isActive ? "text-primary-500 border-primary-600" : "text-secondary-400 border-secondary-500"}`
     return (
-      <li key={text} onClick={onClick} className={`py-1 rounded-lg cursor-pointer border-2 w-1/6 ${className}`}>
-        <h4 className="text-center text-sm">{text}</h4>
+      <li key={text} onClick={onClick} className="w-1/6"  >
+        <button className={`text-center text-sm w-full py-1 rounded-lg cursor-pointer border-2 ${className}`}>{text}</button>
       </li>
     )
   })
