@@ -1,6 +1,8 @@
 export { ChipList } from "./chipList"
+export { Handle } from "./handle"
 export { Layout } from "./layout"
 export { Search } from "./search"
+export { SettingsList } from "./settingsList"
 export { AvatarSelector, ThemeSelector } from "./selector"
 export { Toggle } from "./toggle"
 export { WeatherList } from "./weather"
