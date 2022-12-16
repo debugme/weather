@@ -22,7 +22,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = (props) => {
     const className = `${isActive ? "text-primary-500 border-primary-600" : "text-secondary-400 border-secondary-500"}`
     return (
       <li key={text} onClick={onClick} className="w-1/6">
-        <button className={`text-center text-sm py-1 rounded-lg cursor-pointer border-2 w-full ${className}`}>{text}</button>
+        <button className={`text-center text-sm py-1 rounded-lg cursor-pointer border-2 focus:outline-white w-full ${className}`}>{text}</button>
       </li>
     )
   })
