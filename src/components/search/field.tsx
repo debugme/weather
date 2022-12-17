@@ -10,7 +10,7 @@ export const Field: FC<FieldProps> = (props) => {
   return (
     <input
       id="searchBox"
-      className="w-full py-4 border-none rounded-lg lg:rounded-b-lg lg:rounded-t-none text-secondary-600 placeholder-secondary-600 selection:text-primary-800 selection:bg-primary-300 bg-secondary-400 pl-11 outline-secondary-400 focus:outline-white"
+      className="w-full py-4 border-none rounded-lg lg:rounded-b-lg lg:rounded-t-none text-secondary-800 placeholder-secondary-600 selection:text-primary-800 selection:bg-primary-300 bg-secondary-400 pl-11 outline-secondary-400 focus:outline-white"
       type="search"
       placeholder="Type in a city name"
       title="Type in a city name"
