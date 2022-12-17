@@ -1,7 +1,7 @@
 import { useSettings } from "../../providers"
 
 import { Handle } from "../handle"
-import { AvatarSelector, LanguageSelector, ThemeSelector } from "../selector"
+import { Selector, LanguageSelector, ThemeSelector } from "../selector"
 import { Toggle } from "../toggle"
 
 import { SettingsSection } from "./settingsSection"
@@ -19,7 +19,7 @@ export const SettingsList = () => {
         <Handle text={handle} setText={setHandle} />
       </SettingsSection>
       <SettingsSection title="Avatar" subtitle="Choose your avatar">
-        <AvatarSelector selectedOption={avatarInfo} setSelectedOption={setAvatarInfo} options={avatarInfoList} />
+        <Selector selectedOption={avatarInfo} setSelectedOption={setAvatarInfo} options={avatarInfoList} />
       </SettingsSection>
       <SettingsSection title="Theme" subtitle="Choose your theme">
         <ThemeSelector selectedOption={theme} setSelectedOption={setTheme} options={themeList} />

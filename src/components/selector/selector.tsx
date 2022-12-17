@@ -1,13 +1,13 @@
 import { FC, MouseEventHandler, useMemo } from "react"
 import { SelectorInfo } from "../../types"
 
-export type AvatarSelectorProps = {
+export type SelectorProps = {
   selectedOption: SelectorInfo
   setSelectedOption: (_: string) => void
   options: SelectorInfo[]
 }
 
-export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
+export const Selector: FC<SelectorProps> = (props) => {
   const { selectedOption, options, setSelectedOption } = props
 
   const handler: MouseEventHandler<HTMLLIElement> = (event) => {
