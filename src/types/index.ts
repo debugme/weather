@@ -58,7 +58,7 @@ export type LocationInfo = {
   state: string
 }
 
-export type AvatarInfo = {
+export type SelectorInfo = {
   id: string
   data: JSX.Element
 }
@@ -72,9 +72,9 @@ export type SettingsValue = {
   language: string
   setLanguage: (_: string) => void
   languageList: string[]
-  avatarInfo: AvatarInfo
+  avatarInfo: SelectorInfo
   setAvatarInfo: (_: string) => void
-  avatarInfoList: AvatarInfo[]  
+  avatarInfoList: SelectorInfo[]  
   handle: string
   setHandle: (_: string) => void
   t: (_: string) => string

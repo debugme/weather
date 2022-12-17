@@ -1,10 +1,10 @@
 import { FC, MouseEventHandler, useMemo } from "react"
-import { AvatarInfo } from "../../types"
+import { SelectorInfo } from "../../types"
 
 export type AvatarSelectorProps = {
-  selectedOption: AvatarInfo
+  selectedOption: SelectorInfo
   setSelectedOption: (_: string) => void
-  options: AvatarInfo[]
+  options: SelectorInfo[]
 }
 
 export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
