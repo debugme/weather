@@ -17,7 +17,7 @@ export const Toggle: FC<ToggleProps> = (props) => {
   const toggleClassList = `transition-all absolute h-4 w-7 rounded-md top-[4px] ${isEnabled ? "right-[5px] bg-primary-600" : "left-[5px] bg-secondary-400"}`
 
   return (
-    <button className={toggleBoxClassList} onClick={onClick} tabIndex={0}>
+    <button className={toggleBoxClassList} onClick={onClick} tabIndex={0} aria-pressed={isEnabled}>
       <span className={toggleClassList}  />
     </button>
   )

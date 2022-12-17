@@ -12,7 +12,7 @@ export const Menu: FC<MenuProps> = (props) => {
   const { isOpen, onClick } = props
   const Icon = isOpen ? CloseIcon : MenuIcon
   return (
-    <button className="focus:outline-white" onClick={onClick} tabIndex={0}>
+    <button className="focus:outline-white" onClick={onClick} tabIndex={0} role="menu">
       <Icon className="h-9 text-secondary-400 cursor-pointer" />
     </button>
   )
