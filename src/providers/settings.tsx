@@ -3,32 +3,36 @@ import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, u
 import { SettingsValue } from "../types"
 
 import { avatarInfoList } from "./avatars"
+import { languageMap } from "./languages"
 
 const themeInfoList = [
-  { id: "slate", data: <span>slate</span> }, 
-  { id: "grey", data: <span>grey</span> }, 
-  { id: "zinc", data: <span>zinc</span> }, 
-  { id: "plain", data: <span>plain</span> }, 
+  { id: "slate", data: <span>slate</span> },
+  { id: "grey", data: <span>grey</span> },
+  { id: "zinc", data: <span>zinc</span> },
+  { id: "plain", data: <span>plain</span> },
   { id: "stone", data: <span>stone</span> }
 ]
 
-import { languageMap } from "./languages"
+const languageInfoList = Object.keys(languageMap).sort().map(key => ({
+  id: key,
+  data: <span>{key}</span>
+}))
 
 const initialValue = {
-  showBreakpoints: false,
-  toggleBreakpoints: () => { },
-  themeInfo: themeInfoList[0],
-  setThemeInfo: (_: string) => { },
-  themeInfoList,
-  language: languageMap.english.english,
-  setLanguage: (_: string) => { },
-  languageList: Object.keys(languageMap.english),
+  handle: "Tom Grunge",
+  setHandle: (_: string) => { },
   avatarInfo: avatarInfoList[0],
   setAvatarInfo: (_: string) => { },
   avatarInfoList,
-  handle: "Tom Grunge",
-  setHandle: (_: string) => { },
-  t: (_: string) => ""
+  themeInfo: themeInfoList[0],
+  setThemeInfo: (_: string) => { },
+  themeInfoList,
+  languageInfo: languageInfoList[0],
+  setLanguageInfo: (_: string) => { },
+  languageInfoList,
+  t: (_: string) => "",
+  showBreakpoints: false,
+  toggleBreakpoints: () => { },
 }
 
 const SettingsContext = createContext<SettingsValue>(initialValue)
@@ -38,8 +42,8 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
     showBreakpoints: initialShowBreakpoints,
     themeInfo: initialTheme,
     themeInfoList,
-    language: initialLanguage,
-    languageList,
+    languageInfo: initialLanguage,
+    languageInfoList,
     avatarInfo: initialAvatarInfo,
     handle: initialhandle,
   } = initialValue
@@ -47,9 +51,8 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const [handle, setHandle] = useState(initialhandle)
   const [avatarInfo, _setAvatarInfo] = useState(initialAvatarInfo)
   const [themeInfo, _setThemeInfo] = useState(initialTheme)
-
+  const [languageInfo, _setLanguageInfo] = useState(initialLanguage)
   const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
-  const [language, setLanguage] = useState(initialLanguage)
 
   const setAvatarInfo = (id: string) => {
     const info = avatarInfoList.find(info => info.id === id)!
@@ -61,7 +64,12 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
     _setThemeInfo(info)
   }
 
-  const t = (key: string) => languageMap[language][key]
+  const setLanguageInfo = (id: string) => {
+    const info = languageInfoList.find(info => info.id === id)!
+    _setLanguageInfo(info)
+  }
+
+  const t = (key: string) => languageMap[languageInfo.id][key]
 
   const toggleBreakpoints = useMemo(() => () => setShowBreakpoints(showBreakpoints => !showBreakpoints), [])
 
@@ -73,7 +81,13 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const { Provider } = SettingsContext
 
-  const value = { showBreakpoints, toggleBreakpoints, themeInfo, setThemeInfo, themeInfoList, language, setLanguage, languageList, t, avatarInfo, setAvatarInfo, avatarInfoList, handle, setHandle }
+  const value = {
+    handle, setHandle,
+    avatarInfo, setAvatarInfo, avatarInfoList,
+    themeInfo, setThemeInfo, themeInfoList,
+    languageInfo, setLanguageInfo, languageInfoList, t,
+    showBreakpoints, toggleBreakpoints,
+  }
 
   return (
     <Provider value={value}>{children}</Provider>

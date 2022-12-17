@@ -64,18 +64,18 @@ export type SelectorInfo = {
 }
 
 export type SettingsValue = {
-  showBreakpoints: boolean
-  toggleBreakpoints: () => void
+  handle: string
+  setHandle: (_: string) => void
+  avatarInfo: SelectorInfo
+  setAvatarInfo: (_: string) => void
+  avatarInfoList: SelectorInfo[]
   themeInfo: SelectorInfo
   setThemeInfo: (_: string) => void
   themeInfoList: SelectorInfo[]
-  language: string
-  setLanguage: (_: string) => void
-  languageList: string[]
-  avatarInfo: SelectorInfo
-  setAvatarInfo: (_: string) => void
-  avatarInfoList: SelectorInfo[]  
-  handle: string
-  setHandle: (_: string) => void
+  languageInfo: SelectorInfo
+  setLanguageInfo: (_: string) => void
+  languageInfoList: SelectorInfo[]
   t: (_: string) => string
+  showBreakpoints: boolean
+  toggleBreakpoints: () => void
 }

@@ -1,7 +1,7 @@
 import { useSettings } from "../../providers"
 
 import { Handle } from "../handle"
-import { Selector, LanguageSelector } from "../selector"
+import { Selector } from "../selector"
 import { Toggle } from "../toggle"
 
 import { SettingsSection } from "./settingsSection"
@@ -10,7 +10,7 @@ export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
   const { avatarInfo, setAvatarInfo, avatarInfoList } = useSettings()
   const { themeInfo, setThemeInfo, themeInfoList } = useSettings()
-  const { language, setLanguage, languageList } = useSettings()
+  const { languageInfo, setLanguageInfo, languageInfoList } = useSettings()
   const { showBreakpoints, toggleBreakpoints } = useSettings()
 
   return (
@@ -25,7 +25,7 @@ export const SettingsList = () => {
         <Selector selectedOption={themeInfo} setSelectedOption={setThemeInfo} options={themeInfoList} />
       </SettingsSection>
       <SettingsSection title="Language" subtitle="Choose your language">
-        <LanguageSelector selectedOption={language} setSelectedOption={setLanguage} options={languageList} />
+        <Selector selectedOption={languageInfo} setSelectedOption={setLanguageInfo} options={languageInfoList} />
       </SettingsSection>
       <SettingsSection title="Developer" subtitle="Show developer tools">
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />

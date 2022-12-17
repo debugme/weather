@@ -10,7 +10,9 @@ export const Home = () => {
   return (
     <section className="flex flex-col w-3/4 mx-auto">
       <h2 className="block text-3xl text-secondary-400">Search</h2>
-      <span className="hidden lg:block"><WorldMap {...worldMapProps} /></span>
+      <span className="hidden lg:block">
+        <WorldMap {...worldMapProps} />
+      </span>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
       <WeatherList list={weatherList} />
     </section>
@@ -30,10 +32,10 @@ const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: W
   const worldMapProps = searchTerm.length === 0
     ? gb
     : isLoading
-    ? { ...gb, city: "", country: "", showMarker: false }
-    : weatherList.length === 0
-    ? { ...gb, city: "No results", country: "Try again" }
-    : { ...gb, ...weatherList[0] }
+      ? { ...gb, city: "", country: "", showMarker: false }
+      : weatherList.length === 0
+        ? { ...gb, city: "No results", country: "Try again" }
+        : { ...gb, ...weatherList[0] }
 
   return worldMapProps
 }
