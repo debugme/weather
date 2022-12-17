@@ -7,9 +7,9 @@ import { Avatar4Icon } from './avatar4Icon';
 import { Avatar5Icon } from './avatar5Icon';
 
 export const avatarInfoList: AvatarInfo[] = [
-  { id: "avatar1", avatar: <Avatar1Icon /> },
-  { id: "avatar2", avatar: <Avatar2Icon /> },
-  { id: "avatar3", avatar: <Avatar3Icon /> },
-  { id: "avatar4", avatar: <Avatar4Icon /> },
-  { id: "avatar5", avatar: <Avatar5Icon /> }
+  { id: "avatar1", data: <Avatar1Icon /> },
+  { id: "avatar2", data: <Avatar2Icon /> },
+  { id: "avatar3", data: <Avatar3Icon /> },
+  { id: "avatar4", data: <Avatar4Icon /> },
+  { id: "avatar5", data: <Avatar5Icon /> }
 ]

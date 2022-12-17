@@ -7,7 +7,7 @@ import { Menu } from "./menu"
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { avatarInfo: { avatar }, handle } = useSettings()
+  const { avatarInfo: { data }, handle } = useSettings()
   const navigate = useNavigate()
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])
@@ -35,7 +35,7 @@ export const Header = () => {
         <Menu isOpen={isOpen} onClick={onClick} />
         <span className="flex items-center justify-center gap-2">
           <h3 className="mt-2 text-sm hidden sm:block text-transparent bg-clip-text bg-primary-500">{handle}</h3>
-          <span className="rounded-full bg-primary-500">{avatar}</span>
+          <span className="rounded-full bg-primary-500">{data}</span>
         </span>
       </header>
     </Fragment>

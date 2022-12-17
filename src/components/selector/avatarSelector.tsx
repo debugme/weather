@@ -12,19 +12,19 @@ export const AvatarSelector: FC<AvatarSelectorProps> = (props) => {
 
   const handler: MouseEventHandler<HTMLLIElement> = (event) => {
     event.preventDefault()
-    const selectedOption = event.currentTarget.dataset.avatarid!
+    const selectedOption = event.currentTarget.dataset.id!
     setSelectedOption(selectedOption)
   }
 
   const onClick = useMemo(() => handler, [])
 
-  const itemList = options.map(avatarInfo => {
-    const { id, avatar } = avatarInfo
-    const isActive = (avatarInfo === selectedOption)
+  const itemList = options.map(item => {
+    const { id, data } = item
+    const isActive = (item === selectedOption)
     const colors = `${isActive ? "border-primary-600" : "border-secondary-500"}`
     return (
-      <li key={id} data-avatarid={id} onClick={onClick} className="w-1/6">
-        <button className={`w-full py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border-2 focus:outline-white ${colors}`} tabIndex={0}>{avatar}</button>
+      <li key={id} data-id={id} onClick={onClick} className="w-1/6">
+        <button className={`w-full py-2 px-3 rounded-2xl cursor-pointer flex flex-col items-center border-2 focus:outline-white ${colors}`} tabIndex={0}>{data}</button>
       </li>
     )
   })

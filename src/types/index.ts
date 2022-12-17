@@ -60,7 +60,7 @@ export type LocationInfo = {
 
 export type AvatarInfo = {
   id: string
-  avatar: JSX.Element
+  data: JSX.Element
 }
 
 export type SettingsValue = {
