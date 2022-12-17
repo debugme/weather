@@ -1,9 +1,10 @@
 import { FC, MouseEventHandler, useMemo } from "react"
+import { SelectorInfo } from "../../types"
 
 export type ThemeSelectorProps = {
-  selectedOption: string
+  selectedOption: SelectorInfo
   setSelectedOption: (_: string) => void
-  options: string[]
+  options: SelectorInfo[]
 }
 
 export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
@@ -11,18 +12,19 @@ export const ThemeSelector: FC<ThemeSelectorProps> = (props) => {
 
   const handler: MouseEventHandler<HTMLLIElement> = (event) => {
     event.preventDefault()
-    const selectedOption = event.currentTarget.innerText
+    const selectedOption = event.currentTarget.dataset.id!
     setSelectedOption(selectedOption)
   }
 
   const onClick = useMemo(() => handler, [])
 
-  const itemList = options.map(text => {
-    const isActive = (text === selectedOption)
+  const itemList = options.map(item => {
+    const { id, data } = item
+    const isActive = (item === selectedOption)
     const className = `${isActive ? "text-primary-500 border-primary-600" : "text-secondary-400 border-secondary-500"}`
     return (
-      <li key={text} onClick={onClick} className="w-1/6">
-        <button className={`text-center text-sm w-full py-1 rounded-lg cursor-pointer border-2 focus:outline-white ${className}`}>{text}</button>
+      <li key={id} data-id={id} onClick={onClick} className="w-1/6">
+        <button className={`text-center text-sm w-full py-1 rounded-lg cursor-pointer border-2 focus:outline-white ${className}`}>{data}</button>
       </li>
     )
   })

@@ -9,7 +9,7 @@ import { SettingsSection } from "./settingsSection"
 export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
   const { avatarInfo, setAvatarInfo, avatarInfoList } = useSettings()
-  const { theme, setTheme, themeList } = useSettings()
+  const { themeInfo, setThemeInfo, themeInfoList } = useSettings()
   const { language, setLanguage, languageList } = useSettings()
   const { showBreakpoints, toggleBreakpoints } = useSettings()
 
@@ -22,7 +22,7 @@ export const SettingsList = () => {
         <Selector selectedOption={avatarInfo} setSelectedOption={setAvatarInfo} options={avatarInfoList} />
       </SettingsSection>
       <SettingsSection title="Theme" subtitle="Choose your theme">
-        <ThemeSelector selectedOption={theme} setSelectedOption={setTheme} options={themeList} />
+        <ThemeSelector selectedOption={themeInfo} setSelectedOption={setThemeInfo} options={themeInfoList} />
       </SettingsSection>
       <SettingsSection title="Language" subtitle="Choose your language">
         <LanguageSelector selectedOption={language} setSelectedOption={setLanguage} options={languageList} />

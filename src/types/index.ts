@@ -66,9 +66,9 @@ export type SelectorInfo = {
 export type SettingsValue = {
   showBreakpoints: boolean
   toggleBreakpoints: () => void
-  theme: string
-  setTheme: (_: string) => void
-  themeList: string[]
+  themeInfo: SelectorInfo
+  setThemeInfo: (_: string) => void
+  themeInfoList: SelectorInfo[]
   language: string
   setLanguage: (_: string) => void
   languageList: string[]
