@@ -1,15 +1,15 @@
 import { Search, WeatherList, WorldMap } from "../components"
-import { useSettings, useWeather } from "../providers"
+import { useLanguages, useSettings, useWeather } from "../providers"
 import { Weather } from "../types"
 
 export const Home = () => {
-  const { t } = useSettings()
+  const { t } = useLanguages()
   const { weatherList, searchTerm, setSearchTerm, isLoading } = useWeather()
   const worldMapProps = getWorldMapProps(searchTerm, isLoading, weatherList)
 
   return (
     <section className="flex flex-col w-3/4 mx-auto">
-      <h2 className="block text-3xl text-secondary-400">Search</h2>
+      <h2 className="block text-3xl text-secondary-400">{t("search")}</h2>
       <span className="hidden lg:block">
         <WorldMap {...worldMapProps} />
       </span>

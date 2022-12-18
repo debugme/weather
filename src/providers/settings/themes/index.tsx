@@ -2,11 +2,11 @@ import { createContext, FC, PropsWithChildren, useContext, useEffect, useState }
 import { SelectorInfo, ThemesValue } from "../../../types"
 
 const themeInfoList: SelectorInfo[] = [
-  { id: "slate", data: <span>slate</span> },
-  { id: "grey", data: <span>grey</span> },
-  { id: "zinc", data: <span>zinc</span> },
-  { id: "plain", data: <span>plain</span> },
-  { id: "stone", data: <span>stone</span> }
+  { id: "slate", data: <span className="my-2">slate</span> },
+  { id: "grey", data: <span className="my-2">grey</span> },
+  { id: "zinc", data: <span className="my-2">zinc</span> },
+  { id: "plain", data: <span className="my-2">plain</span> },
+  { id: "stone", data: <span className="my-2">stone</span> }
 ]
 
 const initialValue = {

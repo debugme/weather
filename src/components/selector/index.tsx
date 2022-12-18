@@ -20,11 +20,11 @@ export const Selector: FC<SelectorProps> = (props) => {
 
   const itemList = options.map(item => {
     const { id, data } = item
-    const isActive = (item === selectedOption)
+    const isActive = (item.id === selectedOption.id)
     const colors = `${isActive ? "text-primary-500 border-primary-600" : "text-secondary-400 border-secondary-500"}`
     return (
       <li key={id} data-id={id} onClick={onClick} className="w-1/6">
-        <button className={`items-center text-sm py-2 w-full rounded-2xl cursor-pointer flex flex-col border-2 focus:outline-white ${colors}`} tabIndex={0}>{data}</button>
+        <button className={`items-center text-sm w-full rounded-2xl cursor-pointer flex flex-col border-2 focus:outline-white ${colors}`} tabIndex={0}>{data}</button>
       </li>
     )
   })

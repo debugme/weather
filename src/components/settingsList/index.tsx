@@ -24,7 +24,7 @@ export const SettingsList = () => {
       <SettingsSection title="Theme" subtitle="Choose your theme">
         <Selector selectedOption={themeInfo} setSelectedOption={setThemeInfo} options={themeInfoList} />
       </SettingsSection>
-      <SettingsSection title="Language" subtitle="Choose your language">
+      <SettingsSection title="Locale" subtitle="Choose your locale">
         <Selector selectedOption={languageInfo} setSelectedOption={setLanguageInfo} options={languageInfoList} />
       </SettingsSection>
       <SettingsSection title="Developer" subtitle="Show developer tools">
