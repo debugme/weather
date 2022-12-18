@@ -66,9 +66,6 @@ export type SelectorInfo = {
 export type SettingsValue = {
   handle: string
   setHandle: (_: string) => void
-  avatarInfo: SelectorInfo
-  setAvatarInfo: (_: string) => void
-  avatarInfoList: SelectorInfo[]
   themeInfo: SelectorInfo
   setThemeInfo: (_: string) => void
   themeInfoList: SelectorInfo[]
@@ -78,4 +75,10 @@ export type SettingsValue = {
   t: (_: string) => string
   showBreakpoints: boolean
   toggleBreakpoints: () => void
+}
+
+export type AvatarSettingsValue = {
+  avatarInfo: SelectorInfo
+  setAvatarInfo: (_: string) => void
+  avatarInfoList: SelectorInfo[]
 }

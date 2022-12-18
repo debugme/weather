@@ -1,13 +1,14 @@
 import { Fragment, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-import { useSettings } from "../../../providers"
+import { useAvatars, useSettings } from "../../../providers"
 
 import { Menu } from "./menu"
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { avatarInfo: { data }, handle } = useSettings()
+  const { avatarInfo: { data } } = useAvatars()
+  const { handle } = useSettings()
   const navigate = useNavigate()
 
   const onClick = useMemo(() => () => setIsOpen(isOpen => !isOpen), [])

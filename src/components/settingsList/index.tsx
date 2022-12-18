@@ -1,4 +1,5 @@
 import { useSettings } from "../../providers"
+import { useAvatars } from "../../providers/avatars"
 
 import { Handle } from "../handle"
 import { Selector } from "../selector"
@@ -8,7 +9,7 @@ import { SettingsSection } from "./settingsSection"
 
 export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
-  const { avatarInfo, setAvatarInfo, avatarInfoList } = useSettings()
+  const { avatarInfo, setAvatarInfo, avatarInfoList } = useAvatars()
   const { themeInfo, setThemeInfo, themeInfoList } = useSettings()
   const { languageInfo, setLanguageInfo, languageInfoList } = useSettings()
   const { showBreakpoints, toggleBreakpoints } = useSettings()

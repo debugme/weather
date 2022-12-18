@@ -2,7 +2,6 @@ import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, u
 
 import { SettingsValue } from "../types"
 
-import { avatarInfoList } from "./avatars"
 import { languageMap } from "./languages"
 
 const themeInfoList = [
@@ -21,9 +20,6 @@ const languageInfoList = Object.keys(languageMap).sort().map(key => ({
 const initialValue = {
   handle: "Tom Grunge",
   setHandle: (_: string) => { },
-  avatarInfo: avatarInfoList[0],
-  setAvatarInfo: (_: string) => { },
-  avatarInfoList,
   themeInfo: themeInfoList[0],
   setThemeInfo: (_: string) => { },
   themeInfoList,
@@ -44,20 +40,15 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
     themeInfoList,
     languageInfo: initialLanguage,
     languageInfoList,
-    avatarInfo: initialAvatarInfo,
     handle: initialhandle,
   } = initialValue
 
   const [handle, setHandle] = useState(initialhandle)
-  const [avatarInfo, _setAvatarInfo] = useState(initialAvatarInfo)
   const [themeInfo, _setThemeInfo] = useState(initialTheme)
   const [languageInfo, _setLanguageInfo] = useState(initialLanguage)
   const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
 
-  const setAvatarInfo = (id: string) => {
-    const info = avatarInfoList.find(info => info.id === id)!
-    _setAvatarInfo(info)
-  }
+
 
   const setThemeInfo = (id: string) => {
     const info = themeInfoList.find(info => info.id === id)!
@@ -83,14 +74,15 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
 
   const value = {
     handle, setHandle,
-    avatarInfo, setAvatarInfo, avatarInfoList,
     themeInfo, setThemeInfo, themeInfoList,
     languageInfo, setLanguageInfo, languageInfoList, t,
     showBreakpoints, toggleBreakpoints,
   }
 
   return (
-    <Provider value={value}>{children}</Provider>
+    <Provider value={value}>
+      {children}
+    </Provider>
   )
 }
 
