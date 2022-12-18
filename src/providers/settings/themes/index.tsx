@@ -1,5 +1,5 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { SelectorInfo, ThemesValue } from "../../types"
+import { SelectorInfo, ThemesValue } from "../../../types"
 
 const themeInfoList: SelectorInfo[] = [
   { id: "slate", data: <span>slate</span> },

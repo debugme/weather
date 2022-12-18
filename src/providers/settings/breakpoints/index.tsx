@@ -1,5 +1,6 @@
 import { createContext, FC, PropsWithChildren, useContext, useMemo, useState } from "react"
-import { BreakpointsValue } from "../../types"
+import { BreakpointsValue } from "../../../types"
+
 
 const initialValue = {
   showBreakpoints: false,

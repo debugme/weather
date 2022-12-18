@@ -1,6 +1,6 @@
 import { createContext, FC, PropsWithChildren, useContext, useState } from 'react';
 
-import { AvatarSettingsValue, SelectorInfo } from '../../types';
+import { AvatarSettingsValue, SelectorInfo } from '../../../types';
 
 import { Avatar1Icon } from './avatar1Icon';
 import { Avatar2Icon } from './avatar2Icon';

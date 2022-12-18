@@ -7,8 +7,8 @@ import {
   useEffect,
 } from "react";
 
-import { Nullable, Weather, WeatherValue } from "../types";
-import { useWeatherAPI, useDebounce } from "../hooks";
+import { Nullable, Weather, WeatherValue } from "../../types";
+import { useWeatherAPI, useDebounce } from "../../hooks";
 
 const initialValue = {
   searchTerm: "",

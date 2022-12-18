@@ -1,5 +1,4 @@
-import { useBreakpoints, useSettings, useThemes } from "../../providers"
-import { useAvatars } from "../../providers/avatars"
+import { useAvatars, useBreakpoints, useLanguages, useSettings, useThemes } from "../../providers"
 
 import { Handle } from "../handle"
 import { Selector } from "../selector"
@@ -11,7 +10,7 @@ export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
   const { avatarInfo, setAvatarInfo, avatarInfoList } = useAvatars()
   const { themeInfo, setThemeInfo, themeInfoList } = useThemes()
-  const { languageInfo, setLanguageInfo, languageInfoList } = useSettings()
+  const { languageInfo, setLanguageInfo, languageInfoList } = useLanguages()
   const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
 
   return (
