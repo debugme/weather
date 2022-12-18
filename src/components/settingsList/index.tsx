@@ -27,7 +27,7 @@ export const SettingsList = () => {
       <SettingsSection title="Locale" subtitle="Choose your locale">
         <Selector selectedOption={languageInfo} setSelectedOption={setLanguageInfo} options={languageInfoList} />
       </SettingsSection>
-      <SettingsSection title="Developer" subtitle="Show developer tools">
+      <SettingsSection title="Breakpoints" subtitle="Show breakpoints">
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />
       </SettingsSection>
     </div>
