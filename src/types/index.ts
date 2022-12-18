@@ -66,9 +66,6 @@ export type SelectorInfo = {
 export type SettingsValue = {
   handle: string
   setHandle: (_: string) => void
-  themeInfo: SelectorInfo
-  setThemeInfo: (_: string) => void
-  themeInfoList: SelectorInfo[]
   languageInfo: SelectorInfo
   setLanguageInfo: (_: string) => void
   languageInfoList: SelectorInfo[]
@@ -81,4 +78,10 @@ export type AvatarSettingsValue = {
   avatarInfo: SelectorInfo
   setAvatarInfo: (_: string) => void
   avatarInfoList: SelectorInfo[]
+}
+
+export type ThemesValue = {
+  themeInfo: SelectorInfo
+  setThemeInfo: (_: string) => void
+  themeInfoList: SelectorInfo[]
 }

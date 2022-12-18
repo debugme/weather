@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { AvatarsProvider, SettingsProvider, WeatherProvider } from './providers';
+import { AvatarsProvider, SettingsProvider, ThemesProvider, WeatherProvider } from './providers';
 import { Home, Settings } from "./pages";
 import { Layout } from './components';
 
@@ -38,11 +38,13 @@ window.addEventListener("offline", () => {
 root.render(
   <StrictMode>
     <SettingsProvider>
-      <AvatarsProvider>
-        <WeatherProvider>
-          <RouterProvider router={router} />
-        </WeatherProvider>
-      </AvatarsProvider>
+      <ThemesProvider>
+        <AvatarsProvider>
+          <WeatherProvider>
+            <RouterProvider router={router} />
+          </WeatherProvider>
+        </AvatarsProvider>
+      </ThemesProvider>
     </SettingsProvider>
   </StrictMode >
 );
