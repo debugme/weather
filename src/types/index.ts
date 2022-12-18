@@ -70,8 +70,6 @@ export type SettingsValue = {
   setLanguageInfo: (_: string) => void
   languageInfoList: SelectorInfo[]
   t: (_: string) => string
-  showBreakpoints: boolean
-  toggleBreakpoints: () => void
 }
 
 export type AvatarSettingsValue = {
@@ -84,4 +82,9 @@ export type ThemesValue = {
   themeInfo: SelectorInfo
   setThemeInfo: (_: string) => void
   themeInfoList: SelectorInfo[]
+}
+
+export type BreakpointsValue = {
+  showBreakpoints: boolean
+  toggleBreakpoints: () => void
 }

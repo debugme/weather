@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { AvatarsProvider, SettingsProvider, ThemesProvider, WeatherProvider } from './providers';
+import { AvatarsProvider, BreakpointsProvider, SettingsProvider, ThemesProvider, WeatherProvider } from './providers';
 import { Home, Settings } from "./pages";
 import { Layout } from './components';
 
@@ -40,9 +40,11 @@ root.render(
     <SettingsProvider>
       <ThemesProvider>
         <AvatarsProvider>
-          <WeatherProvider>
-            <RouterProvider router={router} />
-          </WeatherProvider>
+          <BreakpointsProvider>
+            <WeatherProvider>
+              <RouterProvider router={router} />
+            </WeatherProvider>
+          </BreakpointsProvider>
         </AvatarsProvider>
       </ThemesProvider>
     </SettingsProvider>

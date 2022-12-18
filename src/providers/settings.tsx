@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, useState } from "react"
+import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
 
 import { SettingsValue } from "../types"
 
@@ -16,15 +16,12 @@ const initialValue = {
   setLanguageInfo: (_: string) => { },
   languageInfoList,
   t: (_: string) => "",
-  showBreakpoints: false,
-  toggleBreakpoints: () => { },
 }
 
 const SettingsContext = createContext<SettingsValue>(initialValue)
 
 export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const {
-    showBreakpoints: initialShowBreakpoints,
     languageInfo: initialLanguage,
     languageInfoList,
     handle: initialhandle,
@@ -32,7 +29,6 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
 
   const [handle, setHandle] = useState(initialhandle)
   const [languageInfo, _setLanguageInfo] = useState(initialLanguage)
-  const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
 
   const setLanguageInfo = (id: string) => {
     const info = languageInfoList.find(info => info.id === id)!
@@ -41,15 +37,12 @@ export const SettingsProvider: FC<PropsWithChildren> = (props) => {
 
   const t = (key: string) => languageMap[languageInfo.id][key]
 
-  const toggleBreakpoints = useMemo(() => () => setShowBreakpoints(showBreakpoints => !showBreakpoints), [])
-
   const { children } = props
   const { Provider } = SettingsContext
 
   const value = {
     handle, setHandle,
-    languageInfo, setLanguageInfo, languageInfoList, t,
-    showBreakpoints, toggleBreakpoints,
+    languageInfo, setLanguageInfo, languageInfoList, t
   }
 
   return (

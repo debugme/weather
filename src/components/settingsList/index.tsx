@@ -1,4 +1,4 @@
-import { useSettings, useThemes } from "../../providers"
+import { useBreakpoints, useSettings, useThemes } from "../../providers"
 import { useAvatars } from "../../providers/avatars"
 
 import { Handle } from "../handle"
@@ -12,7 +12,7 @@ export const SettingsList = () => {
   const { avatarInfo, setAvatarInfo, avatarInfoList } = useAvatars()
   const { themeInfo, setThemeInfo, themeInfoList } = useThemes()
   const { languageInfo, setLanguageInfo, languageInfoList } = useSettings()
-  const { showBreakpoints, toggleBreakpoints } = useSettings()
+  const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
 
   return (
     <div className="flex flex-col gap-2">
