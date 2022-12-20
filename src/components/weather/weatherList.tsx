@@ -20,7 +20,8 @@ export const WeatherList: FC<WeatherListProps> = (props) => {
 
   return (
     <Fragment>
-      <h2 className="mt-8 text-3xl text-secondary-400">Date</h2>
+      <div className="mt-8"></div>
+      <h2 className="text-3xl text-secondary-400">Date</h2>
       <ChipList list={dateList} selected={selectedDate} setSelected={setSelectedDate} normaliser={dateNormaliser} />
       <WeatherCardList list={filteredList} />
     </Fragment>

@@ -9,8 +9,9 @@ export const SettingsSection: FC<SettingsSectionProps> = (props) => {
   const { title, subtitle, children } = props
   return (
     <section className="flex flex-col pb-4 px-4 mt-4 rounded-lg bg-secondary-600 max-w-[480px]" role="menuitem">
-      <h2 className="py-3 text-secondary-300 rounded-lg">{title}</h2>
-      <p className="text-secondary-400 pb-4 text-sm">{subtitle}</p>
+      <div className="mt-8"></div>
+      <h3 className="text-secondary-300">{title}</h3>
+      <p className="text-secondary-400 pt-2 pb-4 text-sm">{subtitle}</p>
       {children}
     </section>
   )

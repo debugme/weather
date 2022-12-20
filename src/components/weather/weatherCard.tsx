@@ -9,8 +9,8 @@ export const WeatherCard: FC<Weather> = (props) => {
     <article className="border-none rounded-lg bg-secondary-50">
       <section className="flex items-center justify-between h-24 pl-4 rounded-t-lg bg-primary-500">
         <span className="text-secondary-700">
-          <h2 className="text-3xl leading-9">{time}</h2>
-          <h4 className="text-md pl-[2px]">{description}</h4>
+          <h4 className="text-3xl">{time}</h4>
+          <p className="text-md pl-[2px]">{description}</p>
         </span>
         <img className="w-24 h-24" src={image} />
       </section>
