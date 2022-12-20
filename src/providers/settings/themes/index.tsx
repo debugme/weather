@@ -1,5 +1,6 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { SelectorInfo } from "../../../types"
+import { Nullable, SelectorInfo } from "../../../types"
+import { useStorage } from "../../storage"
 
 const themeInfoList: SelectorInfo[] = [
   { id: "slate", data: <span className="my-2">slate</span> },
@@ -24,15 +25,21 @@ const initialValue: ThemesValue = {
 const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider: FC<PropsWithChildren> = (props) => {
+
+  const { setItem, getItem } = useStorage()
+
+  const savedThemeInfo = getItem("theme") as Nullable<SelectorInfo>
+
   const { themeInfo: initialTheme, themeInfoList } = initialValue
 
-  const [themeInfo, _setThemeInfo] = useState(initialTheme)
+  const [themeInfo, _setThemeInfo] = useState(savedThemeInfo || initialTheme)
 
   const setThemeInfo = (id: string) => {
     const info = themeInfoList.find(info => info.id === id)!
     _setThemeInfo(info)
+    setItem("theme", info)
   }
-
+  
   useEffect(() => {
     document.body.classList.remove(...themeInfoList.map(info => info.id))
     document.body.classList.add(themeInfo.id)
