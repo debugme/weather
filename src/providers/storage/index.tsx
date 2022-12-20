@@ -6,9 +6,11 @@ import {
 } from "react";
 import { Nullable } from "../../types";
 
+export type StorageType = object | string
+
 export type StorageValue = {
-  setItem: (key: string, value: object) => void
-  getItem: (key: string) => Nullable<object>
+  setItem: (key: string, value: StorageType) => void
+  getItem: (key: string) => Nullable<StorageType>
 }
 
 const initialValue: StorageValue = {

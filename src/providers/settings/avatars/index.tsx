@@ -1,6 +1,7 @@
 import { createContext, FC, PropsWithChildren, useContext, useState } from 'react';
 
-import { SelectorInfo } from '../../../types';
+import { Nullable, SelectorInfo } from '../../../types';
+import { useStorage } from '../../storage';
 
 import { Avatar1Icon } from './avatar1Icon';
 import { Avatar2Icon } from './avatar2Icon';
@@ -31,22 +32,26 @@ const initialValue: AvatarSettingsValue = {
 const AvatarsContext = createContext(initialValue)
 
 export const AvatarsProvider: FC<PropsWithChildren> = (props) => {
-  const { avatarInfo: initialAvatarInfo } = initialValue
-
+  const { getItem, setItem } = useStorage()
+  const savedAvatarId = getItem("avatar")
+  const byId = (info: SelectorInfo) => info.id === savedAvatarId
+  const savedAvatarInfo = avatarInfoList.find(byId)
+  const initialAvatarInfo = savedAvatarInfo || initialValue.avatarInfo
   const [avatarInfo, _setAvatarInfo] = useState(initialAvatarInfo)
 
   const setAvatarInfo = (id: string) => {
     const info = avatarInfoList.find(info => info.id === id)!
     _setAvatarInfo(info)
-  }  
+    setItem("avatar", info.id)
+  }
 
   const { children } = props
-  const { Provider } = AvatarsContext  
-  const value = { avatarInfo, setAvatarInfo, avatarInfoList }  
+  const { Provider } = AvatarsContext
+  const value = { avatarInfo, setAvatarInfo, avatarInfoList }
 
   return (
     <Provider value={value}>{children}</Provider>
-  )  
+  )
 }
 
 export const useAvatars = () => useContext(AvatarsContext);

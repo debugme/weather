@@ -25,14 +25,11 @@ const initialValue: ThemesValue = {
 const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider: FC<PropsWithChildren> = (props) => {
-
   const { setItem, getItem } = useStorage()
-
   const savedThemeInfo = getItem("theme") as Nullable<SelectorInfo>
-
-  const { themeInfo: initialTheme, themeInfoList } = initialValue
-
-  const [themeInfo, _setThemeInfo] = useState(savedThemeInfo || initialTheme)
+  const initialThemeInfo = savedThemeInfo || initialValue.themeInfo
+  const { themeInfoList } = initialValue
+  const [themeInfo, _setThemeInfo] = useState(initialThemeInfo)
 
   const setThemeInfo = (id: string) => {
     const info = themeInfoList.find(info => info.id === id)!
