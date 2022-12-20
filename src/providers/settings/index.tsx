@@ -1,11 +1,14 @@
 import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
 
-import { SettingsValue } from "../../types"
-
 import { AvatarsProvider } from "./avatars"
 import { BreakpointsProvider } from "./breakpoints"
 import { LanguagesProvider } from "./languages"
 import { ThemesProvider } from "./themes"
+
+export type SettingsValue = {
+  handle: string
+  setHandle: (_: string) => void
+}
 
 const initialValue: SettingsValue = {
   handle: "Tom Grunge",

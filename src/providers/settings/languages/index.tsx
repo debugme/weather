@@ -5,7 +5,7 @@ import translations from "./translations.json"
 export const languageMap: LanguageMap = translations
 
 import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
-import { LanguagesValue, SelectorInfo } from "../../../types"
+import { SelectorInfo } from "../../../types"
 
 const buildLanguageInfoList = (languageId: string) => (
   Object.keys(languageMap).sort().map(locale => {
@@ -17,6 +17,13 @@ const buildLanguageInfoList = (languageId: string) => (
 )
 
 const initialLanguageInfoList = buildLanguageInfoList("english")
+
+export type LanguagesValue = {
+  languageInfo: SelectorInfo
+  setLanguageInfo: (_: string) => void
+  languageInfoList: SelectorInfo[]
+  t: (_: string) => string
+}
 
 const initialValue: LanguagesValue = {
   languageInfo: initialLanguageInfoList[0],

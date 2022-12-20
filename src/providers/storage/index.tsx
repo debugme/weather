@@ -4,8 +4,12 @@ import {
   PropsWithChildren,
   useContext,
 } from "react";
+import { Nullable } from "../../types";
 
-import { StorageValue } from "../../types";
+export type StorageValue = {
+  setItem: (key: string, value: object) => void
+  getItem: (key: string) => Nullable<object>
+}
 
 const initialValue: StorageValue = {
   setItem: (key, value) => {

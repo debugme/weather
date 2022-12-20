@@ -1,5 +1,5 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { SelectorInfo, ThemesValue } from "../../../types"
+import { SelectorInfo } from "../../../types"
 
 const themeInfoList: SelectorInfo[] = [
   { id: "slate", data: <span className="my-2">slate</span> },
@@ -8,6 +8,12 @@ const themeInfoList: SelectorInfo[] = [
   { id: "plain", data: <span className="my-2">plain</span> },
   { id: "stone", data: <span className="my-2">stone</span> }
 ]
+
+export type ThemesValue = {
+  themeInfo: SelectorInfo
+  setThemeInfo: (_: string) => void
+  themeInfoList: SelectorInfo[]
+}
 
 const initialValue: ThemesValue = {
   themeInfo: themeInfoList[0],

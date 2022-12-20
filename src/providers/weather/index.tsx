@@ -7,8 +7,17 @@ import {
   useEffect,
 } from "react";
 
-import { Nullable, Weather, WeatherValue } from "../../types";
+import { Nullable, Weather } from "../../types";
 import { useWeatherAPI, useDebounce } from "../../hooks";
+
+export type WeatherValue = {
+  searchTerm: string
+  setSearchTerm: (searchTerm: string) => void
+  weatherList: Weather[]
+  setWeatherList: (weatherList: Weather[]) => void
+  isLoading: boolean
+  failure: Nullable<Error>
+}
 
 const initialValue: WeatherValue = {
   searchTerm: "",

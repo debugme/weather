@@ -1,7 +1,37 @@
 import { useEffect, useState } from "react";
 
-import { LocationInfo, Nullable, Weather, WeatherInfo } from "../types";
+import { Nullable, Weather } from "../types";
 import { getDateFormatter, getTimeFormatter, getCountryName } from "../utilities";
+
+export type LocationInfo = {
+  name: string
+  lat: number
+  lon: number
+  country: string
+  state: string
+}
+
+export type WeatherInfo = {
+  list: [
+    {
+      main: {
+        temp: number
+      },
+      weather: [{
+        description: string,
+        icon: string
+      }],
+      wind: {
+        speed: number
+      }
+      dt_txt: string
+    }
+  ],
+  city: {
+    sunrise: number,
+    sunset: number
+  }
+}
 
 const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: LocationInfo) => {
   if (!weatherInfo)

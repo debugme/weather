@@ -1,6 +1,6 @@
 import { createContext, FC, PropsWithChildren, useContext, useState } from 'react';
 
-import { AvatarSettingsValue, SelectorInfo } from '../../../types';
+import { SelectorInfo } from '../../../types';
 
 import { Avatar1Icon } from './avatar1Icon';
 import { Avatar2Icon } from './avatar2Icon';
@@ -15,6 +15,12 @@ const avatarInfoList: SelectorInfo[] = [
   { id: "avatar4", data: <Avatar4Icon /> },
   { id: "avatar5", data: <Avatar5Icon /> }
 ]
+
+export type AvatarSettingsValue = {
+  avatarInfo: SelectorInfo
+  setAvatarInfo: (_: string) => void
+  avatarInfoList: SelectorInfo[]
+}
 
 const initialValue: AvatarSettingsValue = {
   avatarInfo: avatarInfoList[0],
