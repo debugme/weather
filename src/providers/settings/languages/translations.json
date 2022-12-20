@@ -23,7 +23,8 @@
     "cellphone": "cellphone",
     "tablet": "tablet",
     "laptop": "laptop",
-    "desktop": "desktop"
+    "desktop": "desktop",
+    "typeCity": "type in a city name"
   },
   "french": {
     "english": "🇬🇧",
@@ -49,7 +50,8 @@
     "cellphone": "téléphone portable",
     "tablet": "tablette",
     "laptop": "ordinateur portable",
-    "desktop": "ordinateur"    
+    "desktop": "ordinateur",
+    "typeCity": "taper un nom de ville"    
   },
   "italian": {
     "english": "🇬🇧",
@@ -75,7 +77,8 @@
     "cellphone": "cellulare",
     "tablet": "tavoletta",
     "laptop": "il computer portatile",
-    "desktop": "computer"
+    "desktop": "computer",
+    "typeCity": "digitare il nome di una città"    
   },
   "german": {
     "english": "🇬🇧",
@@ -101,7 +104,8 @@
     "cellphone": "handy",
     "tablet": "tablette",
     "laptop": "laptop",
-    "desktop": "computer"
+    "desktop": "computer",
+    "typeCity": "geben sie einen städtenamen ein"    
   },
   "spanish": {
     "english": "🇬🇧",
@@ -127,6 +131,7 @@
     "cellphone": "teléfono móvil",
     "tablet": "tableta",
     "laptop": "ordenador portátil",
-    "desktop": "computadora"
+    "desktop": "computadora",
+    "typeCity": "escriba el nombre de una ciudad"    
   }
 }
