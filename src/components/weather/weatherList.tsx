@@ -1,4 +1,5 @@
 import { FC, Fragment, useState } from "react"
+import { useLanguages } from "../../providers"
 
 import { Weather } from "../../types"
 import { ChipList } from "../chipList"
@@ -10,6 +11,7 @@ export type WeatherListProps = {
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
+  const { t } = useLanguages()
   if (list.length === 0)
     return null
 
@@ -21,7 +23,7 @@ export const WeatherList: FC<WeatherListProps> = (props) => {
   return (
     <Fragment>
       <div className="mt-8"></div>
-      <h2 className="text-3xl text-secondary-400">Date</h2>
+      <h2 className="text-3xl text-secondary-400 capitalize">{t("date")}</h2>
       <ChipList list={dateList} selected={selectedDate} setSelected={setSelectedDate} normaliser={dateNormaliser} />
       <WeatherCardList list={filteredList} />
     </Fragment>

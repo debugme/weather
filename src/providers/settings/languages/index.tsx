@@ -1,47 +1,8 @@
 export type LanguageMap = Record<string, Record<string, string>>
 
-export const languageMap: LanguageMap = {
-  "english": {
-    "english": "🇬🇧",
-    "french": "🇫🇷",
-    "italian": "🇮🇹",
-    "german": "🇩🇪",
-    "spanish": "🇪🇸",
-    "search": "Search"
-  },
-  "french": {
-    "english": "🇬🇧",
-    "french": "🇫🇷",
-    "italian": "🇮🇹",
-    "german": "🇩🇪",
-    "spanish": "🇪🇸",
-    "search": "Rechercher"
-  },
-  "italian": {
-    "english": "🇬🇧",
-    "french": "🇫🇷",
-    "italian": "🇮🇹",
-    "german": "🇩🇪",
-    "spanish": "🇪🇸",
-    "search": "Ricerca"
-  },
-  "german": {
-    "english": "🇬🇧",
-    "french": "🇫🇷",
-    "italian": "🇮🇹",
-    "german": "🇩🇪",
-    "spanish": "🇪🇸",
-    "search": "Suche"
-  },
-  "spanish": {
-    "english": "🇬🇧",
-    "french": "🇫🇷",
-    "italian": "🇮🇹",
-    "german": "🇩🇪",
-    "spanish": "🇪🇸",
-    "search": "Búsqueda"
-  },
-}
+import translations from "./translations.json"
+
+export const languageMap: LanguageMap = translations
 
 import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
 import { LanguagesValue, SelectorInfo } from "../../../types"

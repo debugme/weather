@@ -1,4 +1,5 @@
 import { FC, Fragment } from "react"
+import { useLanguages } from "../../providers"
 
 import { Weather } from "../../types"
 import { WeatherCard } from "./weatherCard"
@@ -11,6 +12,7 @@ const buildCard = (weather: Weather, index: number) => <WeatherCard key={`card-$
 
 export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
   const { list } = props
+  const { t } = useLanguages()
 
   if (list.length === 0)
     return null
@@ -20,7 +22,7 @@ export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
   return (
     <Fragment>
       <div className="mt-8"></div>
-      <h2 className="text-3xl text-secondary-400">Weather</h2>
+      <h2 className="text-3xl text-secondary-400 capitalize">{t("weather")}</h2>
       <section className="grid w-full gap-4 p-4 mt-5 mr-auto rounded-lg grid-cols-home bg-secondary-600">
         {cardList}
       </section>

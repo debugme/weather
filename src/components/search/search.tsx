@@ -1,4 +1,5 @@
 import { ChangeEventHandler, FC, useRef, useState } from "react";
+import { useLanguages } from "../../providers";
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
@@ -15,6 +16,7 @@ const list = ["Milan", "Lagos", "Tokyo", "Kitui", "Arica", "Dubai"]
 
 export const Search: FC<SearchProps> = (props) => {
   const { searchTerm, setSearchTerm, isLoading } = props
+  const { t } = useLanguages()
 
   const timerId = useRef<NodeJS.Timeout>()
   const [showSpinner, setShowSpinner] = useState(false)
@@ -38,7 +40,7 @@ export const Search: FC<SearchProps> = (props) => {
       <Field value={searchTerm} onChange={onChange} />
       <span className="hidden md:block">
         <div className="mt-8"></div>
-        <h2 className="text-3xl text-secondary-400">Popular</h2>
+        <h2 className="text-3xl text-secondary-400 capitalize">{t("popular")}</h2>
         <ChipList list={list} selected={searchTerm} setSelected={setSearchTerm} />
       </span>
       <SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
