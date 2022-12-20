@@ -29,13 +29,17 @@ const initialValue: AvatarSettingsValue = {
   avatarInfoList,
 }
 
+const normalizer = (avatarId: string) => {  
+  const foundInfo = avatarInfoList.find(info => avatarId === info.id)
+  const avatarInfo = foundInfo || null
+  return avatarInfo
+}
+
 const AvatarsContext = createContext(initialValue)
 
 export const AvatarsProvider: FC<PropsWithChildren> = (props) => {
   const { getItem, setItem } = useStorage()
-  const savedAvatarId = getItem("avatar")
-  const byId = (info: SelectorInfo) => info.id === savedAvatarId
-  const savedAvatarInfo = avatarInfoList.find(byId)
+  const savedAvatarInfo = getItem("avatar", normalizer) as SelectorInfo
   const initialAvatarInfo = savedAvatarInfo || initialValue.avatarInfo
   const [avatarInfo, _setAvatarInfo] = useState(initialAvatarInfo)
 
