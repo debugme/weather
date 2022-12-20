@@ -6,7 +6,7 @@ import {
 } from "react";
 import { Nullable } from "../../types";
 
-export type StorageType = object | string
+export type StorageType = object | string | boolean
 
 export type StorageValue = {
   setItem: (key: string, value: StorageType) => void
