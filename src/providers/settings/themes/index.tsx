@@ -9,13 +9,13 @@ const themeInfoList: SelectorInfo[] = [
   { id: "stone", data: <span className="my-2">stone</span> }
 ]
 
-const initialValue = {
+const initialValue: ThemesValue = {
   themeInfo: themeInfoList[0],
   setThemeInfo: (_: string) => { },
   themeInfoList,
 }
 
-const ThemesContext = createContext<ThemesValue>(initialValue)
+const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider: FC<PropsWithChildren> = (props) => {
   const { themeInfo: initialTheme, themeInfoList } = initialValue

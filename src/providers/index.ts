@@ -1,4 +1,5 @@
 export { useSettings, SettingsProvider } from "./settings"
+export { useStorage, StorageProvider } from "./storage"
 export { useWeather, WeatherProvider } from "./weather"
 
 export { useAvatars } from "./settings/avatars"

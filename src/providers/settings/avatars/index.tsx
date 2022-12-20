@@ -16,13 +16,13 @@ const avatarInfoList: SelectorInfo[] = [
   { id: "avatar5", data: <Avatar5Icon /> }
 ]
 
-const initialValue = {
+const initialValue: AvatarSettingsValue = {
   avatarInfo: avatarInfoList[0],
   setAvatarInfo: (_: string) => { },
   avatarInfoList,
 }
 
-const AvatarsContext = createContext<AvatarSettingsValue>(initialValue)
+const AvatarsContext = createContext(initialValue)
 
 export const AvatarsProvider: FC<PropsWithChildren> = (props) => {
   const { avatarInfo: initialAvatarInfo } = initialValue

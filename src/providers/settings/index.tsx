@@ -7,12 +7,12 @@ import { BreakpointsProvider } from "./breakpoints"
 import { LanguagesProvider } from "./languages"
 import { ThemesProvider } from "./themes"
 
-const initialValue = {
+const initialValue: SettingsValue = {
   handle: "Tom Grunge",
   setHandle: (_: string) => { }
 }
 
-const SettingsContext = createContext<SettingsValue>(initialValue)
+const SettingsContext = createContext(initialValue)
 
 export const SettingsProvider: FC<PropsWithChildren> = (props) => {
   const { handle: initialhandle } = initialValue

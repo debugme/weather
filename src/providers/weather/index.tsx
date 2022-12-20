@@ -10,17 +10,16 @@ import {
 import { Nullable, Weather, WeatherValue } from "../../types";
 import { useWeatherAPI, useDebounce } from "../../hooks";
 
-const initialValue = {
+const initialValue: WeatherValue = {
   searchTerm: "",
   setSearchTerm: (_: string) => { },
   weatherList: [],
   setWeatherList: (_: Weather[]) => { },
   isLoading: false,
-  setIsLoading: (_: boolean) => { },
   failure: null
 }
 
-const WeatherContext = createContext<WeatherValue>(initialValue)
+const WeatherContext = createContext(initialValue)
 
 export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const {

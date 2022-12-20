@@ -24,3 +24,9 @@ export const getCountryName = (countryCode: string) => {
   const { countryName } = (countries as Countries)[countryCode]
   return countryName
 }
+
+export const titlecase = (text: string) => {
+  const [firstletter, ...remainder] = text
+  const titleCased = firstletter.toLocaleUpperCase() + remainder.join("")
+  return titleCased
+}

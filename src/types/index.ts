@@ -1,15 +1,12 @@
 export type Nullable<T> = T | null
 
-export type ResponseValue = {
-  isLoading: boolean
-  failure: Nullable<Error>
-}
-
-export type WeatherValue = ResponseValue & {
+export type WeatherValue = {
   searchTerm: string
   setSearchTerm: (searchTerm: string) => void
   weatherList: Weather[]
   setWeatherList: (weatherList: Weather[]) => void
+  isLoading: boolean
+  failure: Nullable<Error>
 }
 
 export type WeatherInfo = {
@@ -90,4 +87,9 @@ export type LanguagesValue = {
   setLanguageInfo: (_: string) => void
   languageInfoList: SelectorInfo[]
   t: (_: string) => string
+}
+
+export type StorageValue = {
+  setItem: (key: string, value: object) => void
+  getItem: (key: string) => Nullable<object>
 }

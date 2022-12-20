@@ -1,13 +1,13 @@
 import { createContext, FC, PropsWithChildren, useContext, useMemo, useState } from "react"
+
 import { BreakpointsValue } from "../../../types"
 
-
-const initialValue = {
+const initialValue: BreakpointsValue = {
   showBreakpoints: false,
   toggleBreakpoints: () => { },
 }
 
-const BreakpointsContext = createContext<BreakpointsValue>(initialValue)
+const BreakpointsContext = createContext(initialValue)
 
 export const BreakpointsProvider: FC<PropsWithChildren> = (props) => {
   const { showBreakpoints: initialShowBreakpoints } = initialValue

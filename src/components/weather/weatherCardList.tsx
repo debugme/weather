@@ -2,6 +2,7 @@ import { FC, Fragment } from "react"
 import { useLanguages } from "../../providers"
 
 import { Weather } from "../../types"
+import { titlecase } from "../../utilities"
 import { WeatherCard } from "./weatherCard"
 
 export type WeatherCardListProps = {
@@ -19,15 +20,12 @@ export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
 
   const cardList = list.map(buildCard)
 
-  const [firstletter, ...remainder] = t("weather")
+  const text = titlecase(t("weather"))
 
   return (
     <Fragment>
       <div className="mt-8"></div>
-      <h2 className="text-3xl text-secondary-400">
-        <span className="capitalize">{firstletter}</span>
-        {remainder}
-      </h2>
+      <h2 className="text-3xl text-secondary-400">{text}</h2>
       <section className="grid w-full gap-4 p-4 mt-5 mr-auto rounded-lg grid-cols-home bg-secondary-600">
         {cardList}
       </section>

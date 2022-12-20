@@ -18,14 +18,14 @@ const buildLanguageInfoList = (languageId: string) => (
 
 const initialLanguageInfoList = buildLanguageInfoList("english")
 
-const initialValue = {
+const initialValue: LanguagesValue = {
   languageInfo: initialLanguageInfoList[0],
   setLanguageInfo: (_: string) => { },
   languageInfoList: initialLanguageInfoList,
   t: (_: string) => "",
 }
 
-const LanguagesContext = createContext<LanguagesValue>(initialValue)
+const LanguagesContext = createContext(initialValue)
 
 export const LanguagesProvider: FC<PropsWithChildren> = (props) => {
   const { languageInfo: initialLanguageInfo, languageInfoList: initialLanguageInfoList } = initialValue
