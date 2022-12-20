@@ -19,7 +19,11 @@
     "locale": "locale",
     "chooseLocale": "choose your locale",
     "breakpoints": "breakpoints",
-    "showBreakpoints": "show breakpoints"    
+    "showBreakpoints": "show breakpoints",
+    "cellphone": "cellphone",
+    "tablet": "tablet",
+    "laptop": "laptop",
+    "desktop": "desktop"
   },
   "french": {
     "english": "🇬🇧",
@@ -28,20 +32,24 @@
     "german": "🇩🇪",
     "spanish": "🇪🇸",
     "search": "rechercher",
-    "popular": "popular",
+    "popular": "populaire",
     "date": "date",
-    "weather": "weather",
-    "settings": "settings",
-    "name": "name",
-    "chooseName": "choose your name",
+    "weather": "la météo",
+    "settings": "réglages",
+    "name": "nom",
+    "chooseName": "choisis ton nom",
     "avatar": "avatar",
-    "chooseAvatar": "choose your avatar",
-    "theme": "theme",
-    "chooseTheme": "choose your theme",
-    "locale": "locale",
-    "chooseLocale": "choose your locale",
-    "breakpoints": "breakpoints",
-    "showBreakpoints": "show breakpoints"
+    "chooseAvatar": "choisissez votre avatar",
+    "theme": "thème",
+    "chooseTheme": "choisissez votre thème",
+    "locale": "lieu",
+    "chooseLocale": "choisissez votre région",
+    "breakpoints": "points d'arrêt",
+    "showBreakpoints": "afficher les points d'arrêt",
+    "cellphone": "téléphone portable",
+    "tablet": "tablette",
+    "laptop": "ordinateur portable",
+    "desktop": "ordinateur"    
   },
   "italian": {
     "english": "🇬🇧",
@@ -50,21 +58,24 @@
     "german": "🇩🇪",
     "spanish": "🇪🇸",
     "search": "ricerca",
-    "popular": "popular",
-    "date": "date",
-    "weather": "weather",
-    "settings": "settings",
-    "name": "name",
-    "chooseName": "choose your name",
+    "popular": "popolare",
+    "date": "data",
+    "weather": "tempo metereologico",
+    "settings": "impostazioni",
+    "name": "nome",
+    "chooseName": "scegli il tuo nome",
     "avatar": "avatar",
-    "chooseAvatar": "choose your avatar",
-    "theme": "theme",
-    "chooseTheme": "choose your theme",
+    "chooseAvatar": "scegli il tuo avatar",
+    "theme": "tema",
+    "chooseTheme": "scegli il tuo tema",
     "locale": "locale",
-    "chooseLocale": "choose your locale",
-    "breakpoints": "breakpoints",
-    "showBreakpoints": "show breakpoints"
-
+    "chooseLocale": "scegli la tua località",
+    "breakpoints": "punti di interruzione",
+    "showBreakpoints": "mostra punti di interruzione",
+    "cellphone": "cellulare",
+    "tablet": "tavoletta",
+    "laptop": "il computer portatile",
+    "desktop": "computer"
   },
   "german": {
     "english": "🇬🇧",
@@ -86,8 +97,11 @@
     "locale": "locale",
     "chooseLocale": "choose your locale",
     "breakpoints": "breakpoints",
-    "showBreakpoints": "show breakpoints"
-
+    "showBreakpoints": "show breakpoints",
+    "cellphone": "cellphone",
+    "tablet": "tablet",
+    "laptop": "laptop",
+    "desktop": "desktop"
   },
   "spanish": {
     "english": "🇬🇧",
@@ -109,7 +123,10 @@
     "locale": "locale",
     "chooseLocale": "choose your locale",
     "breakpoints": "breakpoints",
-    "showBreakpoints": "show breakpoints"
-
+    "showBreakpoints": "show breakpoints",
+    "cellphone": "cellphone",
+    "tablet": "tablet",
+    "laptop": "laptop",
+    "desktop": "desktop"
   }
 }
