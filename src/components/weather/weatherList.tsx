@@ -27,6 +27,9 @@ export const WeatherList: FC<WeatherListProps> = (props) => {
   }, [dateList]
   )
 
+  if(!dateList.length)
+    return null
+
   return (
     <Fragment>
       <div className="mt-8"></div>

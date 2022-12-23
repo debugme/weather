@@ -3,7 +3,7 @@ import { useLanguages, useWeather } from "../providers"
 
 const gb = {
   city: "london",
-  country: "Great Britain",
+  country: "united kingdom",
   countryCode: "GB",
   latitude: 51.509865,
   longitude: -0.118092,

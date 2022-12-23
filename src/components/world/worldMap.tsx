@@ -34,8 +34,8 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
       </div>
       <span className="flex flex-col justify-center items-start pl-4">
         <span className="flex flex-col justify-end min-w-[120px] min-h-[120px] px-3 py-2 rounded-lg bg-gradient-to-r from-secondary-700 to-secondary-600" >
-          <h4 className="text-sm md:text-xl lg:text-3xl">{city}</h4>
-          <p className="text-xs md:text-sm lg:text-md">{country}</p>
+          <h4 className="text-sm md:text-xl lg:text-3xl capitalize">{city}</h4>
+          <p className="text-xs md:text-sm lg:text-md capitalize">{country}</p>
           <CityInfo countryCode={countryCode}/>
         </span>
       </span>
