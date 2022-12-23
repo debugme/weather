@@ -49,24 +49,24 @@ const buildWeatherList = (weatherInfo: Nullable<WeatherInfo>, locationInfo: Loca
     const { dt_txt, main: { temp }, weather: [first], wind: { speed } } = item
     const { description, icon } = first
     const timestamp = new Date(dt_txt)
-    const weather = { 
-      date: dateFormatter.format(timestamp), 
-      time: timeFormatter.format(timestamp), 
-      image: `https://openweathermap.org/img/wn/${icon}@2x.png`, 
-      temperature: `${temp}℃`, 
-      description, 
-      sunrise, 
-      sunset, 
-      wind: `${speed} mph`, 
-      city: name, 
-      country: countryName, 
+    const weather = {
+      date: dateFormatter.format(timestamp),
+      time: timeFormatter.format(timestamp),
+      image: `https://openweathermap.org/img/wn/${icon}@2x.png`,
+      temperature: `${temp}℃`,
+      description,
+      sunrise,
+      sunset,
+      wind: `${speed} mph`,
+      city: name,
+      country: countryName,
       countryCode: country,
       latitude: lat,
       longitude: lon
     }
     return weather
   })
-  
+
   return weatherList
 }
 
@@ -98,8 +98,9 @@ export const useWeatherAPI = (searchTerm: string) => {
   const [error, setError] = useState<Nullable<Error>>()
   const [loading, setLoading] = useState<boolean>(false)
 
+  const delayInMS = 2000
   const controller = new AbortController()
-  const cleanUp = () => controller.abort()
+  const cleanUp = () => { setTimeout(() => controller.abort(), delayInMS) }
   const { signal } = controller
 
   const fetcher = async () => {

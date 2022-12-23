@@ -11,15 +11,11 @@ export type WeatherListProps = {
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
-  const { t } = useLanguages()
-  
-  if (list.length === 0)
-    return null
-
   const dateList = [...new Set(list.map(item => item.date))]
+  const [selectedDate, setSelectedDate] = useState(list[0]?.date || "")
   const dateNormaliser = (text:string) => text.split(" ").slice(0, 2).join(" ")
-  const [selectedDate, setSelectedDate] = useState(list[0].date)
   const filteredList = list.filter(weather => weather.date === selectedDate)
+  const { t } = useLanguages()
 
   return (
     <Fragment>
