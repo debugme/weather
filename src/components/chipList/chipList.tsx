@@ -8,10 +8,10 @@ export type ChipListProps = {
 }
 
 export const ChipList: FC<ChipListProps> = (props) => {
-  const { list, selected, setSelected, normaliser = v => v } = props
+  const { list, selected, setSelected, normaliser } = props
 
   const chipList = list.map(text => {
-    const label = normaliser(text)
+    const label = normaliser ? normaliser(text) : text
     const className = `focus:outline-white py-2 rounded-lg text-secondary-800 ${selected === text ? "bg-primary-500" : "bg-secondary-400"}`
     const onClick: React.MouseEventHandler = (event) => {
       setSelected(event.currentTarget.getAttribute("data-id")!)
