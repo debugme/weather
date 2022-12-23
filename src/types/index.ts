@@ -15,8 +15,3 @@ export type Weather = {
   latitude: number
   longitude: number
 }
-
-export type SelectorInfo = {
-  id: string
-  data: JSX.Element
-}

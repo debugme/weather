@@ -1,56 +1,55 @@
-export type LanguageMap = Record<string, Record<string, string>>
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
 
 import translations from "./translations.json"
 
-export const languageMap: LanguageMap = translations
+import { useStorage } from "../../storage"
 
-import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
-import { SelectorInfo } from "../../../types"
+const buildLanguageMap = (language: Record<string, string>, keys: string[]) => {
+  const reducer = (accumulator: Record<string, JSX.Element>, key: string) => {
+    accumulator[key] = <span className="text-3xl py-0 my-1">{language[key]}</span>
+    return accumulator
+  }
+  const languageMap = keys.reduce(reducer, {})
+  return languageMap
+}
 
-const buildLanguageInfoList = (languageId: string) => (
-  Object.keys(languageMap).sort().map(locale => {
-    return {
-      id: locale,
-      data: <span className="text-3xl py-0 my-1">{languageMap[languageId][locale]}</span>
-    }
-  }) as SelectorInfo[]
-)
-
-const initialLanguageInfoList = buildLanguageInfoList("english")
-
-export type LanguagesValue = {
-  languageInfo: SelectorInfo
-  setLanguageInfo: (_: string) => void
-  languageInfoList: SelectorInfo[]
+type LanguageSettingsValue = {
   t: (_: string) => string
+  language: string
+  setLanguage: (_: string) => void
+  languageList: string[]
+  languageMap: Record<string, JSX.Element>
 }
 
-const initialValue: LanguagesValue = {
-  languageInfo: initialLanguageInfoList[0],
-  setLanguageInfo: (_: string) => { },
-  languageInfoList: initialLanguageInfoList,
-  t: (_: string) => "",
+const languageList = ["english", "french", "german", "italian", "spanish"]
+
+const initialValue = {
+  language: "english",
+  setLanguage: (_: string) => { },
+  languageList,
+  languageMap: buildLanguageMap(translations.english, languageList),
+  t: (_: string) => ""
 }
+
+type Translations = Record<string, Record<string, string>>
 
 const LanguagesContext = createContext(initialValue)
 
 export const LanguagesProvider: FC<PropsWithChildren> = (props) => {
-  const { languageInfo: initialLanguageInfo, languageInfoList: initialLanguageInfoList } = initialValue
+  const { getItem, setItem } = useStorage()
+  const savedLanguage = getItem("language") as string
+  const { language: _language, languageList, languageMap } = initialValue
+  const initialLanguage = savedLanguage || _language
 
-  const [languageInfo, _setLanguageInfo] = useState(initialLanguageInfo)
-  const [languageInfoList, setLanguageInfoList] = useState(initialLanguageInfoList)
+  const [language, setLanguage] = useState(initialLanguage)
 
-  const setLanguageInfo = (id: string) => {
-    const info = languageInfoList.find(info => info.id === id)!
-    const list = buildLanguageInfoList(info.id)
-    _setLanguageInfo(info)
-    setLanguageInfoList(list)
-  }
+  useEffect(() => setItem("language", language), [language])
 
-  const t = (key: string) => languageMap[languageInfo.id][key]
+  const t = (key: string) => (translations as Translations)[language][key]
+  const value = { language, setLanguage, languageList, languageMap, t }
+  
   const { children } = props
   const { Provider } = LanguagesContext
-  const value = { languageInfo, setLanguageInfo, languageInfoList, t }
 
   return (
     <Provider value={value}>

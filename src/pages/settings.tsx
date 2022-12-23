@@ -3,6 +3,7 @@ import { useLanguages } from "../providers"
 
 export const Settings = () => {
   const { t } = useLanguages()
+
   return (
     <section className="flex flex-col w-3/4 mx-auto xborder">
       <h2 className="text-3xl text-secondary-400 capitalize">{t("settings")}</h2>

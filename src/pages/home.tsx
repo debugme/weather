@@ -1,5 +1,5 @@
 import { Search, WeatherList, WorldMap } from "../components"
-import { useLanguages, useSettings, useWeather } from "../providers"
+import { useLanguages, useWeather } from "../providers"
 import { Weather } from "../types"
 
 export const Home = () => {

@@ -12,6 +12,7 @@ export type WeatherListProps = {
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
   const { t } = useLanguages()
+  
   if (list.length === 0)
     return null
 

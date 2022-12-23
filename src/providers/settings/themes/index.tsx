@@ -1,51 +1,47 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { Nullable, SelectorInfo } from "../../../types"
 import { useStorage } from "../../storage"
 
-const themeInfoList: SelectorInfo[] = [
-  { id: "slate", data: <span className="my-2">slate</span> },
-  { id: "grey", data: <span className="my-2">grey</span> },
-  { id: "zinc", data: <span className="my-2">zinc</span> },
-  { id: "plain", data: <span className="my-2">plain</span> },
-  { id: "stone", data: <span className="my-2">stone</span> }
-]
+const themeMap = {
+  "slate": <span className="my-2">slate</span>,
+  "grey": <span className="my-2">grey</span>,
+  "zinc": <span className="my-2">zinc</span>,
+  "plain": <span className="my-2">plain</span>,
+  "stone": <span className="my-2">stone</span>,
+}
 
 export type ThemesValue = {
-  themeInfo: SelectorInfo
-  setThemeInfo: (_: string) => void
-  themeInfoList: SelectorInfo[]
+  theme: string
+  setTheme: (_: string) => void
+  themeList: string[]
+  themeMap: Record<string, JSX.Element>
 }
 
 const initialValue: ThemesValue = {
-  themeInfo: themeInfoList[0],
-  setThemeInfo: (_: string) => { },
-  themeInfoList,
+  theme: "slate",
+  setTheme: (_: string) => { },
+  themeList: ["slate", "grey", "zinc", "plain", "stone"],
+  themeMap
 }
 
 const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider: FC<PropsWithChildren> = (props) => {
   const { setItem, getItem } = useStorage()
-  const savedThemeInfo = getItem("theme") as Nullable<SelectorInfo>
-  const initialThemeInfo = savedThemeInfo || initialValue.themeInfo
-  const { themeInfoList } = initialValue
-  const [themeInfo, _setThemeInfo] = useState(initialThemeInfo)
-
-  const setThemeInfo = (id: string) => {
-    const info = themeInfoList.find(info => info.id === id)!
-    _setThemeInfo(info)
-    setItem("theme", info)
-  }
+  const savedTheme = getItem("theme") as string
+  const { theme: _theme, themeList, themeMap } = initialValue
+  const initialTheme = savedTheme || _theme
+  const [theme, setTheme] = useState(initialTheme)
   
   useEffect(() => {
-    document.body.classList.remove(...themeInfoList.map(info => info.id))
-    document.body.classList.add(themeInfo.id)
-  }, [themeInfo])
+    document.body.classList.remove(...themeList)
+    document.body.classList.add(theme)
+    setItem("theme", theme)
+  }, [theme])
 
   const { children } = props
   const { Provider } = ThemesContext
 
-  const value = { themeInfo, setThemeInfo, themeInfoList }
+  const value = { theme, setTheme, themeList, themeMap }
 
   return (
     <Provider value={value}>

@@ -8,9 +8,9 @@ import { SettingsSection } from "./settingsSection"
 
 export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
-  const { avatarInfo, setAvatarInfo, avatarInfoList } = useAvatars()
-  const { themeInfo, setThemeInfo, themeInfoList } = useThemes()
-  const { languageInfo, setLanguageInfo, languageInfoList, t } = useLanguages()
+  const { avatar, setAvatar, avatarList, avatarMap } = useAvatars()
+  const { theme, setTheme, themeList, themeMap } = useThemes()
+  const { language, setLanguage, languageList, languageMap, t } = useLanguages()
   const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
 
   return (
@@ -19,13 +19,13 @@ export const SettingsList = () => {
         <Handle text={handle} setText={setHandle} />
       </SettingsSection>
       <SettingsSection title={t("avatar")} subtitle={t("chooseAvatar")}>
-        <Selector selectedOption={avatarInfo} setSelectedOption={setAvatarInfo} options={avatarInfoList} />
+        <Selector selected={avatar} setSelected={setAvatar} selectionList={avatarList} selectionMap={avatarMap}/>
       </SettingsSection>
       <SettingsSection title={t("theme")} subtitle={t("chooseTheme")}>
-        <Selector selectedOption={themeInfo} setSelectedOption={setThemeInfo} options={themeInfoList} />
+        <Selector selected={theme} setSelected={setTheme} selectionList={themeList} selectionMap={themeMap}/>
       </SettingsSection>
       <SettingsSection title={t("locale")} subtitle={t("chooseLocale")}>
-        <Selector selectedOption={languageInfo} setSelectedOption={setLanguageInfo} options={languageInfoList} />
+        <Selector selected={language} setSelected={setLanguage} selectionList={languageList} selectionMap={languageMap} />
       </SettingsSection>
       <SettingsSection title={t("breakpoints")} subtitle={t("showBreakpoints")}>
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />
