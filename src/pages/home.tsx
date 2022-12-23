@@ -12,15 +12,15 @@ const gb = {
 
 export const Home = () => {
   const { t } = useLanguages()
-  const { weatherList, searchTerm, setSearchTerm, isLoading } = useWeather()
+  const { weatherList, searchTerm, setSearchTerm, isLoading, selectedDate, setSelectedDate } = useWeather()
 
   const worldMapProps = searchTerm.length === 0
     ? gb
     : isLoading
-    ? { ...gb, city: "", country: "", showMarker: false }
-    : weatherList.length === 0
-    ? { ...gb, city: "No results", country: "Try again" }
-    : { ...gb, ...weatherList[0] }
+      ? { ...gb, city: "", country: "", showMarker: false }
+      : weatherList.length === 0
+        ? { ...gb, city: "No results", country: "Try again" }
+        : { ...gb, ...weatherList[0] }
 
   return (
     <section className="flex flex-col w-3/4 mx-auto">
@@ -29,7 +29,7 @@ export const Home = () => {
         <WorldMap {...worldMapProps} />
       </span>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
-      <WeatherList list={weatherList} />
+      <WeatherList list={weatherList} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
     </section>
   )
 }

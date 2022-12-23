@@ -7,14 +7,15 @@ import { WeatherCardList } from "./weatherCardList"
 
 export type WeatherListProps = {
   list: Weather[]
+  selectedDate: string
+  setSelectedDate: (_: string) => void
 }
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
-  const { list } = props
+  const { list, selectedDate, setSelectedDate } = props
   const { t } = useLanguages()
 
   const dateList = [...new Set(list.map(item => item.date))]
-  const [selectedDate, setSelectedDate] = useState("")
   const dateNormaliser = (text: string) => text.split(" ").slice(0, 2).join(" ")
   const filteredList = list.filter(weather => weather.date === selectedDate)
 

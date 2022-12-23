@@ -13,11 +13,13 @@ import { useStorage } from "../storage";
 
 export type WeatherValue = {
   searchTerm: string
-  setSearchTerm: (searchTerm: string) => void
+  setSearchTerm: (_: string) => void
   weatherList: Weather[]
-  setWeatherList: (weatherList: Weather[]) => void
+  setWeatherList: (_: Weather[]) => void
   isLoading: boolean
   failure: Nullable<Error>
+  selectedDate: string
+  setSelectedDate: (_: string) => void
 }
 
 const initialValue: WeatherValue = {
@@ -26,7 +28,9 @@ const initialValue: WeatherValue = {
   weatherList: [],
   setWeatherList: (_: Weather[]) => { },
   isLoading: false,
-  failure: null
+  failure: null,
+  selectedDate: "",
+  setSelectedDate: (_: string) => { }
 }
 
 const WeatherContext = createContext(initialValue)
@@ -38,6 +42,11 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const { searchTerm: _searchTerm } = initialValue
   const initialSearchTerm = savedSearchTerm || _searchTerm
 
+
+  const savedSelectedDate = getItem("selectedDate") as string
+  const { selectedDate: _selectedDate } = initialValue
+  const initialSelectedDate = savedSelectedDate || _selectedDate
+
   const {
     weatherList: initialShowList,
     isLoading: initialIsLoading,
@@ -48,7 +57,8 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   const [weatherList, setWeatherList] = useState<Weather[]>(initialShowList)
   const [isLoading, setIsLoading] = useState(initialIsLoading)
   const [failure, setFailure] = useState<Nullable<Error>>(initialFailure)
-  const debouncedSearchTerm = useDebounce(searchTerm.trim(), 300) 
+  const debouncedSearchTerm = useDebounce(searchTerm.trim(), 300)
+  const [selectedDate, setSelectedDate] = useState(initialSelectedDate)
 
   const updateSearchTerm = (searchTerm: string) => {
     setWeatherList([])
@@ -65,6 +75,7 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
   }, [data, error, loading])
 
   useEffect(() => setItem("searchTerm", searchTerm), [searchTerm])
+  useEffect(() => setItem("selectedDate", selectedDate), [selectedDate])
 
   const value = {
     searchTerm,
@@ -72,7 +83,9 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
     weatherList,
     setWeatherList,
     isLoading,
-    failure
+    failure,
+    selectedDate, 
+    setSelectedDate
   }
 
   const { children } = props
