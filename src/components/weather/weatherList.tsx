@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment, useEffect, useState } from "react"
 import { useLanguages } from "../../providers"
 
 import { Weather } from "../../types"
@@ -11,11 +11,21 @@ export type WeatherListProps = {
 
 export const WeatherList: FC<WeatherListProps> = (props) => {
   const { list } = props
-  const dateList = [...new Set(list.map(item => item.date))]
-  const [selectedDate, setSelectedDate] = useState(list[0]?.date || "")
-  const dateNormaliser = (text:string) => text.split(" ").slice(0, 2).join(" ")
-  const filteredList = list.filter(weather => weather.date === selectedDate)
   const { t } = useLanguages()
+
+  const dateList = [...new Set(list.map(item => item.date))]
+  const [selectedDate, setSelectedDate] = useState("")
+  const dateNormaliser = (text: string) => text.split(" ").slice(0, 2).join(" ")
+  const filteredList = list.filter(weather => weather.date === selectedDate)
+
+  useEffect(() => {
+    if (selectedDate)
+      return
+    if (!dateList.length)
+      return
+    setSelectedDate(dateList[0])
+  }, [dateList]
+  )
 
   return (
     <Fragment>
