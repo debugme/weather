@@ -23,8 +23,8 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
           projectionConfig={{ scale: 140 }}
           width={800}
           height={600}
-          style={{ width: "100%", height: "auto" }}
-          className="fill-secondary-200">
+          style={{ width: "80%", height: "auto" }}
+          className="fill-secondary-300">
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => <Geography key={geo.rsmKey} geography={geo} tabIndex={-1} style={geographyStyle} />)
@@ -35,10 +35,10 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
           </Marker> : null}
         </ComposableMap>
       </div>
-      <span className="flex flex-col justify-center items-start pl-4">
+      <span className="flex flex-col justify-center items-start">
         <span className="flex flex-col justify-end min-w-[120px] min-h-[120px] px-3 py-2 rounded-lg bg-gradient-to-r from-secondary-700 to-secondary-600" >
-          <h4 className="text-sm md:text-xl lg:text-3xl capitalize">{city}</h4>
-          <p className="text-xs md:text-sm lg:text-md capitalize">{country}</p>
+          <h4 className="text-sm md:text-xl lg:text-3xl capitalize text-secondary-300">{city}</h4>
+          <p className="text-xs md:text-sm lg:text-md capitalize text-secondary-400">{country}</p>
           <CityInfo countryCode={countryCode} />
         </span>
       </span>
