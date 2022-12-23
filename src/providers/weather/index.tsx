@@ -9,6 +9,7 @@ import {
 
 import { Nullable, Weather } from "../../types";
 import { useWeatherAPI, useDebounce } from "../../hooks";
+import { useStorage } from "../storage";
 
 export type WeatherValue = {
   searchTerm: string
@@ -31,8 +32,13 @@ const initialValue: WeatherValue = {
 const WeatherContext = createContext(initialValue)
 
 export const WeatherProvider: FC<PropsWithChildren> = (props) => {
+  const { getItem, setItem } = useStorage()
+
+  const savedSearchTerm = getItem("searchTerm") as string
+  const { searchTerm: _searchTerm } = initialValue
+  const initialSearchTerm = savedSearchTerm || _searchTerm
+
   const {
-    searchTerm: initialSearchTerm,
     weatherList: initialShowList,
     isLoading: initialIsLoading,
     failure: initialFailure
@@ -57,6 +63,8 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
     setFailure(error || null)
     setIsLoading(loading)
   }, [data, error, loading])
+
+  useEffect(() => setItem("searchTerm", searchTerm), [searchTerm])
 
   const value = {
     searchTerm,
