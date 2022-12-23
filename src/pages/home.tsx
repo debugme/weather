@@ -1,11 +1,26 @@
 import { Search, WeatherList, WorldMap } from "../components"
 import { useLanguages, useWeather } from "../providers"
-import { Weather } from "../types"
+
+const gb = {
+  city: "london",
+  country: "Great Britain",
+  countryCode: "GB",
+  latitude: 51.509865,
+  longitude: -0.118092,
+  showMarker: true
+}
 
 export const Home = () => {
   const { t } = useLanguages()
   const { weatherList, searchTerm, setSearchTerm, isLoading } = useWeather()
-  const worldMapProps = getWorldMapProps(searchTerm, isLoading, weatherList)
+
+  const worldMapProps = searchTerm.length === 0
+    ? gb
+    : isLoading
+    ? { ...gb, city: "", country: "", showMarker: false }
+    : weatherList.length === 0
+    ? { ...gb, city: "No results", country: "Try again" }
+    : { ...gb, ...weatherList[0] }
 
   return (
     <section className="flex flex-col w-3/4 mx-auto">
@@ -17,25 +32,4 @@ export const Home = () => {
       <WeatherList list={weatherList} />
     </section>
   )
-}
-
-const getWorldMapProps = (searchTerm: string, isLoading: boolean, weatherList: Weather[]) => {
-  const gb = {
-    city: "London",
-    country: "Great Britain",
-    countryCode: "GB",
-    latitude: 51.509865,
-    longitude: -0.118092,
-    showMarker: true
-  }
-
-  const worldMapProps = searchTerm.length === 0
-    ? gb
-    : isLoading
-      ? { ...gb, city: "", country: "", showMarker: false }
-      : weatherList.length === 0
-        ? { ...gb, city: "No results", country: "Try again" }
-        : { ...gb, ...weatherList[0] }
-
-  return worldMapProps
 }

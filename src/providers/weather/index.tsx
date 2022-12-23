@@ -20,7 +20,7 @@ export type WeatherValue = {
 }
 
 const initialValue: WeatherValue = {
-  searchTerm: "London",
+  searchTerm: "london",
   setSearchTerm: (_: string) => { },
   weatherList: [],
   setWeatherList: (_: Weather[]) => { },
