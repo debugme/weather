@@ -20,11 +20,11 @@ export const WorldMap: FC<WorldMapProps> = (props) => {
     <span className="grid grid-cols-map w-full mt-4 rounded-t-lg bg-secondary-600 text-secondary-300">
       <div>
         <ComposableMap
-          projectionConfig={{ scale: 140 }}
+          projectionConfig={{ scale: 190 }}
           width={800}
           height={600}
-          style={{ width: "80%", height: "auto" }}
-          className="fill-secondary-300">
+          style={{ width: "100%", height: "360" }}
+          className="fill-secondary-300 pt-8">
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => <Geography key={geo.rsmKey} geography={geo} tabIndex={-1} style={geographyStyle} />)

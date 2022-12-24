@@ -13,7 +13,7 @@ module.exports = {
         },
         gridTemplateColumns: {
           home: "repeat(auto-fit, 260px)",
-          map: "3fr 1fr",
+          map: "2fr 1fr",
         },
         colors: {
           "primary": {
