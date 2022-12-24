@@ -1,15 +1,15 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
 import { useStorage } from "../../storage"
 
-const themeMap = {
-  "slate": <span className="my-2">slate</span>,
-  "grey": <span className="my-2">grey</span>,
-  "zinc": <span className="my-2">zinc</span>,
-  "plain": <span className="my-2">plain</span>,
-  "stone": <span className="my-2">stone</span>,
-}
+const themeList = ["slate", "grey", "zinc", "plain", "stone"]
 
-export type ThemesValue = {
+const themeMap: Record<string, JSX.Element> = {}
+themeList.reduce((map, theme) => {
+  map[theme] = <span className="my-2 capitalize">{theme}</span>
+  return map
+}, themeMap)
+
+type ThemesValue = {
   theme: string
   setTheme: (_: string) => void
   themeList: string[]
@@ -17,9 +17,9 @@ export type ThemesValue = {
 }
 
 const initialValue: ThemesValue = {
-  theme: "slate",
+  theme: themeList[0],
   setTheme: (_: string) => { },
-  themeList: ["slate", "grey", "zinc", "plain", "stone"],
+  themeList,
   themeMap
 }
 
@@ -31,7 +31,7 @@ export const ThemesProvider: FC<PropsWithChildren> = (props) => {
   const { theme: _theme, themeList, themeMap } = initialValue
   const initialTheme = savedTheme || _theme
   const [theme, setTheme] = useState(initialTheme)
-  
+
   useEffect(() => {
     document.body.classList.remove(...themeList)
     document.body.classList.add(theme)

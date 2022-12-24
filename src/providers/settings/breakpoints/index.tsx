@@ -2,7 +2,7 @@ import { createContext, FC, PropsWithChildren, useContext, useMemo, useState } f
 import { Nullable } from "../../../types"
 import { useStorage } from "../../storage"
 
-export type BreakpointsValue = {
+type BreakpointsValue = {
   showBreakpoints: boolean
   toggleBreakpoints: () => void
 }

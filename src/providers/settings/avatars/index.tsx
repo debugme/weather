@@ -16,6 +16,8 @@ const avatarMap = {
   "avatar5": <Avatar5Icon />,
 }
 
+const avatarList = Object.keys(avatarMap)
+
 export type AvatarSettingsValue = {
   avatar: string
   setAvatar: (_: string) => void
@@ -24,9 +26,9 @@ export type AvatarSettingsValue = {
 }
 
 const initialValue: AvatarSettingsValue = {
-  avatar: "avatar1",
+  avatar: avatarList[0],
   setAvatar: (_: string) => { },
-  avatarList: Object.keys(avatarMap).sort(),
+  avatarList,
   avatarMap
 }
 

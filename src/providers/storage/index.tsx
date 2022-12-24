@@ -4,13 +4,12 @@ import {
   PropsWithChildren,
   useContext,
 } from "react";
+
 import { Nullable } from "../../types";
 
-export type Normalizer = (id: string) => Nullable<object>
-
-export type StorageValue = {
-  setItem: (key: string, value: string) => void
-  getItem: (key: string) => Nullable<string>
+type StorageValue = {
+  setItem: (key: string, value: string | boolean) => void
+  getItem: (key: string) => Nullable<string | boolean>
 }
 
 const initialValue: StorageValue = {

@@ -11,7 +11,7 @@ import { Nullable, Weather } from "../../types";
 import { useWeatherAPI, useDebounce } from "../../hooks";
 import { useStorage } from "../storage";
 
-export type WeatherValue = {
+type WeatherValue = {
   searchTerm: string
   setSearchTerm: (_: string) => void
   weatherList: Weather[]

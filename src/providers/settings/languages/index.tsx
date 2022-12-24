@@ -23,8 +23,8 @@ type LanguageSettingsValue = {
 
 const languageList = ["english", "french", "german", "italian", "spanish"]
 
-const initialValue = {
-  language: "english",
+const initialValue: LanguageSettingsValue = {
+  language: languageList[0],
   setLanguage: (_: string) => { },
   languageList,
   languageMap: buildLanguageMap(translations.english, languageList),
@@ -40,14 +40,12 @@ export const LanguagesProvider: FC<PropsWithChildren> = (props) => {
   const savedLanguage = getItem("language") as string
   const { language: _language, languageList, languageMap } = initialValue
   const initialLanguage = savedLanguage || _language
-
   const [language, setLanguage] = useState(initialLanguage)
+  const t = (key: string) => (translations as Translations)[language][key]
+  const value = { language, setLanguage, languageList, languageMap, t }
 
   useEffect(() => setItem("language", language), [language])
 
-  const t = (key: string) => (translations as Translations)[language][key]
-  const value = { language, setLanguage, languageList, languageMap, t }
-  
   const { children } = props
   const { Provider } = LanguagesContext
 

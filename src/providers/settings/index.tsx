@@ -5,7 +5,7 @@ import { BreakpointsProvider } from "./breakpoints"
 import { LanguagesProvider } from "./languages"
 import { ThemesProvider } from "./themes"
 
-export type SettingsValue = {
+type SettingsValue = {
   handle: string
   setHandle: (_: string) => void
 }
