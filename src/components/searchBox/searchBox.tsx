@@ -6,7 +6,7 @@ import { Field } from './field'
 import { SearchIcon } from "./searchIcon";
 import { SpinnerIcon } from './spinnerIcon'
 
-export type SearchProps = {
+export type SearchBoxProps = {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void
   isLoading: boolean
@@ -14,7 +14,7 @@ export type SearchProps = {
 
 const list = ["london", "dubai", "tokyo", "minsk", "abuja"]
 
-export const Search = (props: SearchProps) => {
+export const SearchBox = (props: SearchBoxProps) => {
   const { searchTerm, setSearchTerm, isLoading } = props
   const { t } = useLanguages()
 

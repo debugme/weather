@@ -1,7 +1,7 @@
 export { ChipList } from "./chipList"
 export { Handle } from "./handle"
 export { Layout } from "./layout"
-export { Search } from "./search"
+export { SearchBox } from "./searchBox"
 export { SettingsList } from "./settingsList"
 export { Selector } from "./selector"
 export { Toggle } from "./toggle"

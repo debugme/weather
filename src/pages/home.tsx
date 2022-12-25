@@ -1,4 +1,4 @@
-import { Search, WeatherList, WorldMap } from "../components"
+import { SearchBox, WeatherList, WorldMap } from "../components"
 import { useLanguages, useWeather } from "../providers"
 
 const gb = {
@@ -28,7 +28,7 @@ export const Home = () => {
       <span className="hidden lg:block">
         <WorldMap {...worldMapProps} />
       </span>
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
+      <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} isLoading={isLoading} />
       <WeatherList list={weatherList} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
     </section>
   )
