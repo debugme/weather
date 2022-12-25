@@ -6,9 +6,11 @@ import {
 
 import { Nullable } from "../../types";
 
+type StorageType = string | boolean
+
 type StorageValue = {
-  setItem: (key: string, value: string | boolean) => void
-  getItem: (key: string) => Nullable<string | boolean>
+  setItem: (key: string, value: StorageType) => void
+  getItem: (key: string) => Nullable<StorageType>
 }
 
 const initialValue: StorageValue = {
