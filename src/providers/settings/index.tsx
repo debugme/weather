@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useState } from "react"
 
 import { AvatarsProvider } from "./avatars"
 import { BreakpointsProvider } from "./breakpoints"
@@ -17,7 +17,7 @@ const initialValue: SettingsValue = {
 
 const SettingsContext = createContext(initialValue)
 
-export const SettingsProvider: FC<PropsWithChildren> = (props) => {
+export const SettingsProvider = (props: PropsWithChildren) => {
   const { handle: initialhandle } = initialValue
 
   const [handle, setHandle] = useState(initialhandle)

@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useMemo } from "react"
+import { MouseEventHandler, useMemo } from "react"
 
 export type SelectorProps = {
   selected: string
@@ -7,7 +7,7 @@ export type SelectorProps = {
   selectionMap: Record<string, JSX.Element>
 }
 
-export const Selector: FC<SelectorProps> = (props) => {
+export const Selector = (props: SelectorProps) => {
   const { selected, setSelected, selectionList, selectionMap } = props
 
   const handler: MouseEventHandler<HTMLLIElement> = (event) => {

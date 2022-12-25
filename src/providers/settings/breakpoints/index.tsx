@@ -1,4 +1,5 @@
-import { createContext, FC, PropsWithChildren, useContext, useMemo, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useMemo, useState } from "react"
+
 import { Nullable } from "../../../types"
 import { useStorage } from "../../storage"
 
@@ -14,7 +15,7 @@ const initialValue: BreakpointsValue = {
 
 const BreakpointsContext = createContext(initialValue)
 
-export const BreakpointsProvider: FC<PropsWithChildren> = (props) => {
+export const BreakpointsProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
   const savedBreakpointsEnabled = getItem("breakpoints") as Nullable<boolean>
   const initialShowBreakpoints = savedBreakpointsEnabled || initialValue.showBreakpoints

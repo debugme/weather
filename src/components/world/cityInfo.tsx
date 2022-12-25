@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { getTimeFormatter } from "../../utilities"
 
@@ -6,7 +6,7 @@ export type CityInfoProps = {
   countryCode: string
 }
 
-export const CityInfo: FC<CityInfoProps> = (props) => {
+export const CityInfo = (props: CityInfoProps) => {
   const { countryCode } = props
 
   const intervalId = useRef<NodeJS.Timeout>()

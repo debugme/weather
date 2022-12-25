@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC } from "react";
+import { ChangeEventHandler } from "react";
 import { useLanguages } from "../../providers";
 import { titlecase } from "../../utilities";
 
@@ -7,7 +7,7 @@ export type FieldProps = {
   onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export const Field: FC<FieldProps> = (props) => {
+export const Field = (props: FieldProps) => {
   const { value, onChange } = props
   const { t } = useLanguages()
 

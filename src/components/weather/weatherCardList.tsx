@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react"
+import { Fragment } from "react"
 import { useLanguages } from "../../providers"
 
 import { Weather } from "../../types"
@@ -11,7 +11,7 @@ export type WeatherCardListProps = {
 
 const buildCard = (weather: Weather, index: number) => <WeatherCard key={`card-${index}`} {...weather} />
 
-export const WeatherCardList: FC<WeatherCardListProps> = (props) => {
+export const WeatherCardList = (props: WeatherCardListProps) => {
   const { list } = props
   const { t } = useLanguages()
 

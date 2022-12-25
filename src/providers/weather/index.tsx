@@ -1,7 +1,6 @@
 import {
   createContext,
   useState,
-  FC,
   PropsWithChildren,
   useContext,
   useEffect,
@@ -35,7 +34,7 @@ const initialValue: WeatherValue = {
 
 const WeatherContext = createContext(initialValue)
 
-export const WeatherProvider: FC<PropsWithChildren> = (props) => {
+export const WeatherProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
 
   const savedSearchTerm = getItem("searchTerm") as string
@@ -84,7 +83,7 @@ export const WeatherProvider: FC<PropsWithChildren> = (props) => {
     setWeatherList,
     isLoading,
     failure,
-    selectedDate, 
+    selectedDate,
     setSelectedDate
   }
 

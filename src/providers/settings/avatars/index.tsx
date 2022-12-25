@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 
 import { useStorage } from '../../storage';
 
@@ -34,7 +34,7 @@ const initialValue: AvatarSettingsValue = {
 
 const AvatarsContext = createContext(initialValue)
 
-export const AvatarsProvider: FC<PropsWithChildren> = (props) => {
+export const AvatarsProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
   const savedAvatar = getItem("avatar") as string
   const { avatar: _avatar, avatarList, avatarMap } = initialValue

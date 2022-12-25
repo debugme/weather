@@ -1,11 +1,11 @@
-import { ChangeEventHandler, FC, useMemo } from "react"
+import { ChangeEventHandler, useMemo } from "react"
 
 export type HandleProps = {
   text: string
   setText: (_: string) => void
 }
 
-export const Handle: FC<HandleProps> = (props) => {
+export const Handle = (props: HandleProps) => {
   const { text, setText } = props
 
   const _onChange: ChangeEventHandler<HTMLInputElement> = (event) =>

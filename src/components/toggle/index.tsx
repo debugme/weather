@@ -1,11 +1,11 @@
-import { FC, useState } from "react"
+import { useState } from "react"
 
 export type ToggleProps = {
   isOn: boolean
   onClick: () => void
 }
 
-export const Toggle: FC<ToggleProps> = (props) => {
+export const Toggle = (props: ToggleProps) => {
   const [isEnabled, setEnabled] = useState(props.isOn)
 
   const onClick = () => {
@@ -18,7 +18,7 @@ export const Toggle: FC<ToggleProps> = (props) => {
 
   return (
     <button className={toggleBoxClassList} onClick={onClick} tabIndex={0} aria-pressed={isEnabled}>
-      <span className={toggleClassList}  />
+      <span className={toggleClassList} />
     </button>
   )
 }

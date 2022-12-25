@@ -1,10 +1,8 @@
-import { FC } from "react"
-
 type CellphoneProps = {
   className: string;
 }
 
-export const Cellphone: FC<CellphoneProps> = (props) => {
+export const Cellphone = (props: CellphoneProps) => {
   const { className } = props
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>

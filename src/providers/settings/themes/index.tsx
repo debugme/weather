@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import { useStorage } from "../../storage"
 
 const themeList = ["slate", "grey", "zinc", "plain", "stone"]
@@ -25,7 +25,7 @@ const initialValue: ThemesValue = {
 
 const ThemesContext = createContext(initialValue)
 
-export const ThemesProvider: FC<PropsWithChildren> = (props) => {
+export const ThemesProvider = (props: PropsWithChildren) => {
   const { setItem, getItem } = useStorage()
   const savedTheme = getItem("theme") as string
   const { theme: _theme, themeList, themeMap } = initialValue

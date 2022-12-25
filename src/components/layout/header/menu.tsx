@@ -1,4 +1,3 @@
-import { FC } from "react"
 import { CloseIcon } from "./closeIcon"
 
 import { MenuIcon } from "./menuIcon"
@@ -8,7 +7,7 @@ export type MenuProps = {
   onClick: () => void
 }
 
-export const Menu: FC<MenuProps> = (props) => {
+export const Menu = (props: MenuProps) => {
   const { isOpen, onClick } = props
   const Icon = isOpen ? CloseIcon : MenuIcon
   return (

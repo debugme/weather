@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, useRef, useState } from "react";
+import { ChangeEventHandler, useRef, useState } from "react";
 import { useLanguages } from "../../providers";
 
 import { ChipList } from '../chipList'
@@ -14,7 +14,7 @@ export type SearchProps = {
 
 const list = ["london", "dubai", "tokyo", "minsk", "abuja"]
 
-export const Search: FC<SearchProps> = (props) => {
+export const Search = (props: SearchProps) => {
   const { searchTerm, setSearchTerm, isLoading } = props
   const { t } = useLanguages()
 

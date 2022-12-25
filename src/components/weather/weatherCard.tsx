@@ -1,8 +1,6 @@
-import { FC } from "react"
-
 import { Weather } from "../../types"
 
-export const WeatherCard: FC<Weather> = (props) => {
+export const WeatherCard = (props: Weather) => {
   const { time, image, description, temperature, sunrise, sunset, wind } = props
 
   return (

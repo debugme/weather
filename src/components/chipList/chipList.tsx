@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react"
+import { Fragment } from "react"
 
 export type ChipListProps = {
   list: string[]
@@ -7,7 +7,7 @@ export type ChipListProps = {
   normaliser?: (_: string) => string
 }
 
-export const ChipList: FC<ChipListProps> = (props) => {
+export const ChipList = (props: ChipListProps) => {
   const { list, selected, setSelected, normaliser } = props
 
   const chipList = list.map(text => {

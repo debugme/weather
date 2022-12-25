@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from "react"
+import { PropsWithChildren } from "react"
 import { titlecase } from "../../utilities"
 
 export type SettingsSectionProps = PropsWithChildren & {
@@ -6,7 +6,7 @@ export type SettingsSectionProps = PropsWithChildren & {
   subtitle: string
 }
 
-export const SettingsSection: FC<SettingsSectionProps> = (props) => {
+export const SettingsSection = (props: SettingsSectionProps) => {
   const { title, subtitle, children } = props
   const text = titlecase(subtitle)
 

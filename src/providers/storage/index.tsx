@@ -1,6 +1,5 @@
 import {
   createContext,
-  FC,
   PropsWithChildren,
   useContext,
 } from "react";
@@ -28,7 +27,7 @@ const initialValue: StorageValue = {
 
 const StorageContext = createContext(initialValue)
 
-export const StorageProvider: FC<PropsWithChildren> = (props) => {
+export const StorageProvider = (props: PropsWithChildren) => {
   const { children } = props
   const { Provider } = StorageContext
 

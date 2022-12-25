@@ -1,4 +1,3 @@
-import { FC } from "react"
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps"
 
 import { Weather } from "../../types"
@@ -13,7 +12,7 @@ const geographyStyle = {
   pressed: { outline: "none" },
 }
 
-export const WorldMap: FC<WorldMapProps> = (props) => {
+export const WorldMap = (props: WorldMapProps) => {
   const { city, country, countryCode, latitude, longitude, showMarker } = props
 
   return (

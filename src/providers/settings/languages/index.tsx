@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 
 import translations from "./translations.json"
 
@@ -35,7 +35,7 @@ type Translations = Record<string, Record<string, string>>
 
 const LanguagesContext = createContext(initialValue)
 
-export const LanguagesProvider: FC<PropsWithChildren> = (props) => {
+export const LanguagesProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
   const savedLanguage = getItem("language") as string
   const { language: _language, languageList, languageMap } = initialValue

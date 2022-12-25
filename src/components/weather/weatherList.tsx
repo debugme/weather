@@ -1,8 +1,9 @@
-import { FC, Fragment, useEffect, useState } from "react"
-import { useLanguages } from "../../providers"
+import { Fragment, useEffect } from "react"
 
+import { useLanguages } from "../../providers"
 import { Weather } from "../../types"
 import { ChipList } from "../chipList"
+
 import { WeatherCardList } from "./weatherCardList"
 
 export type WeatherListProps = {
@@ -11,7 +12,7 @@ export type WeatherListProps = {
   setSelectedDate: (_: string) => void
 }
 
-export const WeatherList: FC<WeatherListProps> = (props) => {
+export const WeatherList = (props: WeatherListProps) => {
   const { list, selectedDate, setSelectedDate } = props
   const { t } = useLanguages()
 
