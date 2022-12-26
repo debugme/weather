@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { useLanguages } from "../../providers"
+import { useLocales } from "../../providers"
 
 import { Weather } from "../../types"
 import { titlecase } from "../../utilities"
@@ -13,7 +13,7 @@ const buildCard = (weather: Weather, index: number) => <WeatherCard key={`card-$
 
 export const WeatherCardList = (props: WeatherCardListProps) => {
   const { list } = props
-  const { t } = useLanguages()
+  const { t } = useLocales()
 
   if (list.length === 0)
     return null

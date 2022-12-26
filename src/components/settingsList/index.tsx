@@ -1,4 +1,4 @@
-import { useAvatars, useBreakpoints, useLanguages, useSettings, useThemes } from "../../providers"
+import { useAvatars, useBreakpoints, useLocales, useSettings, useThemes } from "../../providers"
 
 import { Handle } from "../handle"
 import { Selector } from "../selector"
@@ -10,7 +10,7 @@ export const SettingsList = () => {
   const { handle, setHandle } = useSettings()
   const { avatar, setAvatar, avatarList, avatarMap } = useAvatars()
   const { theme, setTheme, themeList, themeMap } = useThemes()
-  const { language, setLanguage, languageList, languageMap, t } = useLanguages()
+  const { locale, setLocale, localeList, localeMap, t } = useLocales()
   const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
 
   return (
@@ -25,7 +25,7 @@ export const SettingsList = () => {
         <Selector selected={theme} setSelected={setTheme} selectionList={themeList} selectionMap={themeMap}/>
       </SettingsSection>
       <SettingsSection title={t("locale")} subtitle={t("chooseLocale")}>
-        <Selector selected={language} setSelected={setLanguage} selectionList={languageList} selectionMap={languageMap} />
+        <Selector selected={locale} setSelected={setLocale} selectionList={localeList} selectionMap={localeMap} />
       </SettingsSection>
       <SettingsSection title={t("breakpoints")} subtitle={t("showBreakpoints")}>
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />

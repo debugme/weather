@@ -1,8 +1,8 @@
 import { SettingsList } from "../components"
-import { useLanguages } from "../providers"
+import { useLocales } from "../providers"
 
 export const Settings = () => {
-  const { t } = useLanguages()
+  const { t } = useLocales()
 
   return (
     <section className="flex flex-col w-3/4 mx-auto xborder">

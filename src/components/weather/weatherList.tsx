@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react"
 
-import { useLanguages } from "../../providers"
+import { useLocales } from "../../providers"
 import { Weather } from "../../types"
 import { ChipList } from "../chipList"
 
@@ -14,7 +14,7 @@ export type WeatherListProps = {
 
 export const WeatherList = (props: WeatherListProps) => {
   const { list, selectedDate, setSelectedDate } = props
-  const { t } = useLanguages()
+  const { t } = useLocales()
 
   const dateList = [...new Set(list.map(item => item.date))]
   const dateNormaliser = (text: string) => text.split(" ").slice(0, 2).join(" ")

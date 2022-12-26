@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useRef, useState } from "react";
-import { useLanguages } from "../../providers";
+import { useLocales } from "../../providers";
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
@@ -16,7 +16,7 @@ const list = ["london", "dubai", "tokyo", "minsk", "abuja"]
 
 export const SearchBox = (props: SearchBoxProps) => {
   const { searchTerm, setSearchTerm, isLoading } = props
-  const { t } = useLanguages()
+  const { t } = useLocales()
 
   const timerId = useRef<NodeJS.Timeout>()
   const [showSpinner, setShowSpinner] = useState(false)

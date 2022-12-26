@@ -4,5 +4,5 @@ export { useWeather, WeatherProvider } from "./weather"
 
 export { useAvatars } from "./settings/avatars"
 export { useBreakpoints } from "./settings/breakpoints"
-export { useLanguages } from "./settings/languages"
+export { useLocales } from "./settings/locales"
 export { useThemes } from "./settings/themes"

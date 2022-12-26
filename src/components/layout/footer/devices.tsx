@@ -1,7 +1,7 @@
-import { useLanguages } from "../../../providers"
+import { useLocales } from "../../../providers"
 
 export const Devices = () => {
-  const { t } = useLanguages()
+  const { t } = useLocales()
   
   return (
     <section className="flex text-primary-600">

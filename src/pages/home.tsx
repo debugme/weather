@@ -1,5 +1,5 @@
 import { SearchBox, WeatherList, WorldMap } from "../components"
-import { useLanguages, useWeather } from "../providers"
+import { useLocales, useWeather } from "../providers"
 
 const gb = {
   city: "london",
@@ -11,7 +11,7 @@ const gb = {
 }
 
 export const Home = () => {
-  const { t } = useLanguages()
+  const { t } = useLocales()
   const { weatherList, searchTerm, setSearchTerm, isLoading, selectedDate, setSelectedDate } = useWeather()
 
   const worldMapProps = searchTerm.length === 0

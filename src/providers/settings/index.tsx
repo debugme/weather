@@ -2,7 +2,7 @@ import { createContext, PropsWithChildren, useContext, useState } from "react"
 
 import { AvatarsProvider } from "./avatars"
 import { BreakpointsProvider } from "./breakpoints"
-import { LanguagesProvider } from "./languages"
+import { LocalesProvider } from "./locales"
 import { ThemesProvider } from "./themes"
 
 type SettingsValue = {
@@ -30,11 +30,11 @@ export const SettingsProvider = (props: PropsWithChildren) => {
     <Provider value={value}>
       <AvatarsProvider>
         <BreakpointsProvider>
-          <LanguagesProvider>
+          <LocalesProvider>
             <ThemesProvider>
               {children}
             </ThemesProvider>
-          </LanguagesProvider>
+          </LocalesProvider>
         </BreakpointsProvider>
       </AvatarsProvider>
     </Provider>

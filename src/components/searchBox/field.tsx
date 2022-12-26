@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from "react";
-import { useLanguages } from "../../providers";
+import { useLocales } from "../../providers";
 import { titlecase } from "../../utilities";
 
 export type FieldProps = {
@@ -9,7 +9,7 @@ export type FieldProps = {
 
 export const Field = (props: FieldProps) => {
   const { value, onChange } = props
-  const { t } = useLanguages()
+  const { t } = useLocales()
 
   const text = titlecase(t("typeCity"))
 
