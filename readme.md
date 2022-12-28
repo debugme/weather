@@ -12,7 +12,7 @@ This information includes the following for each day for which a forecast is ret
 - sunset -  the sunset time
 
 
-## How to Run
+## How to Run The App
 
 Add your API key in a file called `.env.local` in your project root folder
 
