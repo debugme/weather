@@ -1,3 +1,4 @@
+export { useSecurity, SecurityProvider } from "./security"
 export { useSettings, SettingsProvider } from "./settings"
 export { useStorage, StorageProvider } from "./storage"
 export { useWeather, WeatherProvider } from "./weather"

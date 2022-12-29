@@ -14,10 +14,10 @@ This information includes the following for each day for which a forecast is ret
 
 ## How to Run
 
-Add your API key in a file called `.env.local` in your project root folder
+Add your [Open Weather Map](https://openweathermap.org/) API key in a file called `.env.local` in your project root folder
 
 ```
-VITE_APP_ID=aa0a0a0a0a0a0a00a0a0a0a0a0a0aaa0
+VITE_WEATHER_APP_ID=aa0a0a0a0a0a0a00a0a0a0a0a0a0aaa0
 ```
 
 Before you can run the application you need to install its dependencies

@@ -1,48 +1,27 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import { SettingsProvider, StorageProvider, WeatherProvider } from './providers';
-import { Home, Settings } from "./pages";
-import { Layout } from './components';
+import { SecurityProvider, SettingsProvider, StorageProvider, WeatherProvider } from './providers';
 
 import './index.css'
+import { Application } from './application';
 
-const HomeRoute = {
-  path: '/',
-  element: <Home />
-}
-
-const SettingsRoute = {
-  path: '/settings',
-  element: <Settings />
-}
-
-const routeList = [{
-  element: <Layout />,
-  children: [HomeRoute, SettingsRoute]
-}]
-
-const router = createBrowserRouter(routeList)
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
-window.addEventListener("online", () => {
-  location.reload()
-})
-
-window.addEventListener("offline", () => {
-  location.reload()
-})
-
 root.render(
   <StrictMode>
-    <StorageProvider>
-      <SettingsProvider>
-        <WeatherProvider>
-          <RouterProvider router={router} />
-        </WeatherProvider>
-      </SettingsProvider>
-    </StorageProvider>
+    <BrowserRouter>
+      <SecurityProvider>
+        <StorageProvider>
+          <SettingsProvider>
+            <WeatherProvider>
+              <Application />
+            </WeatherProvider>
+          </SettingsProvider>
+        </StorageProvider>
+      </SecurityProvider>
+    </BrowserRouter>
   </StrictMode >
 );

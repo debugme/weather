@@ -1,4 +1,4 @@
-import { useAvatars, useBreakpoints, useLocales, useSettings, useThemes } from "../../providers"
+import { useAvatars, useBreakpoints, useLocales, useSecurity, useSettings, useThemes } from "../../providers"
 
 import { Handle } from "../handle"
 import { Selector } from "../selector"
@@ -12,6 +12,7 @@ export const SettingsList = () => {
   const { theme, setTheme, themeList, themeMap } = useThemes()
   const { locale, setLocale, localeList, localeMap, t } = useLocales()
   const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
+  const { logOut } = useSecurity()
 
   return (
     <div className="flex flex-col gap-2">
@@ -29,6 +30,9 @@ export const SettingsList = () => {
       </SettingsSection>
       <SettingsSection title={t("breakpoints")} subtitle={t("showBreakpoints")}>
         <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />
+      </SettingsSection>
+      <SettingsSection title={"sign out"} subtitle={"sign out of application"}>
+        <button onClick={logOut}>Sign Out</button>
       </SettingsSection>
     </div>
   )

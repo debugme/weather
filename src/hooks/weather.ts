@@ -93,7 +93,7 @@ const getWeatherInfo = async (locationInfo: LocationInfo, signal: AbortSignal, a
 }
 
 export const useWeatherAPI = (searchTerm: string) => {
-  const appId = `appid=${import.meta.env.VITE_APP_ID}`
+  const appId = `appid=${import.meta.env.VITE_WEATHER_APP_ID}`
   const [data, setData] = useState<Nullable<Weather[]>>([])
   const [error, setError] = useState<Nullable<Error>>()
   const [loading, setLoading] = useState<boolean>(false)
