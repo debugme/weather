@@ -1,16 +1,25 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { initializeApp } from "firebase/app"
-import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
+import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth"
+import { noop, Nullable } from "../../types"
 
 type UserProfile = {
   displayName: string
   photoURL: string
 }
 
-type Nullable<T> = T | null
-type SecurityValue = { userProfile: Nullable<UserProfile>, logIn: () => void, logOut: () => void }
-const initialValue: SecurityValue = { userProfile: null, logIn: () => { }, logOut: () => { } }
+type SecurityValue = { 
+  userProfile: Nullable<UserProfile>, 
+  signIn: () => void, 
+  signOut: () => void 
+}
+
+const initialValue: SecurityValue = { 
+  userProfile: null, 
+  signIn: noop, 
+  signOut: noop 
+}
 
 const SecurityContext = createContext(initialValue)
 
@@ -50,19 +59,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
     return unsubscribe
   }, [])
 
-
-  const logOut = async () => {
-    try {
-      await signOut(auth)
-      console.log("[sign-out] log out was successful");
-      setUserProfile(null)
-      window.sessionStorage.removeItem("userProfile")
-    } catch (error) {
-      console.log("[sign-out] error was ", error);
-    }
-  }
-
-  const logIn = async () => {
+  const signIn = async () => {
     try {
       const provider = new GithubAuthProvider()
       const userCredential = await signInWithPopup(auth, provider)
@@ -77,9 +74,20 @@ export const SecurityProvider = (props: PropsWithChildren) => {
     }
   }
 
+  const signOut = async () => {
+    try {
+      await firebaseSignOut(auth)
+      console.log("[sign-out] log out was successful");
+      setUserProfile(null)
+      window.sessionStorage.removeItem("userProfile")
+    } catch (error) {
+      console.log("[sign-out] error was ", error);
+    }
+  }
+
   const { children } = props
   const { Provider } = SecurityContext
-  const value = { userProfile, logIn, logOut }
+  const value = { userProfile, signIn, signOut }
 
   return (
     <Provider value={value}>

@@ -1,6 +1,6 @@
 import { createContext, PropsWithChildren, useContext, useMemo, useState } from "react"
 
-import { Nullable } from "../../../types"
+import { noop, Nullable } from "../../../types"
 import { useStorage } from "../../storage"
 
 type BreakpointsValue = {
@@ -10,7 +10,7 @@ type BreakpointsValue = {
 
 const initialValue: BreakpointsValue = {
   showBreakpoints: false,
-  toggleBreakpoints: () => { },
+  toggleBreakpoints: noop,
 }
 
 const BreakpointsContext = createContext(initialValue)

@@ -15,3 +15,5 @@ export type Weather = {
   latitude: number
   longitude: number
 }
+
+export const noop = () => {}
