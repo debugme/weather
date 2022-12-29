@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom"
 import { useSecurity } from "../providers"
 
 export const Security = () => {
-  const { userProfile, signIn } = useSecurity()
+  const { isSignedIn, signIn } = useSecurity()
 
-  if (userProfile)
+  if (isSignedIn)
     return <Navigate to="/" replace /> 
 
   return (

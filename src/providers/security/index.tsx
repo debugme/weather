@@ -1,8 +1,9 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { initializeApp } from "firebase/app"
-import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth"
-import { noop, Nullable } from "../../types"
+import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as _signOut } from "firebase/auth"
+
+import { noop } from "../../types"
 
 type UserProfile = {
   displayName: string
@@ -10,13 +11,13 @@ type UserProfile = {
 }
 
 type SecurityValue = { 
-  userProfile: Nullable<UserProfile>, 
+  isSignedIn: boolean
   signIn: () => void, 
   signOut: () => void 
 }
 
 const initialValue: SecurityValue = { 
-  userProfile: null, 
+  isSignedIn: false,
   signIn: noop, 
   signOut: noop 
 }
@@ -36,10 +37,8 @@ const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth(firebaseApp)
 
 export const SecurityProvider = (props: PropsWithChildren) => {
-  const { userProfile: _userProfile } = initialValue
-
   const savedUserProfile = window.sessionStorage.getItem("userProfile")
-  const initialUserProfile = savedUserProfile ? JSON.parse(savedUserProfile) : _userProfile
+  const initialUserProfile = savedUserProfile ? JSON.parse(savedUserProfile) : null
   const [userProfile, setUserProfile] = useState(initialUserProfile)
   const navigate = useNavigate()
 
@@ -76,7 +75,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
 
   const signOut = async () => {
     try {
-      await firebaseSignOut(auth)
+      await _signOut(auth)
       console.log("[sign-out] log out was successful");
       setUserProfile(null)
       window.sessionStorage.removeItem("userProfile")
@@ -87,7 +86,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
 
   const { children } = props
   const { Provider } = SecurityContext
-  const value = { userProfile, signIn, signOut }
+  const value = { isSignedIn: !!userProfile, userProfile, signIn, signOut }
 
   return (
     <Provider value={value}>

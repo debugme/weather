@@ -6,9 +6,9 @@ import { Layout } from "./components"
 import { Home, Settings, Security } from "./pages"
 
 const SecureRoute = (props: PropsWithChildren) => {
-  const { userProfile } = useSecurity()
+  const { isSignedIn } = useSecurity()
   const { children } = props
-  if (userProfile)
+  if (isSignedIn)
     return <Fragment>{children}</Fragment>
   else
     return <Navigate to="/security" replace />

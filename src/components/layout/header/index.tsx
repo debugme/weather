@@ -3,8 +3,7 @@ import { Badge } from "./badge";
 import { Menu } from "./menu";
 
 export const Header = () => {
-  const { userProfile } = useSecurity()
-  const isSignedIn = !!userProfile
+  const { isSignedIn } = useSecurity()
 
   return (
     <header className="flex items-center justify-between px-6 bg-secondary-700">
