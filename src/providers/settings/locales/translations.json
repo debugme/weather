@@ -20,6 +20,8 @@
     "chooseLocale": "choose your locale",
     "breakpoints": "breakpoints",
     "showBreakpoints": "show breakpoints",
+    "signOut": "sign out",
+    "showSignOut": "sign out of session",
     "cellphone": "cellphone",
     "tablet": "tablet",
     "laptop": "laptop",
@@ -47,11 +49,13 @@
     "chooseLocale": "choisissez votre région",
     "breakpoints": "points d'arrêt",
     "showBreakpoints": "afficher les points d'arrêt",
+    "signOut": "se déconnecter",
+    "showSignOut": "se déconnecter de la session",
     "cellphone": "téléphone portable",
     "tablet": "tablette",
     "laptop": "ordinateur portable",
     "desktop": "ordinateur",
-    "typeCity": "taper un nom de ville"    
+    "typeCity": "taper un nom de ville"
   },
   "italian": {
     "english": "🇬🇧",
@@ -74,11 +78,13 @@
     "chooseLocale": "scegli la tua località",
     "breakpoints": "punti di interruzione",
     "showBreakpoints": "mostra punti di interruzione",
+    "signOut": "disconnessione",
+    "showSignOut": "uscire dalla sessione",
     "cellphone": "cellulare",
     "tablet": "tavoletta",
     "laptop": "il computer portatile",
     "desktop": "computer",
-    "typeCity": "digitare il nome di una città"    
+    "typeCity": "digitare il nome di una città"
   },
   "german": {
     "english": "🇬🇧",
@@ -101,11 +107,13 @@
     "chooseLocale": "Wählen sie ihr gebietsschema",
     "breakpoints": "haltepunkte",
     "showBreakpoints": "haltepunkte zeigen",
+    "signOut": "austragen",
+    "showSignOut": "sich von der sitzung abmelden",
     "cellphone": "handy",
     "tablet": "tablette",
     "laptop": "laptop",
     "desktop": "computer",
-    "typeCity": "geben sie einen städtenamen ein"    
+    "typeCity": "geben sie einen städtenamen ein"
   },
   "spanish": {
     "english": "🇬🇧",
@@ -128,10 +136,12 @@
     "chooseLocale": "elige tu localidad",
     "breakpoints": "puntos de interrupción",
     "showBreakpoints": "mostrar puntos de interrupción",
+    "signOut": "desconectar",
+    "showSignOut": "cerrar sesión",
     "cellphone": "teléfono móvil",
     "tablet": "tableta",
     "laptop": "ordenador portátil",
     "desktop": "computadora",
-    "typeCity": "escriba el nombre de una ciudad"    
+    "typeCity": "escriba el nombre de una ciudad"
   }
 }
