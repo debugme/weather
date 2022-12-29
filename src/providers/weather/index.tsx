@@ -8,7 +8,6 @@ import {
 
 import { Nullable, Weather } from "../../types";
 import { useWeatherAPI, useDebounce } from "../../hooks";
-import { useStorage } from "../storage";
 
 type WeatherValue = {
   searchTerm: string
@@ -35,18 +34,9 @@ const initialValue: WeatherValue = {
 const WeatherContext = createContext(initialValue)
 
 export const WeatherProvider = (props: PropsWithChildren) => {
-  const { getItem, setItem } = useStorage()
-
-  const savedSearchTerm = getItem("term")
-  const { searchTerm: _searchTerm } = initialValue
-  const initialSearchTerm = savedSearchTerm || _searchTerm
-
-
-  const savedSelectedDate = getItem("date")
-  const { selectedDate: _selectedDate } = initialValue
-  const initialSelectedDate = savedSelectedDate || _selectedDate
-
   const {
+    searchTerm: initialSearchTerm,
+    selectedDate: initialSelectedDate,
     weatherList: initialShowList,
     isLoading: initialIsLoading,
     failure: initialFailure
@@ -72,9 +62,6 @@ export const WeatherProvider = (props: PropsWithChildren) => {
     setFailure(error || null)
     setIsLoading(loading)
   }, [data, error, loading])
-
-  useEffect(() => setItem("term", searchTerm), [searchTerm])
-  useEffect(() => setItem("date", selectedDate), [selectedDate])
 
   const value = {
     searchTerm,
