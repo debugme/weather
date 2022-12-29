@@ -27,7 +27,7 @@ const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider = (props: PropsWithChildren) => {
   const { setItem, getItem } = useStorage()
-  const savedTheme = getItem("theme") as string
+  const savedTheme = getItem("theme")
   const { theme: _theme, themeList, themeMap } = initialValue
   const initialTheme = savedTheme || _theme
   const [theme, setTheme] = useState(initialTheme)

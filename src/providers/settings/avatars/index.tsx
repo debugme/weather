@@ -36,7 +36,7 @@ const AvatarsContext = createContext(initialValue)
 
 export const AvatarsProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
-  const savedAvatar = getItem("avatar") as string
+  const savedAvatar = getItem("avatar")
   const { avatar: _avatar, avatarList, avatarMap } = initialValue
   const initialAvatar = savedAvatar || _avatar
   const [avatar, setAvatar] = useState(initialAvatar)
@@ -52,4 +52,4 @@ export const AvatarsProvider = (props: PropsWithChildren) => {
   )
 }
 
-export const useAvatars = () => useContext(AvatarsContext);
+export const useAvatars = () => useContext(AvatarsContext)

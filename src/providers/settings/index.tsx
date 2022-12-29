@@ -1,4 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { useStorage } from "../storage"
 
 import { AvatarsProvider } from "./avatars"
 import { BreakpointsProvider } from "./breakpoints"
@@ -18,9 +19,13 @@ const initialValue: SettingsValue = {
 const SettingsContext = createContext(initialValue)
 
 export const SettingsProvider = (props: PropsWithChildren) => {
-  const { handle: initialhandle } = initialValue
-
+  const { getItem, setItem } = useStorage()
+  const { handle: _handle } = initialValue
+  const savedHandle = getItem("handle")
+  const initialhandle = savedHandle || _handle
   const [handle, setHandle] = useState(initialhandle)
+
+  useEffect(() => setItem("handle", handle), [handle])
 
   const { children } = props
   const { Provider } = SettingsContext

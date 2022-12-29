@@ -37,7 +37,7 @@ const LocalesContext = createContext(initialValue)
 
 export const LocalesProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
-  const savedLocale = getItem("locale") as string
+  const savedLocale = getItem("locale")
   const { locale: _locale, localeList, localeMap } = initialValue
   const initialLocale = savedLocale || _locale
   const [locale, setLocale] = useState(initialLocale)

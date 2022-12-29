@@ -6,17 +6,15 @@ import {
 
 import { Nullable } from "../../types";
 
-type StorageType = string | boolean
-
 type StorageValue = {
-  setItem: (key: string, value: StorageType) => void
-  getItem: (key: string) => Nullable<StorageType>
+  setItem: (key: string, value: string) => void
+  getItem: (key: string) => Nullable<string>
+  removeItem: (key: string) => void
 }
 
 const initialValue: StorageValue = {
   setItem: (key, value) => {
-    const stringified = JSON.stringify(value)
-    window.sessionStorage.setItem(key, stringified)
+    window.sessionStorage.setItem(key, JSON.stringify(value))
   },
   getItem: (key) => {
     const stringified = window.sessionStorage.getItem(key)
@@ -24,6 +22,9 @@ const initialValue: StorageValue = {
       return null
     const value = JSON.parse(stringified)
     return value
+  },
+  removeItem: (key) => {
+    window.sessionStorage.removeItem(key)
   }
 }
 

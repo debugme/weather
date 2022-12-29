@@ -37,12 +37,12 @@ const WeatherContext = createContext(initialValue)
 export const WeatherProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
 
-  const savedSearchTerm = getItem("searchTerm") as string
+  const savedSearchTerm = getItem("searchTerm")
   const { searchTerm: _searchTerm } = initialValue
   const initialSearchTerm = savedSearchTerm || _searchTerm
 
 
-  const savedSelectedDate = getItem("selectedDate") as string
+  const savedSelectedDate = getItem("selectedDate")
   const { selectedDate: _selectedDate } = initialValue
   const initialSelectedDate = savedSelectedDate || _selectedDate
 
