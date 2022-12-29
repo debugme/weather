@@ -32,10 +32,11 @@ export const ThemesProvider = (props: PropsWithChildren) => {
   const initialTheme = savedTheme || _theme
   const [theme, setTheme] = useState(initialTheme)
 
+  useEffect(() => setItem("theme", theme), [theme])
+
   useEffect(() => {
     document.body.classList.remove(...themeList)
     document.body.classList.add(theme)
-    setItem("theme", theme)
   }, [theme])
 
   const { children } = props
