@@ -37,12 +37,12 @@ const WeatherContext = createContext(initialValue)
 export const WeatherProvider = (props: PropsWithChildren) => {
   const { getItem, setItem } = useStorage()
 
-  const savedSearchTerm = getItem("searchTerm")
+  const savedSearchTerm = getItem("term")
   const { searchTerm: _searchTerm } = initialValue
   const initialSearchTerm = savedSearchTerm || _searchTerm
 
 
-  const savedSelectedDate = getItem("selectedDate")
+  const savedSelectedDate = getItem("date")
   const { selectedDate: _selectedDate } = initialValue
   const initialSelectedDate = savedSelectedDate || _selectedDate
 
@@ -73,8 +73,8 @@ export const WeatherProvider = (props: PropsWithChildren) => {
     setIsLoading(loading)
   }, [data, error, loading])
 
-  useEffect(() => setItem("searchTerm", searchTerm), [searchTerm])
-  useEffect(() => setItem("selectedDate", selectedDate), [selectedDate])
+  useEffect(() => setItem("term", searchTerm), [searchTerm])
+  useEffect(() => setItem("date", selectedDate), [selectedDate])
 
   const value = {
     searchTerm,

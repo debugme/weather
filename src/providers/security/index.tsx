@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { initializeApp } from "firebase/app"
 import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as _signOut } from "firebase/auth"
 
-import { noop, Nullable } from "../../types"
+import { noop } from "../../types"
 import { useStorage } from "../storage"
-
-// ------------------------------------------------------------------------------------------
 
 const firebaseConfig = {
   apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
@@ -20,63 +18,51 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig)
 const auth = getAuth(firebaseApp)
 const provider = new GithubAuthProvider()
-// ------------------------------------------------------------------------------------------
 
-
-
-
-type UserProfile = {
-  displayName: string
-  photoURL: string
-}
-
-type SecurityValue = { 
+type SecurityValue = {
   isSignedIn: boolean
-  signIn: () => void, 
-  signOut: () => void 
+  signIn: () => void,
+  signOut: () => void
 }
 
-const initialValue: SecurityValue = { 
+const initialValue: SecurityValue = {
   isSignedIn: false,
-  signIn: noop, 
-  signOut: noop 
+  signIn: noop,
+  signOut: noop
 }
 
 const SecurityContext = createContext(initialValue)
 
 export const SecurityProvider = (props: PropsWithChildren) => {
-  const { getItem, setItem, removeItem } = useStorage()
-  const savedUserProfile = getItem("userProfile")
-  const initialUserProfile = savedUserProfile ? JSON.parse(savedUserProfile) : null
-  const [userProfile, setUserProfile] = useState<Nullable<UserProfile>>(initialUserProfile)
   const navigate = useNavigate()
-
-  console.log("[reload] user is ", userProfile);
+  const { getItem, setItem, removeItem } = useStorage()
+  const savedUserId = getItem("savedUserId")
+  const initialUserId = savedUserId || null
+  const [userId, setUserId] = useState(initialUserId)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
-      console.log("[AuthStateChanged] user is ", user);
       if (user) {
-        const { displayName, photoURL } = user
-        const userProfile = { displayName: displayName!, photoURL: photoURL! }
-        setItem("userProfile", JSON.stringify(userProfile))
-        setUserProfile(userProfile)
+        setUserId(user.uid)
         navigate("/")
       }
     })
     return unsubscribe
   }, [])
 
+  useEffect(() => {
+    if (userId)
+      setItem("userId", userId)
+    else
+      removeItem("userId")
+  }, [userId])
+
   const signIn = async () => {
     try {
-      
+
       const userCredential = await signInWithPopup(auth, provider)
       const { user } = userCredential
-      console.log("[sign-in] user was ", user);
-      const { displayName, photoURL } = user
-      const userProfile = { displayName: displayName!, photoURL: photoURL! }
-      setItem("userProfile", JSON.stringify(userProfile))
-      setUserProfile(userProfile)
+      setUserId(user.uid)
     } catch (error) {
       console.log("[sign-in] error was ", error);
     }
@@ -85,9 +71,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
   const signOut = async () => {
     try {
       await _signOut(auth)
-      console.log("[sign-out] log out was successful");
-      setUserProfile(null)
-      removeItem("userProfile")
+      setUserId(null)
     } catch (error) {
       console.log("[sign-out] error was ", error);
     }
@@ -95,7 +79,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
 
   const { children } = props
   const { Provider } = SecurityContext
-  const value = { isSignedIn: !!userProfile, userProfile, signIn, signOut }
+  const value = { isSignedIn: !!userId, userId, signIn, signOut }
 
   return (
     <Provider value={value}>
