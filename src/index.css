@@ -7,6 +7,8 @@
   --footer: 72px;
   --cancel: 42px;
   --close: 24px;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 *, *::before, *::after {
