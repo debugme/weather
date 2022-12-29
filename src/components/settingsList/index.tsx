@@ -1,4 +1,4 @@
-import { useAvatars, useBreakpoints, useLocales, useSecurity, useSettings, useThemes } from "../../providers"
+import { useAvatars, useBreakpoints, useLocales, useSecurity, useHandle, useThemes } from "../../providers"
 
 import { Handle } from "../handle"
 import { Selector } from "../selector"
@@ -7,7 +7,7 @@ import { Toggle } from "../toggle"
 import { SettingsSection } from "./settingsSection"
 
 export const SettingsList = () => {
-  const { handle, setHandle } = useSettings()
+  const { handle, setHandle } = useHandle()
   const { avatar, setAvatar, avatarList, avatarMap } = useAvatars()
   const { theme, setTheme, themeList, themeMap } = useThemes()
   const { locale, setLocale, localeList, localeMap, t } = useLocales()

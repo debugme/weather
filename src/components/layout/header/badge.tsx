@@ -1,8 +1,8 @@
-import { useAvatars, useSettings } from "../../../providers"
+import { useAvatars, useHandle } from "../../../providers"
 
 export const Badge = () => {
   const { avatar, avatarMap } = useAvatars()
-  const { handle } = useSettings()
+  const { handle } = useHandle()
   const icon = avatarMap[avatar]
 
   return (
