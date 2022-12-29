@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useMemo, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 
 import { noop } from "../../../types"
 import { useStorage } from "../../storage"
@@ -21,9 +21,7 @@ export const BreakpointsProvider = (props: PropsWithChildren) => {
   const initialShowBreakpoints = savedBreakpointsEnabled === "true"
   const [showBreakpoints, setShowBreakpoints] = useState(initialShowBreakpoints)
 
-  const toggleBreakpoints = useMemo(() => () => {
-    setShowBreakpoints(showBreakpoints => !showBreakpoints)
-  }, [showBreakpoints])
+  const toggleBreakpoints = () => setShowBreakpoints(showBreakpoints => !showBreakpoints)
 
   useEffect(() => setItem("breakpoints", String(showBreakpoints)), [showBreakpoints])
 

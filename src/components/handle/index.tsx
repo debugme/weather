@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useMemo } from "react"
+import { ChangeEventHandler } from "react"
 
 export type HandleProps = {
   text: string
@@ -8,10 +8,8 @@ export type HandleProps = {
 export const Handle = (props: HandleProps) => {
   const { text, setText } = props
 
-  const _onChange: ChangeEventHandler<HTMLInputElement> = (event) =>
+  const onChange: ChangeEventHandler<HTMLInputElement> = (event) =>
     setText(event.currentTarget.value)
-
-  const onChange = useMemo(() => _onChange, [])
 
   const colors = "text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white selection:text-secondary-700 selection:bg-primary-600"
 

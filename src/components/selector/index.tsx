@@ -1,4 +1,4 @@
-import { MouseEventHandler, useMemo } from "react"
+import { MouseEventHandler } from "react"
 
 export type SelectorProps = {
   selected: string
@@ -10,12 +10,10 @@ export type SelectorProps = {
 export const Selector = (props: SelectorProps) => {
   const { selected, setSelected, selectionList, selectionMap } = props
 
-  const handler: MouseEventHandler<HTMLLIElement> = (event) => {
+  const onClick: MouseEventHandler<HTMLLIElement> = (event) => {
     event.preventDefault()
     setSelected(event.currentTarget.dataset.id!)
   }
-
-  const onClick = useMemo(() => handler, [])
 
   const itemList = selectionList.map(selection => {
     const isActive = (selection === selected)
