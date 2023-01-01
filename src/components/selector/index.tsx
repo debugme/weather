@@ -18,7 +18,7 @@ export const Selector = (props: SelectorProps) => {
   const itemList = selectionList.map(selection => {
     const isActive = (selection === selected)
     const colors = `${isActive ? "text-primary-500 border-primary-600" : "text-secondary-400 border-secondary-500"}`
-    const className = `items-center text-sm w-full rounded-2xl cursor-pointer flex flex-col border-2 focus:outline-white ${colors}`
+    const className = `overflow-hidden items-center text-sm w-full rounded-2xl cursor-pointer flex flex-col border-2 focus:outline-white ${colors}`
     const jsxElement = selectionMap[selection]
     
     return (
@@ -29,7 +29,7 @@ export const Selector = (props: SelectorProps) => {
   })
 
   return (
-    <ul className="flex flex-wrap justify-between py-2 rounded-2xl gap-3">
+    <ul className="flex flex-wrap justify-between py-2 rounded-2xl gap-0 sm:gap-3">
       {itemList}
     </ul>
   )

@@ -4,7 +4,6 @@ import { initializeApp } from "firebase/app"
 import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as _signOut } from "firebase/auth"
 
 import { noop } from "../../types"
-import { useStorage } from "../storage"
 
 const firebaseConfig = {
   apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
@@ -35,10 +34,7 @@ const SecurityContext = createContext(initialValue)
 
 export const SecurityProvider = (props: PropsWithChildren) => {
   const navigate = useNavigate()
-  const { getItem, setItem, removeItem } = useStorage()
-  const savedUserId = getItem("savedUserId")
-  const initialUserId = savedUserId || null
-  const [userId, setUserId] = useState(initialUserId)
+  const [userId, setUserId] = useState("")
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
@@ -49,13 +45,6 @@ export const SecurityProvider = (props: PropsWithChildren) => {
     })
     return unsubscribe
   }, [])
-
-  useEffect(() => {
-    if (userId)
-      setItem("userId", userId)
-    else
-      removeItem("userId")
-  }, [userId])
 
   const signIn = async () => {
     try {
@@ -71,7 +60,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
   const signOut = async () => {
     try {
       await _signOut(auth)
-      setUserId(null)
+      setUserId("")
     } catch (error) {
       console.log("[sign-out] error was ", error);
     }
@@ -79,7 +68,7 @@ export const SecurityProvider = (props: PropsWithChildren) => {
 
   const { children } = props
   const { Provider } = SecurityContext
-  const value = { isSignedIn: !!userId, userId, signIn, signOut }
+  const value = { isSignedIn: Boolean(userId), userId, signIn, signOut }
 
   return (
     <Provider value={value}>
