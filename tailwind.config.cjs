@@ -12,7 +12,7 @@ module.exports = {
           sans: ["Poppins", "sans-serif"]
         },
         gridTemplateColumns: {
-          home: "repeat(auto-fit, minmax(260px, 1fr))",
+          home: "repeat(auto-fit, minmax(260px, 0.5fr))",
           map: "2fr 1fr",
         },
         colors: {
