@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { createContext, PropsWithChildren, useContext } from "react"
 import { useSettings } from "../../../hooks"
 
 import { noop } from "../../../types"

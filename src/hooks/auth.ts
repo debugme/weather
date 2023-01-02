@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signInWithPopup, signOut as _signOut, User } from "firebase/auth"
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Nullable } from "../types"
 import { auth, provider } from "./firebase"
@@ -8,7 +8,7 @@ export const useAuth = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState<Nullable<User>>()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         setUser(user)

@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect } from "react"
+import { createContext, PropsWithChildren, useContext } from "react"
 import { useSettings } from "../../../hooks"
 
 type HandleValue = {

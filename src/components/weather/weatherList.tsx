@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react"
+import { Fragment, useLayoutEffect } from "react"
 
 import { useLocales } from "../../providers"
 import { Weather } from "../../types"
@@ -20,7 +20,7 @@ export const WeatherList = (props: WeatherListProps) => {
   const dateNormaliser = (text: string) => text.split(" ").slice(0, 2).join(" ")
   const filteredList = list.filter(weather => weather.date === selectedDate)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (selectedDate)
       return
     if (!dateList.length)

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import { Nullable, Weather } from "../types";
 import { getDateFormatter, getTimeFormatter, getCountryName } from "../utilities";
@@ -119,7 +119,7 @@ export const useWeatherAPI = (searchTerm: string) => {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (searchTerm) {
       fetcher()
       return cleanUp

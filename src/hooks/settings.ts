@@ -1,5 +1,5 @@
 import { collection, doc, DocumentSnapshot, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore"
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import { useAuth } from "./auth"
 import { firestore } from "./firebase"
 
@@ -23,7 +23,7 @@ export const useSettings = () => {
   const [settings, setSettings] = useState<Settings>(defaultSettings)
   const { user } = useAuth()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!user)
       return
 
@@ -51,7 +51,7 @@ export const useSettings = () => {
     getSettings()
   }, [user])
 
-  useEffect(() => {    
+  useLayoutEffect(() => {    
     const updateSettingsForUser = async () => {
       if (!user)
         return

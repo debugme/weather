@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 
 import { getTimeFormatter } from "../../utilities"
 
@@ -13,7 +13,7 @@ export const CityInfo = (props: CityInfoProps) => {
   const [localTime, setLocalTime] = useState(getTimeFormatter("GB", "medium").format(Date.now()))
   const oneSecond = 1000
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const callback = () => setLocalTime(getTimeFormatter(countryCode || "GB", "medium").format(new Date()))
     const cleanUp = () => clearInterval(intervalId.current)
     intervalId.current = setInterval(callback, oneSecond)

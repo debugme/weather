@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom";
 
 const CloseIcon = () => (
@@ -25,7 +25,7 @@ export const Menu = (props: MenuProps) => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(location.pathname === settings)
 
-  useEffect(() => setIsOpen(location.pathname === settings), [location])
+  useLayoutEffect(() => setIsOpen(location.pathname === settings), [location])
 
   const toggleSettings = () => {
     if (isOpen)
@@ -34,7 +34,7 @@ export const Menu = (props: MenuProps) => {
       navigate(settings)
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (event.key === shortcut)
         toggleSettings()

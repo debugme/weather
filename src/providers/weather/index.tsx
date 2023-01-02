@@ -3,7 +3,7 @@ import {
   useState,
   PropsWithChildren,
   useContext,
-  useEffect,
+  useLayoutEffect,
 } from "react";
 
 import { Nullable, Weather } from "../../types";
@@ -57,7 +57,7 @@ export const WeatherProvider = (props: PropsWithChildren) => {
 
   const { data, error, loading } = useWeatherAPI(debouncedSearchTerm)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setWeatherList(data || [])
     setFailure(error || null)
     setIsLoading(loading)

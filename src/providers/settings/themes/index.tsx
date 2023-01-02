@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { createContext, PropsWithChildren, useContext, useLayoutEffect } from "react"
 import { useSettings } from "../../../hooks"
 
 const themeList = ["slate", "grey", "zinc", "plain", "stone"]
@@ -28,7 +28,7 @@ const ThemesContext = createContext(initialValue)
 export const ThemesProvider = (props: PropsWithChildren) => {
   const { settings: { theme }, setTheme } = useSettings()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.body.classList.remove(...themeList)
     document.body.classList.add(theme)
   }, [theme])
