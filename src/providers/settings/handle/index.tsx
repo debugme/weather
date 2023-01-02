@@ -1,5 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { useStorage } from "../../storage"
+import { createContext, PropsWithChildren, useContext, useEffect } from "react"
+import { useSettings } from "../../../hooks"
 
 type HandleValue = {
   handle: string
@@ -7,20 +7,14 @@ type HandleValue = {
 }
 
 const initialValue: HandleValue = {
-  handle: "Tom Grunge",
+  handle: "",
   setHandle: (_: string) => { }
 }
 
 const HandleContext = createContext(initialValue)
 
 export const HandleProvider = (props: PropsWithChildren) => {
-  const { getItem, setItem } = useStorage()
-  const { handle: _handle } = initialValue
-  const savedHandle = getItem("handle")
-  const initialhandle = savedHandle || _handle
-  const [handle, setHandle] = useState(initialhandle)
-
-  useEffect(() => setItem("handle", handle), [handle])
+  const { settings: { handle }, setHandle } = useSettings()
 
   const { children } = props
   const { Provider } = HandleContext

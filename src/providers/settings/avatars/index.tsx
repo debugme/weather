@@ -1,6 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
-
-import { useStorage } from '../../storage';
+import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
+import { useSettings } from '../../../hooks';
 
 import { Avatar1Icon } from './avatar1Icon';
 import { Avatar2Icon } from './avatar2Icon';
@@ -35,13 +34,7 @@ const initialValue: AvatarSettingsValue = {
 const AvatarsContext = createContext(initialValue)
 
 export const AvatarsProvider = (props: PropsWithChildren) => {
-  const { getItem, setItem } = useStorage()
-  const savedAvatar = getItem("avatar")
-  const { avatar: _avatar, avatarList, avatarMap } = initialValue
-  const initialAvatar = savedAvatar || _avatar
-  const [avatar, setAvatar] = useState(initialAvatar)
-
-  useEffect(() => setItem("avatar", avatar), [avatar])
+  const { settings: { avatar }, setAvatar } = useSettings()
 
   const { children } = props
   const { Provider } = AvatarsContext

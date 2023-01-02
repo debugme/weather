@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { useStorage } from "../../storage"
+import { useSettings } from "../../../hooks"
 
 const themeList = ["slate", "grey", "zinc", "plain", "stone"]
 
@@ -26,13 +26,7 @@ const initialValue: ThemesValue = {
 const ThemesContext = createContext(initialValue)
 
 export const ThemesProvider = (props: PropsWithChildren) => {
-  const { setItem, getItem } = useStorage()
-  const savedTheme = getItem("theme")
-  const { theme: _theme, themeList, themeMap } = initialValue
-  const initialTheme = savedTheme || _theme
-  const [theme, setTheme] = useState(initialTheme)
-
-  useEffect(() => setItem("theme", theme), [theme])
+  const { settings: { theme }, setTheme } = useSettings()
 
   useEffect(() => {
     document.body.classList.remove(...themeList)

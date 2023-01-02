@@ -1,22 +1,7 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { initializeApp } from "firebase/app"
-import { getAuth, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signOut as _signOut } from "firebase/auth"
+import { createContext, PropsWithChildren, useContext } from "react"
 
 import { noop } from "../../types"
-
-const firebaseConfig = {
-  apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
-  authDomain: `${import.meta.env.VITE_FIREBASE_AUTH_DOMAIN}`,
-  projectId: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}`,
-  storageBucket: `${import.meta.env.VITE_FIREBASE_STORAGE_BUCKET}`,
-  messagingSenderId: `${import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID}`,
-  appId: `${import.meta.env.VITE_FIREBASE_APP_ID}`,
-};
-
-const firebaseApp = initializeApp(firebaseConfig)
-const auth = getAuth(firebaseApp)
-const provider = new GithubAuthProvider()
+import { useAuth } from "../../hooks"
 
 type SecurityValue = {
   isSignedIn: boolean
@@ -33,42 +18,11 @@ const initialValue: SecurityValue = {
 const SecurityContext = createContext(initialValue)
 
 export const SecurityProvider = (props: PropsWithChildren) => {
-  const navigate = useNavigate()
-  const [userId, setUserId] = useState("")
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
-      if (user) {
-        setUserId(user.uid)
-        navigate("/")
-      }
-    })
-    return unsubscribe
-  }, [])
-
-  const signIn = async () => {
-    try {
-
-      const userCredential = await signInWithPopup(auth, provider)
-      const { user } = userCredential
-      setUserId(user.uid)
-    } catch (error) {
-      console.log("[sign-in] error was ", error);
-    }
-  }
-
-  const signOut = async () => {
-    try {
-      await _signOut(auth)
-      setUserId("")
-    } catch (error) {
-      console.log("[sign-out] error was ", error);
-    }
-  }
+  const { isSignedIn, signIn, signOut } = useAuth()
 
   const { children } = props
   const { Provider } = SecurityContext
-  const value = { isSignedIn: Boolean(userId), userId, signIn, signOut }
+  const value = { isSignedIn, signIn, signOut }
 
   return (
     <Provider value={value}>

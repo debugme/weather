@@ -1,8 +1,7 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
+import { createContext, PropsWithChildren, useContext } from "react"
+import { useSettings } from "../../../hooks"
 
 import translations from "./translations.json"
-
-import { useStorage } from "../../storage"
 
 const buildLocaleMap = (locale: Record<string, string>, keys: string[]) => {
   const reducer = (accumulator: Record<string, JSX.Element>, key: string) => {
@@ -36,15 +35,10 @@ type Translations = Record<string, Record<string, string>>
 const LocalesContext = createContext(initialValue)
 
 export const LocalesProvider = (props: PropsWithChildren) => {
-  const { getItem, setItem } = useStorage()
-  const savedLocale = getItem("locale")
-  const { locale: _locale, localeList, localeMap } = initialValue
-  const initialLocale = savedLocale || _locale
-  const [locale, setLocale] = useState(initialLocale)
+  const { settings: { locale }, setLocale } = useSettings()
+  const { localeList, localeMap } = initialValue
   const t = (key: string) => (translations as Translations)[locale][key]
   const value = { locale, setLocale, localeList, localeMap, t }
-
-  useEffect(() => setItem("locale", locale), [locale])
 
   const { children } = props
   const { Provider } = LocalesContext

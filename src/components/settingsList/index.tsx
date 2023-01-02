@@ -11,7 +11,7 @@ export const SettingsList = () => {
   const { avatar, setAvatar, avatarList, avatarMap } = useAvatars()
   const { theme, setTheme, themeList, themeMap } = useThemes()
   const { locale, setLocale, localeList, localeMap, t } = useLocales()
-  const { showBreakpoints, toggleBreakpoints } = useBreakpoints()
+  const { breakpoints, toggleBreakpoints } = useBreakpoints()
   const { isSignedIn, signOut } = useSecurity()
 
   return (
@@ -29,7 +29,7 @@ export const SettingsList = () => {
         <Selector selected={locale} setSelected={setLocale} selectionList={localeList} selectionMap={localeMap} />
       </SettingsSection>
       <SettingsSection title={t("breakpoints")} subtitle={t("showBreakpoints")}>
-        <Toggle isOn={showBreakpoints} onClick={toggleBreakpoints} />
+        <Toggle isOn={breakpoints} onClick={toggleBreakpoints} />
       </SettingsSection>
       <SettingsSection title={t("signOut")} subtitle={t("showSignOut")}>
         <Toggle isOn={isSignedIn} onClick={signOut} />
