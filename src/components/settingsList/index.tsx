@@ -20,10 +20,10 @@ export const SettingsList = () => {
         <Handle text={handle} setText={setHandle} />
       </SettingsSection>
       <SettingsSection title={t("avatar")} subtitle={t("chooseAvatar")}>
-        <Selector selected={avatar} setSelected={setAvatar} selectionList={avatarList} selectionMap={avatarMap}/>
+        <Selector selected={avatar} setSelected={setAvatar} selectionList={avatarList} selectionMap={avatarMap} />
       </SettingsSection>
       <SettingsSection title={t("theme")} subtitle={t("chooseTheme")}>
-        <Selector selected={theme} setSelected={setTheme} selectionList={themeList} selectionMap={themeMap}/>
+        <Selector selected={theme} setSelected={setTheme} selectionList={themeList} selectionMap={themeMap} />
       </SettingsSection>
       <SettingsSection title={t("locale")} subtitle={t("chooseLocale")}>
         <Selector selected={locale} setSelected={setLocale} selectionList={localeList} selectionMap={localeMap} />
@@ -32,8 +32,13 @@ export const SettingsList = () => {
         <Toggle isOn={breakpoints} onClick={toggleBreakpoints} />
       </SettingsSection>
       <SettingsSection title={t("signOut")} subtitle={t("showSignOut")}>
-        <Toggle isOn={isSignedIn} onClick={signOut} />
+        <Toggle isOn={isSignedIn} onClick={() => { }} />
       </SettingsSection>
+      {/* <SettingsSection title={t("signOut")} subtitle={t("showSignOut")}>
+        <button onClick={() => { }} className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600">
+          {t("signOut")}
+        </button>
+      </SettingsSection> */}
     </div>
   )
 }
