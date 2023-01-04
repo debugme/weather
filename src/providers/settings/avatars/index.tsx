@@ -1,21 +1,23 @@
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { useSettings } from '../../../hooks'
 
-import { Avatar1Icon } from './avatar1Icon'
-import { Avatar2Icon } from './avatar2Icon'
-import { Avatar3Icon } from './avatar3Icon'
-import { Avatar4Icon } from './avatar4Icon'
-import { Avatar5Icon } from './avatar5Icon'
+import { packs } from './avatars.json'
 
-const avatarMap = {
-	avatar1: <Avatar1Icon />,
-	avatar2: <Avatar2Icon />,
-	avatar3: <Avatar3Icon />,
-	avatar4: <Avatar4Icon />,
-	avatar5: <Avatar5Icon />,
+const getAvatarInfo = () => {
+	type AvatarMap = Record<string, JSX.Element>
+	type AvatarInfo = { name: string; data: string }
+	const avatarMap: AvatarMap = {}
+	const reducer = (map: AvatarMap, avatarInfo: AvatarInfo) => {
+		const { name, data } = avatarInfo
+		const className = 'w-10 h-10 border-none my-2'
+		map[name] = <img src={data} alt={name} className={className} />
+		return map
+	}
+	packs.hipster.reduce(reducer, avatarMap)
+	const avatarList = Object.keys(avatarMap)
+	const avatarInfo = { avatarMap, avatarList }
+	return avatarInfo
 }
-
-const avatarList = Object.keys(avatarMap)
 
 export type AvatarSettingsValue = {
 	avatar: string
@@ -23,6 +25,8 @@ export type AvatarSettingsValue = {
 	avatarList: string[]
 	avatarMap: Record<string, JSX.Element>
 }
+
+const { avatarMap, avatarList } = getAvatarInfo()
 
 const initialValue: AvatarSettingsValue = {
 	avatar: avatarList[0],
