@@ -37,7 +37,7 @@ const LocalesContext = createContext(initialValue)
 export const LocalesProvider = (props: PropsWithChildren) => {
   const { settings: { locale }, setLocale } = useSettings()
   const { localeList, localeMap } = initialValue
-  const t = (key: string) => (translations as Translations)[locale][key]
+  const t = (key: string) => (translations as Translations)[locale][key] || key
   const value = { locale, setLocale, localeList, localeMap, t }
 
   const { children } = props

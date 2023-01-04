@@ -26,7 +26,10 @@
     "tablet": "tablet",
     "laptop": "laptop",
     "desktop": "desktop",
-    "typeCity": "type in a city name"
+    "typeCity": "type in a city name",
+    "signIn": "sign in",
+    "typeEmail": "type in your email",
+    "getCode": "get code"
   },
   "french": {
     "english": "🇬🇧",
@@ -55,7 +58,10 @@
     "tablet": "tablette",
     "laptop": "ordinateur portable",
     "desktop": "ordinateur",
-    "typeCity": "taper un nom de ville"
+    "typeCity": "taper un nom de ville",
+    "signIn": "s'identifier",
+    "typeEmail": "tapez votre email",
+    "getCode": "obtenir le code"    
   },
   "italian": {
     "english": "🇬🇧",
@@ -84,7 +90,10 @@
     "tablet": "tavoletta",
     "laptop": "il computer portatile",
     "desktop": "computer",
-    "typeCity": "digitare il nome di una città"
+    "typeCity": "digitare il nome di una città",
+    "signIn": "registrazione",
+    "typeEmail": "digita la tua email",
+    "getCode": "ottenere il codice"    
   },
   "german": {
     "english": "🇬🇧",
@@ -113,7 +122,10 @@
     "tablet": "tablette",
     "laptop": "laptop",
     "desktop": "computer",
-    "typeCity": "geben sie einen städtenamen ein"
+    "typeCity": "geben sie einen städtenamen ein",
+    "signIn": "anmelden",
+    "typeEmail": "geben sie ihre e-mail ein",
+    "getCode": "code bekommen"    
   },
   "spanish": {
     "english": "🇬🇧",
@@ -142,6 +154,9 @@
     "tablet": "tableta",
     "laptop": "ordenador portátil",
     "desktop": "computadora",
-    "typeCity": "escriba el nombre de una ciudad"
+    "typeCity": "escriba el nombre de una ciudad",
+    "signIn": "registrarse",
+    "typeEmail": "escriba su correo electrónico",
+    "getCode": "obtener código"    
   }
 }
