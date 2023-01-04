@@ -48,7 +48,7 @@ export const WorldMap = (props: WorldMapProps) => {
 					{showMarker ? (
 						<Marker coordinates={[longitude, latitude]}>
 							<circle
-								className="fill-accent-500 stroke-secondary-400 stroke-[3px] w-3"
+								className="fill-red-500 stroke-secondary-400 stroke-[3px] w-3"
 								r={10}
 							/>
 						</Marker>
