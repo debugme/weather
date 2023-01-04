@@ -92,5 +92,5 @@ export const Avatar2Icon = () => {
 				fill="#111111"
 			/>
 		</svg>
-	);
-};
+	)
+}

@@ -3,25 +3,25 @@ import {
 	Geographies,
 	Geography,
 	Marker,
-} from "react-simple-maps";
+} from 'react-simple-maps'
 
-import { Weather } from "../../types";
-import { CityInfo } from "./cityInfo";
-import geoUrl from "./map.json";
+import { Weather } from '../../types'
+import { CityInfo } from './cityInfo'
+import geoUrl from './map.json'
 
 export type WorldMapProps = Pick<
 	Weather,
-	"city" | "country" | "countryCode" | "latitude" | "longitude"
-> & { showMarker: boolean };
+	'city' | 'country' | 'countryCode' | 'latitude' | 'longitude'
+> & { showMarker: boolean }
 
 const geographyStyle = {
-	default: { outline: "none" },
-	hover: { outline: "none" },
-	pressed: { outline: "none" },
-};
+	default: { outline: 'none' },
+	hover: { outline: 'none' },
+	pressed: { outline: 'none' },
+}
 
 export const WorldMap = (props: WorldMapProps) => {
-	const { city, country, countryCode, latitude, longitude, showMarker } = props;
+	const { city, country, countryCode, latitude, longitude, showMarker } = props
 
 	return (
 		<span className="grid grid-cols-map w-full mt-4 rounded-t-lg bg-secondary-600 text-secondary-300">
@@ -30,7 +30,7 @@ export const WorldMap = (props: WorldMapProps) => {
 					projectionConfig={{ scale: 190 }}
 					width={800}
 					height={600}
-					style={{ width: "100%", height: "360" }}
+					style={{ width: '100%', height: '360' }}
 					className="fill-secondary-300 pt-8"
 				>
 					<Geographies geography={geoUrl}>
@@ -67,5 +67,5 @@ export const WorldMap = (props: WorldMapProps) => {
 				</span>
 			</span>
 		</span>
-	);
-};
+	)
+}

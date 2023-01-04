@@ -1,34 +1,34 @@
-import { createContext, PropsWithChildren, useContext } from "react";
-import { useSettings } from "../../../hooks";
+import { createContext, PropsWithChildren, useContext } from 'react'
+import { useSettings } from '../../../hooks'
 
-import { noop } from "../../../types";
+import { noop } from '../../../types'
 
 type BreakpointsValue = {
-	breakpoints: boolean;
-	toggleBreakpoints: () => void;
-};
+	breakpoints: boolean
+	toggleBreakpoints: () => void
+}
 
 const initialValue: BreakpointsValue = {
 	breakpoints: false,
 	toggleBreakpoints: noop,
-};
+}
 
-const BreakpointsContext = createContext(initialValue);
+const BreakpointsContext = createContext(initialValue)
 
 export const BreakpointsProvider = (props: PropsWithChildren) => {
 	const {
 		settings: { breakpoints },
 		setBreakpoints,
-	} = useSettings();
+	} = useSettings()
 
-	const toggleBreakpoints = () => setBreakpoints(!breakpoints);
+	const toggleBreakpoints = () => setBreakpoints(!breakpoints)
 
-	const { children } = props;
-	const { Provider } = BreakpointsContext;
+	const { children } = props
+	const { Provider } = BreakpointsContext
 
-	const value = { breakpoints, toggleBreakpoints };
+	const value = { breakpoints, toggleBreakpoints }
 
-	return <Provider value={value}>{children}</Provider>;
-};
+	return <Provider value={value}>{children}</Provider>
+}
 
-export const useBreakpoints = () => useContext(BreakpointsContext);
+export const useBreakpoints = () => useContext(BreakpointsContext)

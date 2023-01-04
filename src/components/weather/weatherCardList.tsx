@@ -1,27 +1,27 @@
-import { Fragment } from "react";
-import { useLocales } from "../../providers";
+import { Fragment } from 'react'
+import { useLocales } from '../../providers'
 
-import { Weather } from "../../types";
-import { titlecase } from "../../utilities";
-import { WeatherCard } from "./weatherCard";
+import { Weather } from '../../types'
+import { titlecase } from '../../utilities'
+import { WeatherCard } from './weatherCard'
 
 export type WeatherCardListProps = {
-	list: Weather[];
-};
+	list: Weather[]
+}
 
 const buildCard = (weather: Weather, index: number) => (
 	<WeatherCard key={`card-${index}`} {...weather} />
-);
+)
 
 export const WeatherCardList = (props: WeatherCardListProps) => {
-	const { list } = props;
-	const { t } = useLocales();
+	const { list } = props
+	const { t } = useLocales()
 
-	if (list.length === 0) return null;
+	if (list.length === 0) return null
 
-	const cardList = list.map(buildCard);
+	const cardList = list.map(buildCard)
 
-	const text = titlecase(t("weather"));
+	const text = titlecase(t('weather'))
 
 	return (
 		<Fragment>
@@ -31,5 +31,5 @@ export const WeatherCardList = (props: WeatherCardListProps) => {
 				{cardList}
 			</section>
 		</Fragment>
-	);
-};
+	)
+}

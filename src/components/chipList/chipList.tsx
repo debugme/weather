@@ -1,23 +1,23 @@
-import { Fragment } from "react";
+import { Fragment } from 'react'
 
 export type ChipListProps = {
-	list: string[];
-	selected: string;
-	setSelected: (_: string) => void;
-	normaliser?: (_: string) => string;
-};
+	list: string[]
+	selected: string
+	setSelected: (_: string) => void
+	normaliser?: (_: string) => string
+}
 
 export const ChipList = (props: ChipListProps) => {
-	const { list, selected, setSelected, normaliser } = props;
+	const { list, selected, setSelected, normaliser } = props
 
 	const chipList = list.map((text) => {
-		const label = normaliser ? normaliser(text) : text;
+		const label = normaliser ? normaliser(text) : text
 		const className = `capitalize focus:outline-white py-2 rounded-lg text-secondary-800 ${
-			selected === text ? "bg-primary-500" : "bg-secondary-400"
-		}`;
+			selected === text ? 'bg-primary-500' : 'bg-secondary-400'
+		}`
 		const onClick: React.MouseEventHandler = (event) => {
-			setSelected(event.currentTarget.getAttribute("data-id")!);
-		};
+			setSelected(event.currentTarget.getAttribute('data-id')!)
+		}
 
 		return (
 			<button
@@ -29,8 +29,8 @@ export const ChipList = (props: ChipListProps) => {
 			>
 				{label}
 			</button>
-		);
-	});
+		)
+	})
 
 	return (
 		<Fragment>
@@ -38,5 +38,5 @@ export const ChipList = (props: ChipListProps) => {
 				{chipList}
 			</div>
 		</Fragment>
-	);
-};
+	)
+}

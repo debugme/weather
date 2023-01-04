@@ -1,18 +1,18 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
 import {
 	SecurityProvider,
 	SettingsProvider,
 	WeatherProvider,
-} from "./providers";
+} from './providers'
 
-import "./index.css";
-import { Application } from "./application";
+import './index.css'
+import { Application } from './application'
 
-const container = document.getElementById("root")!;
-const root = createRoot(container);
+const container = document.getElementById('root')!
+const root = createRoot(container)
 
 root.render(
 	<StrictMode>
@@ -26,4 +26,4 @@ root.render(
 			</SecurityProvider>
 		</BrowserRouter>
 	</StrictMode>,
-);
+)

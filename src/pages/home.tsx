@@ -1,17 +1,17 @@
-import { SearchBox, WeatherList, WorldMap } from "../components";
-import { useLocales, useWeather } from "../providers";
+import { SearchBox, WeatherList, WorldMap } from '../components'
+import { useLocales, useWeather } from '../providers'
 
 const gb = {
-	city: "london",
-	country: "united kingdom",
-	countryCode: "GB",
+	city: 'london',
+	country: 'united kingdom',
+	countryCode: 'GB',
 	latitude: 51.509865,
 	longitude: -0.118092,
 	showMarker: true,
-};
+}
 
 export const Home = () => {
-	const { t } = useLocales();
+	const { t } = useLocales()
 	const {
 		weatherList,
 		searchTerm,
@@ -19,20 +19,20 @@ export const Home = () => {
 		isLoading,
 		selectedDate,
 		setSelectedDate,
-	} = useWeather();
+	} = useWeather()
 
 	const worldMapProps =
 		searchTerm.length === 0
 			? gb
 			: isLoading
-			? { ...gb, city: "", country: "", showMarker: false }
+			? { ...gb, city: '', country: '', showMarker: false }
 			: weatherList.length === 0
-			? { ...gb, city: "No results", country: "Try again" }
-			: { ...gb, ...weatherList[0] };
+			? { ...gb, city: 'No results', country: 'Try again' }
+			: { ...gb, ...weatherList[0] }
 
 	return (
 		<section className="flex flex-col w-3/4 mx-auto">
-			<h2 className="text-3xl text-secondary-400 capitalize">{t("search")}</h2>
+			<h2 className="text-3xl text-secondary-400 capitalize">{t('search')}</h2>
 			<span className="hidden lg:block">
 				<WorldMap {...worldMapProps} />
 			</span>
@@ -47,5 +47,5 @@ export const Home = () => {
 				setSelectedDate={setSelectedDate}
 			/>
 		</section>
-	);
-};
+	)
+}

@@ -1,8 +1,7 @@
-import { Weather } from "../../types";
+import { Weather } from '../../types'
 
 export const WeatherCard = (props: Weather) => {
-	const { time, image, description, temperature, sunrise, sunset, wind } =
-		props;
+	const { time, image, description, temperature, sunrise, sunset, wind } = props
 
 	return (
 		<article className="border-none rounded-lg bg-secondary-50">
@@ -32,5 +31,5 @@ export const WeatherCard = (props: Weather) => {
 				</div>
 			</section>
 		</article>
-	);
-};
+	)
+}

@@ -1,14 +1,14 @@
-import { PropsWithChildren } from "react";
-import { titlecase } from "../../utilities";
+import { PropsWithChildren } from 'react'
+import { titlecase } from '../../utilities'
 
 export type SettingsSectionProps = PropsWithChildren & {
-	title: string;
-	subtitle: string;
-};
+	title: string
+	subtitle: string
+}
 
 export const SettingsSection = (props: SettingsSectionProps) => {
-	const { title, subtitle, children } = props;
-	const text = titlecase(subtitle);
+	const { title, subtitle, children } = props
+	const text = titlecase(subtitle)
 
 	return (
 		<section
@@ -20,5 +20,5 @@ export const SettingsSection = (props: SettingsSectionProps) => {
 			<p className="text-secondary-400 pt-2 pb-4 text-sm">{text}</p>
 			{children}
 		</section>
-	);
-};
+	)
+}

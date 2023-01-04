@@ -1,10 +1,10 @@
-import { Fragment, PropsWithChildren } from "react";
+import { Fragment, PropsWithChildren } from 'react'
 
-import { Header } from "./header";
-import { Footer } from "./footer";
+import { Header } from './header'
+import { Footer } from './footer'
 
 export const Layout = (props: PropsWithChildren) => {
-	const { children } = props;
+	const { children } = props
 
 	return (
 		<Fragment>
@@ -16,5 +16,5 @@ export const Layout = (props: PropsWithChildren) => {
 			</main>
 			<Footer />
 		</Fragment>
-	);
-};
+	)
+}

@@ -1,1 +1,1 @@
-export { WorldMap } from "./worldMap";
+export { WorldMap } from './worldMap'

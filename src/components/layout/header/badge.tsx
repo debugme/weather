@@ -1,9 +1,9 @@
-import { useAvatars, useHandle } from "../../../providers";
+import { useAvatars, useHandle } from '../../../providers'
 
 export const Badge = () => {
-	const { avatar, avatarMap } = useAvatars();
-	const { handle } = useHandle();
-	const icon = avatarMap[avatar];
+	const { avatar, avatarMap } = useAvatars()
+	const { handle } = useHandle()
+	const icon = avatarMap[avatar]
 
 	return (
 		<span className="flex items-center justify-center gap-2">
@@ -14,5 +14,5 @@ export const Badge = () => {
 				<div className="absolute left-0 top-[-8px]">{icon}</div>
 			</div>
 		</span>
-	);
-};
+	)
+}

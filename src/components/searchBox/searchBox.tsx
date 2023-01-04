@@ -1,39 +1,39 @@
-import { ChangeEventHandler, useRef, useState } from "react";
-import { useLocales } from "../../providers";
+import { ChangeEventHandler, useRef, useState } from 'react'
+import { useLocales } from '../../providers'
 
-import { ChipList } from "../chipList";
-import { Field } from "./field";
-import { SearchIcon } from "./searchIcon";
-import { SpinnerIcon } from "./spinnerIcon";
+import { ChipList } from '../chipList'
+import { Field } from './field'
+import { SearchIcon } from './searchIcon'
+import { SpinnerIcon } from './spinnerIcon'
 
 export type SearchBoxProps = {
-	searchTerm: string;
-	setSearchTerm: (searchTerm: string) => void;
-	isLoading: boolean;
-};
+	searchTerm: string
+	setSearchTerm: (searchTerm: string) => void
+	isLoading: boolean
+}
 
-const list = ["london", "dubai", "tokyo", "minsk", "abuja"];
+const list = ['london', 'dubai', 'tokyo', 'minsk', 'abuja']
 
 export const SearchBox = (props: SearchBoxProps) => {
-	const { searchTerm, setSearchTerm, isLoading } = props;
-	const { t } = useLocales();
+	const { searchTerm, setSearchTerm, isLoading } = props
+	const { t } = useLocales()
 
-	const timerId = useRef<NodeJS.Timeout>();
-	const [showSpinner, setShowSpinner] = useState(false);
+	const timerId = useRef<NodeJS.Timeout>()
+	const [showSpinner, setShowSpinner] = useState(false)
 
 	const showOrHideLoadingIndicator = () => {
-		clearTimeout(timerId.current);
-		setShowSpinner(true);
+		clearTimeout(timerId.current)
+		setShowSpinner(true)
 		timerId.current = setTimeout(() => {
-			setShowSpinner(false);
-		}, 500);
-	};
+			setShowSpinner(false)
+		}, 500)
+	}
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		const searchTerm = event.target.value.toLocaleLowerCase();
-		setSearchTerm(searchTerm);
-		showOrHideLoadingIndicator();
-	};
+		const searchTerm = event.target.value.toLocaleLowerCase()
+		setSearchTerm(searchTerm)
+		showOrHideLoadingIndicator()
+	}
 
 	return (
 		<label
@@ -44,7 +44,7 @@ export const SearchBox = (props: SearchBoxProps) => {
 			<span className="hidden md:block">
 				<div className="mt-8" />
 				<h2 className="text-3xl text-secondary-400 capitalize">
-					{t("popular")}
+					{t('popular')}
 				</h2>
 				<ChipList
 					list={list}
@@ -55,5 +55,5 @@ export const SearchBox = (props: SearchBoxProps) => {
 			<SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
 			{showSpinner || isLoading ? <SpinnerIcon /> : null}
 		</label>
-	);
-};
+	)
+}

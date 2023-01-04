@@ -1,18 +1,18 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler } from 'react'
 
 export type HandleProps = {
-	text: string;
-	setText: (_: string) => void;
-};
+	text: string
+	setText: (_: string) => void
+}
 
 export const Handle = (props: HandleProps) => {
-	const { text, setText } = props;
+	const { text, setText } = props
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = (event) =>
-		setText(event.currentTarget.value);
+		setText(event.currentTarget.value)
 
 	const colors =
-		"text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white selection:text-secondary-700 selection:bg-primary-600";
+		'text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white selection:text-secondary-700 selection:bg-primary-600'
 
 	return (
 		<input
@@ -20,5 +20,5 @@ export const Handle = (props: HandleProps) => {
 			value={text}
 			onChange={onChange}
 		/>
-	);
-};
+	)
+}

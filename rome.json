@@ -5,5 +5,12 @@
     "rules": {
       "recommended": true
     }
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "trailingComma": "all",
+      "quoteStyle": "single"
+    }
   }
 }

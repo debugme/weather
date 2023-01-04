@@ -1,17 +1,17 @@
-import { ChangeEventHandler } from "react";
-import { useLocales } from "../../providers";
-import { titlecase } from "../../utilities";
+import { ChangeEventHandler } from 'react'
+import { useLocales } from '../../providers'
+import { titlecase } from '../../utilities'
 
 export type FieldProps = {
-	value: string;
-	onChange: ChangeEventHandler<HTMLInputElement>;
-};
+	value: string
+	onChange: ChangeEventHandler<HTMLInputElement>
+}
 
 export const Field = (props: FieldProps) => {
-	const { value, onChange } = props;
-	const { t } = useLocales();
+	const { value, onChange } = props
+	const { t } = useLocales()
 
-	const text = titlecase(t("typeCity"));
+	const text = titlecase(t('typeCity'))
 
 	return (
 		<input
@@ -24,5 +24,5 @@ export const Field = (props: FieldProps) => {
 			onChange={onChange}
 			tabIndex={0}
 		/>
-	);
-};
+	)
+}

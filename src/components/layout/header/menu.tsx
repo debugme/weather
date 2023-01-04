@@ -1,5 +1,5 @@
-import { useLayoutEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLayoutEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const CloseIcon = () => (
 	<svg
@@ -16,7 +16,7 @@ const CloseIcon = () => (
 			d="M6 18L18 6M6 6l12 12"
 		/>
 	</svg>
-);
+)
 
 const MenuIcon = () => (
 	<svg
@@ -33,35 +33,35 @@ const MenuIcon = () => (
 			d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
 		/>
 	</svg>
-);
+)
 
 type MenuProps = {
-	settings: string;
-	shortcut: string;
-};
+	settings: string
+	shortcut: string
+}
 
 export const Menu = (props: MenuProps) => {
-	const { settings, shortcut } = props;
+	const { settings, shortcut } = props
 
-	const location = useLocation();
-	const navigate = useNavigate();
-	const [isOpen, setIsOpen] = useState(location.pathname === settings);
+	const location = useLocation()
+	const navigate = useNavigate()
+	const [isOpen, setIsOpen] = useState(location.pathname === settings)
 
-	useLayoutEffect(() => setIsOpen(location.pathname === settings), [location]);
+	useLayoutEffect(() => setIsOpen(location.pathname === settings), [location])
 
 	const toggleSettings = () => {
-		if (isOpen) navigate(-1);
-		else navigate(settings);
-	};
+		if (isOpen) navigate(-1)
+		else navigate(settings)
+	}
 
 	useLayoutEffect(() => {
 		const handler = (event: KeyboardEvent) => {
-			if (event.key === shortcut) toggleSettings();
-		};
-		document.addEventListener("keydown", handler);
-		const cleaner = () => document.removeEventListener("keydown", handler);
-		return cleaner;
-	}, [isOpen]);
+			if (event.key === shortcut) toggleSettings()
+		}
+		document.addEventListener('keydown', handler)
+		const cleaner = () => document.removeEventListener('keydown', handler)
+		return cleaner
+	}, [isOpen])
 
 	return (
 		<button
@@ -72,5 +72,5 @@ export const Menu = (props: MenuProps) => {
 		>
 			{isOpen ? <CloseIcon /> : <MenuIcon />}
 		</button>
-	);
-};
+	)
+}
