@@ -42,7 +42,7 @@ export const SearchBox = (props: SearchBoxProps) => {
 		>
 			<Field value={searchTerm} onChange={onChange} />
 			<span className="hidden md:block">
-				<div className="mt-8"></div>
+				<div className="mt-8" />
 				<h2 className="text-3xl text-secondary-400 capitalize">
 					{t("popular")}
 				</h2>

@@ -31,7 +31,7 @@ export const WeatherList = (props: WeatherListProps) => {
 
 	return (
 		<Fragment>
-			<div className="mt-8"></div>
+			<div className="mt-8" />
 			<h2 className="text-3xl text-secondary-400 capitalize">{t("date")}</h2>
 			<ChipList
 				list={dateList}
