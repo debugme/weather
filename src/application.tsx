@@ -1,27 +1,39 @@
-import { Fragment, PropsWithChildren } from "react"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Fragment, PropsWithChildren } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import { useSecurity } from "./providers"
-import { Layout } from "./components"
-import { Home, Settings, Security } from "./pages"
+import { useSecurity } from "./providers";
+import { Layout } from "./components";
+import { Home, Settings, Security } from "./pages";
 
 const SecureRoute = (props: PropsWithChildren) => {
-  const { isSignedIn } = useSecurity()
-  const { children } = props
-  if (isSignedIn)
-    return <Fragment>{children}</Fragment>
-  else
-    return <Navigate to="/security" replace />
-}
+	const { isSignedIn } = useSecurity();
+	const { children } = props;
+	if (isSignedIn) return <Fragment>{children}</Fragment>;
+	else return <Navigate to="/security" replace />;
+};
 
 export const Application = () => {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/security" element={<Security />} />
-        <Route path="/" element={<SecureRoute><Home /></SecureRoute>} />
-        <Route path="/settings" element={<SecureRoute><Settings /></SecureRoute>} />
-      </Routes>
-    </Layout>
-  )
-}
+	return (
+		<Layout>
+			<Routes>
+				<Route path="/security" element={<Security />} />
+				<Route
+					path="/"
+					element={
+						<SecureRoute>
+							<Home />
+						</SecureRoute>
+					}
+				/>
+				<Route
+					path="/settings"
+					element={
+						<SecureRoute>
+							<Settings />
+						</SecureRoute>
+					}
+				/>
+			</Routes>
+		</Layout>
+	);
+};
