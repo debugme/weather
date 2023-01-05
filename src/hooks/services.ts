@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import {
 	getAuth,
@@ -7,9 +8,18 @@ import {
 	signOut as _signOut,
 	User,
 } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import {
+	collection,
+	doc,
+	DocumentData,
+	DocumentSnapshot,
+	getDoc,
+	getFirestore,
+	onSnapshot,
+	setDoc,
+	updateDoc,
+} from 'firebase/firestore'
 import { getBlob, getStorage, ref } from 'firebase/storage'
-import { useEffect, useLayoutEffect, useState } from 'react'
 import { Nullable } from '../types'
 
 const firebaseConfig = {
@@ -26,8 +36,6 @@ const auth = getAuth(app)
 const provider = new GithubAuthProvider()
 const firestore = getFirestore(app)
 const storage = getStorage(app)
-
-export { auth, provider, firestore, storage }
 
 export const useStorage = <T>(path: string) => {
 	const [data, setData] = useState<T>()
@@ -83,4 +91,55 @@ export const useAuth = (options?: AuthOptions) => {
 	}
 
 	return { user, signIn, signOut, isSignedIn: Boolean(user), error }
+}
+
+type DatabaseOptions<T> = {
+	values: T
+	name: string
+}
+
+export const useDatabase = <T>(options: DatabaseOptions<T>) => {
+	const { values: initialValues, name } = options
+	const [values, setValues] = useState<T>(initialValues)
+	const { user } = useAuth()
+
+	useLayoutEffect(() => {
+		if (!user) return
+
+		const documentId = user.email!
+		const documentReference = doc(firestore, name, documentId)
+
+		const updateSettings = (documentSnapshot: DocumentSnapshot) => {
+			const settings = documentSnapshot.data() as T
+			setValues(settings)
+		}
+
+		onSnapshot(documentReference, updateSettings)
+
+		const getSettings = async () => {
+			let documentSnapshot = await getDoc(documentReference)
+			if (!documentSnapshot.exists()) {
+				const collectionsReference = collection(firestore, name)
+				const documentReference = doc(collectionsReference, documentId)
+				await setDoc(documentReference, initialValues as DocumentData)
+			}
+			documentSnapshot = await getDoc(documentReference)
+			updateSettings(documentSnapshot)
+		}
+
+		getSettings()
+	}, [user])
+
+	useLayoutEffect(() => {
+		const updateSettingsForUser = async () => {
+			if (!user) return
+			const documentId = user.email!
+			const documentReference = doc(firestore, 'settings', documentId)
+			await updateDoc(documentReference, values as DocumentData)
+		}
+
+		updateSettingsForUser()
+	}, [values])
+
+	return { values, setValues }
 }
