@@ -1,6 +1,7 @@
 import {
 	collection,
 	doc,
+	DocumentData,
 	DocumentSnapshot,
 	getDoc,
 	onSnapshot,
@@ -10,35 +11,25 @@ import {
 import { useLayoutEffect, useState } from 'react'
 import { firestore, useAuth } from './firebase'
 
-type Settings = {
-	handle: string
-	avatar: string
-	theme: string
-	locale: string
-	breakpoints: boolean
+type DatabaseOptions<T> = {
+	values: T
+	name: string
 }
 
-const defaultSettings = {
-	handle: '',
-	avatar: '',
-	theme: 'slate',
-	locale: 'english',
-	breakpoints: false,
-}
-
-export const useSettings = () => {
-	const [settings, setSettings] = useState<Settings>(defaultSettings)
+export const useDatabase = <T>(options: DatabaseOptions<T>) => {
+	const { values: initialValues, name } = options
+	const [values, setValues] = useState<T>(initialValues)
 	const { user } = useAuth()
 
 	useLayoutEffect(() => {
 		if (!user) return
 
 		const documentId = user.email!
-		const documentReference = doc(firestore, 'settings', documentId)
+		const documentReference = doc(firestore, name, documentId)
 
 		const updateSettings = (documentSnapshot: DocumentSnapshot) => {
-			const settings = documentSnapshot.data() as Settings
-			setSettings(settings)
+			const settings = documentSnapshot.data() as T
+			setValues(settings)
 		}
 
 		onSnapshot(documentReference, updateSettings)
@@ -46,9 +37,9 @@ export const useSettings = () => {
 		const getSettings = async () => {
 			let documentSnapshot = await getDoc(documentReference)
 			if (!documentSnapshot.exists()) {
-				const collectionsReference = collection(firestore, 'settings')
+				const collectionsReference = collection(firestore, name)
 				const documentReference = doc(collectionsReference, documentId)
-				await setDoc(documentReference, defaultSettings)
+				await setDoc(documentReference, initialValues as DocumentData)
 			}
 			documentSnapshot = await getDoc(documentReference)
 			updateSettings(documentSnapshot)
@@ -62,21 +53,44 @@ export const useSettings = () => {
 			if (!user) return
 			const documentId = user.email!
 			const documentReference = doc(firestore, 'settings', documentId)
-			await updateDoc(documentReference, settings)
+			await updateDoc(documentReference, values as DocumentData)
 		}
 
 		updateSettingsForUser()
-	}, [settings])
+	}, [values])
 
-	const setHandle = (handle: string) => setSettings({ ...settings, handle })
-	const setAvatar = (avatar: string) => setSettings({ ...settings, avatar })
-	const setTheme = (theme: string) => setSettings({ ...settings, theme })
-	const setLocale = (locale: string) => setSettings({ ...settings, locale })
+	return { values, setValues }
+}
+
+type Settings = {
+	handle: string
+	avatar: string
+	theme: string
+	locale: string
+	breakpoints: boolean
+}
+
+const defaultSettings: Settings = {
+	handle: '',
+	avatar: '',
+	theme: 'slate',
+	locale: 'english',
+	breakpoints: false,
+}
+
+export const useSettings = () => {
+	const options = { values: defaultSettings, name: 'settings' }
+	const { values, setValues } = useDatabase<Settings>(options)
+
+	const setHandle = (handle: string) => setValues({ ...values, handle })
+	const setAvatar = (avatar: string) => setValues({ ...values, avatar })
+	const setTheme = (theme: string) => setValues({ ...values, theme })
+	const setLocale = (locale: string) => setValues({ ...values, locale })
 	const setBreakpoints = (breakpoints: boolean) =>
-		setSettings({ ...settings, breakpoints })
+		setValues({ ...values, breakpoints })
 
 	return {
-		settings,
+		settings: values,
 		setHandle,
 		setAvatar,
 		setTheme,
