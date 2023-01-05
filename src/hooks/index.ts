@@ -1,4 +1,5 @@
 export { useAuth } from './auth'
 export { useDebounce } from './debounce'
 export { useSettings } from './settings'
+export { useStorage } from './storage'
 export { useWeatherAPI } from './weather'

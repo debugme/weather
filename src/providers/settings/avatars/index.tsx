@@ -1,38 +1,46 @@
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { useSettings } from '../../../hooks'
+import { useSettings, useStorage } from '../../../hooks'
 
-import { packs } from './avatars.json'
+type AvatarMap = Record<string, JSX.Element>
 
-const getAvatarInfo = () => {
-	type AvatarMap = Record<string, JSX.Element>
-	type AvatarInfo = { name: string; data: string }
-	const avatarMap: AvatarMap = {}
-	const reducer = (map: AvatarMap, avatarInfo: AvatarInfo) => {
-		const { name, data } = avatarInfo
-		const className = 'w-10 h-10 border-none my-2'
-		map[name] = <img src={data} alt={name} className={className} />
-		return map
+type AvatarInfo = { name: string; data: string }
+
+type AvatarData = {
+	packs: {
+		[name: string]: AvatarInfo[]
 	}
-	packs.hipster.reduce(reducer, avatarMap)
-	const avatarList = Object.keys(avatarMap)
-	const avatarInfo = { avatarMap, avatarList }
-	return avatarInfo
 }
 
-export type AvatarSettingsValue = {
+type AvatarSettingsValue = {
 	avatar: string
 	setAvatar: (_: string) => void
 	avatarList: string[]
 	avatarMap: Record<string, JSX.Element>
 }
 
-const { avatarMap, avatarList } = getAvatarInfo()
+const getAvatarInfo = (avatars: AvatarData) => {
+	const avatarMap: AvatarMap = {}
+	const avatarList: string[] = []
+
+	if (avatars) {
+		const reducer = (map: AvatarMap, avatarInfo: AvatarInfo) => {
+			const { name, data } = avatarInfo
+			const className = 'w-10 h-10 border-none my-2'
+			map[name] = <img src={data} alt={name} className={className} />
+			return map
+		}
+		avatars.packs.hipster.reduce(reducer, avatarMap)
+		avatarList.push(...Object.keys(avatarMap))
+	}
+
+	return { avatarMap, avatarList }
+}
 
 const initialValue: AvatarSettingsValue = {
-	avatar: avatarList[0],
+	avatar: '',
 	setAvatar: (_: string) => {},
-	avatarList,
-	avatarMap,
+	avatarList: [],
+	avatarMap: {},
 }
 
 const AvatarsContext = createContext(initialValue)
@@ -42,6 +50,9 @@ export const AvatarsProvider = (props: PropsWithChildren) => {
 		settings: { avatar },
 		setAvatar,
 	} = useSettings()
+
+	const avatars = useStorage<AvatarData>('avatars')!
+	const { avatarList, avatarMap } = getAvatarInfo(avatars)
 
 	const { children } = props
 	const { Provider } = AvatarsContext
