@@ -8,12 +8,17 @@ import { useSettings } from '../../../hooks'
 
 import themes from './themes.json'
 
-type ThemeInfoList = Record<string, Record<string, string>>
+type ThemeInfo = {
+	name: string
+	data: Record<string, string>
+}
 
-const themeInfoList: ThemeInfoList = themes.packs.dark
-const documentStyle = document.documentElement.style
+const themeInfoList: ThemeInfo[] = themes.packs.dark
 
-const themeList = Object.keys(themeInfoList)
+const updateProperty = ([name, data]: [string, string]) =>
+	document.documentElement.style.setProperty(name, data)
+
+const themeList = themeInfoList.map((info) => info.name)
 
 const themeMap: Record<string, JSX.Element> = {}
 themeList.reduce((map, theme) => {
@@ -44,8 +49,10 @@ export const ThemesProvider = (props: PropsWithChildren) => {
 	} = useSettings()
 
 	useLayoutEffect(() => {
-		const list = Object.entries(themeInfoList[theme])
-		list.forEach(([name, data]) => documentStyle.setProperty(name, data))
+		const byName = (info: ThemeInfo) => info.name === theme
+		const themeInfo = themeInfoList.find(byName)!
+		const pairsList = Object.entries(themeInfo.data)
+		pairsList.forEach(updateProperty)
 	}, [theme])
 	const { children } = props
 	const { Provider } = ThemesContext
