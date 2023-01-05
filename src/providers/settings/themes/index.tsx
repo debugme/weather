@@ -4,27 +4,17 @@ import {
 	useContext,
 	useLayoutEffect,
 } from 'react'
-import { useSettings } from '../../../hooks'
+import { useSettings, useStorage } from '../../../hooks'
 
-import themes from './themes.json'
+type ThemeMap = Record<string, JSX.Element>
 
-type ThemeInfo = {
-	name: string
-	data: Record<string, string>
+type ThemeInfo = { name: string; data: string }
+
+type ThemeData = {
+	packs: {
+		[name: string]: ThemeInfo[]
+	}
 }
-
-const themeInfoList: ThemeInfo[] = themes.packs.dark
-
-const updateProperty = ([name, data]: [string, string]) =>
-	document.documentElement.style.setProperty(name, data)
-
-const themeList = themeInfoList.map((info) => info.name)
-
-const themeMap: Record<string, JSX.Element> = {}
-themeList.reduce((map, theme) => {
-	map[theme] = <span className="my-2 capitalize">{theme}</span>
-	return map
-}, themeMap)
 
 type ThemesValue = {
 	theme: string
@@ -33,11 +23,31 @@ type ThemesValue = {
 	themeMap: Record<string, JSX.Element>
 }
 
+const getThemeInfo = (themes: ThemeData) => {
+	const themeMap: ThemeMap = {}
+	const themeList: string[] = []
+	const themeInfoList: ThemeInfo[] = []
+
+	if (themes) {
+		const reducer = (map: ThemeMap, themeInfo: ThemeInfo) => {
+			const { name } = themeInfo
+			const className = 'my-2 capitalize'
+			map[name] = <span className={className}>{name}</span>
+			return map
+		}
+		themeInfoList.push(...themes.packs.dark)
+		themeInfoList.reduce(reducer, themeMap)
+		themeList.push(...Object.keys(themeMap))
+	}
+
+	return { themeMap, themeList, themeInfoList }
+}
+
 const initialValue: ThemesValue = {
-	theme: themeList[0],
+	theme: '',
 	setTheme: (_: string) => {},
-	themeList,
-	themeMap,
+	themeList: [],
+	themeMap: {},
 }
 
 const ThemesContext = createContext(initialValue)
@@ -48,12 +58,21 @@ export const ThemesProvider = (props: PropsWithChildren) => {
 		setTheme,
 	} = useSettings()
 
+	const themes = useStorage<ThemeData>('themes')!
+	const { themeList, themeMap, themeInfoList } = getThemeInfo(themes)
+
+	const byName = (info: ThemeInfo) => info.name === theme
+
 	useLayoutEffect(() => {
-		const byName = (info: ThemeInfo) => info.name === theme
-		const themeInfo = themeInfoList.find(byName)!
+		const themeInfo = themeInfoList.find(byName) || { data: [] }
 		const pairsList = Object.entries(themeInfo.data)
+		const updateProperty = ([name, data]: [string, string]) => {
+			const style = document.documentElement.style
+			style.setProperty(name, data)
+		}
 		pairsList.forEach(updateProperty)
 	}, [theme])
+
 	const { children } = props
 	const { Provider } = ThemesContext
 
