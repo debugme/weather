@@ -8,8 +8,7 @@ import {
 	updateDoc,
 } from 'firebase/firestore'
 import { useLayoutEffect, useState } from 'react'
-import { useAuth } from './auth'
-import { firestore } from './firebase'
+import { firestore, useAuth } from './firebase'
 
 type Settings = {
 	handle: string

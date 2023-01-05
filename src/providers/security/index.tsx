@@ -2,6 +2,7 @@ import { createContext, PropsWithChildren, useContext } from 'react'
 
 import { noop } from '../../types'
 import { useAuth } from '../../hooks'
+import { useNavigate } from 'react-router-dom'
 
 type SecurityValue = {
 	isSignedIn: boolean
@@ -18,7 +19,9 @@ const initialValue: SecurityValue = {
 const SecurityContext = createContext(initialValue)
 
 export const SecurityProvider = (props: PropsWithChildren) => {
-	const { isSignedIn, signIn, signOut } = useAuth()
+	const navigate = useNavigate()
+	const options = { onSignIn: () => navigate('/') }
+	const { isSignedIn, signIn, signOut } = useAuth(options)
 
 	const { children } = props
 	const { Provider } = SecurityContext

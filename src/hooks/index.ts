@@ -1,5 +1,4 @@
-export { useAuth } from './auth'
 export { useDebounce } from './debounce'
 export { useSettings } from './settings'
-export { useStorage } from './storage'
+export { useAuth, useStorage } from './firebase'
 export { useWeatherAPI } from './weather'
