@@ -10,7 +10,7 @@ export const WeatherCard = (props: Weather) => {
 					<h4 className="text-3xl">{time}</h4>
 					<p className="text-md pl-[2px]">{description}</p>
 				</span>
-				<img className="w-24 h-24" src={image} />
+				<img className="w-24 h-24" src={image} alt="" />
 			</section>
 			<section className="p-4 rounded-b-lg bg-secondary-200 text-md">
 				<div className="flex items-center justify-between py-1">

@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react'
+import { KeyboardEventHandler, MouseEventHandler } from 'react'
 
 export type SelectorProps = {
 	selected: string
@@ -13,6 +13,12 @@ export const Selector = (props: SelectorProps) => {
 	const onClick: MouseEventHandler<HTMLLIElement> = (event) => {
 		event.preventDefault()
 		setSelected(event.currentTarget.dataset.id!)
+	}
+
+	const onKeyDown: KeyboardEventHandler<HTMLLIElement> = (event) => {
+		const spacebar = ' '
+		if (event.key === 'Enter' || event.key === spacebar)
+			setSelected(event.currentTarget.dataset.id!)
 	}
 
 	const itemList = selectionList.map((selection) => {
@@ -30,6 +36,7 @@ export const Selector = (props: SelectorProps) => {
 				key={selection}
 				data-id={selection}
 				onClick={onClick}
+				onKeyDown={onKeyDown}
 				className="w-1/6"
 			>
 				<button className={className} tabIndex={0}>

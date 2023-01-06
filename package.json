@@ -12,9 +12,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "rome check --apply-suggested .",
+    "lint": "rome check .",
+    "fix": "rome check --apply-suggested .",
     "format": "rome format --write .",
-    "tidyup": "npm run lint && npm run format"
+    "tidyup": "npm run lint && npm run fix && npm run format"
   },
   "dependencies": {
     "firebase": "9.15.0",
