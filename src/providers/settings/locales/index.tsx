@@ -1,7 +1,7 @@
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { useSettings } from '../../../hooks'
 
-import translations from './translations.json'
+import locales from './locales.json'
 
 const buildLocaleMap = (locale: Record<string, string>, keys: string[]) => {
 	const reducer = (accumulator: Record<string, JSX.Element>, key: string) => {
@@ -26,11 +26,11 @@ const initialValue: LocaleSettingsValue = {
 	locale: localeList[0],
 	setLocale: (_: string) => {},
 	localeList: localeList,
-	localeMap: buildLocaleMap(translations.english, localeList),
+	localeMap: buildLocaleMap(locales.english, localeList),
 	t: (_: string) => '',
 }
 
-type Translations = Record<string, Record<string, string>>
+type LocaleData = Record<string, Record<string, string>>
 
 const LocalesContext = createContext(initialValue)
 
@@ -40,7 +40,7 @@ export const LocalesProvider = (props: PropsWithChildren) => {
 		setLocale,
 	} = useSettings()
 	const { localeList, localeMap } = initialValue
-	const t = (key: string) => (translations as Translations)[locale][key] || key
+	const t = (key: string) => (locales as LocaleData)[locale][key] || key
 	const value = { locale, setLocale, localeList, localeMap, t }
 
 	const { children } = props
