@@ -20,13 +20,17 @@ type LocaleSettingsValue = {
 	localeMap: Record<string, JSX.Element>
 }
 
-const localeList = ['english', 'french', 'german', 'italian', 'spanish']
+const getLocaleInfo = () => {
+	const localeList = ['english', 'french', 'german', 'italian', 'spanish']
+	const localeMap = buildLocaleMap(locales.english, localeList)
+	return { localeMap, localeList }
+}
 
 const initialValue: LocaleSettingsValue = {
-	locale: localeList[0],
+	locale: '',
 	setLocale: (_: string) => {},
-	localeList: localeList,
-	localeMap: buildLocaleMap(locales.english, localeList),
+	localeList: [],
+	localeMap: {},
 	t: (_: string) => '',
 }
 
@@ -39,7 +43,9 @@ export const LocalesProvider = (props: PropsWithChildren) => {
 		settings: { locale },
 		setLocale,
 	} = useSettings()
-	const { localeList, localeMap } = initialValue
+
+	const { localeList, localeMap } = getLocaleInfo()
+
 	const t = (key: string) => (locales as LocaleData)[locale][key] || key
 	const value = { locale, setLocale, localeList, localeMap, t }
 
