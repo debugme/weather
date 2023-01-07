@@ -19,7 +19,7 @@ export const SettingsList = () => {
 	const { theme, setTheme, themeList, themeMap } = useThemes()
 	const { locale, setLocale, localeList, localeMap, t } = useLocales()
 	const { breakpoints, toggleBreakpoints } = useBreakpoints()
-	const { isSignedIn, signOut } = useSecurity()
+	const { signOut } = useSecurity()
 
 	return (
 		<div className="flex flex-col gap-2">
@@ -54,13 +54,13 @@ export const SettingsList = () => {
 				<Toggle isOn={breakpoints} onClick={toggleBreakpoints} />
 			</SettingsSection>
 			<SettingsSection title={t('signOut')} subtitle={t('showSignOut')}>
-				<Toggle isOn={isSignedIn} onClick={signOut} />
+				<button
+					onClick={signOut}
+					className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600"
+				>
+					{t('signOut')}
+				</button>
 			</SettingsSection>
-			{/* <SettingsSection title={t("signOut")} subtitle={t("showSignOut")}>
-        <button onClick={signOut} className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600">
-          {t("signOut")}
-        </button>
-      </SettingsSection> */}
 		</div>
 	)
 }

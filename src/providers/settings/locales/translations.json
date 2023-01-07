@@ -28,8 +28,8 @@
     "desktop": "desktop",
     "typeCity": "type in a city name",
     "signIn": "sign in",
-    "typeEmail": "type in your email",
-    "getCode": "get code"
+    "signInWithGithub": "sign in with github",
+    "typeEmail": "type in your email"
   },
   "french": {
     "english": "🇬🇧",
@@ -60,8 +60,8 @@
     "desktop": "ordinateur",
     "typeCity": "taper un nom de ville",
     "signIn": "s'identifier",
-    "typeEmail": "tapez votre email",
-    "getCode": "obtenir le code"    
+    "signInWithGithub": "se connecter avec github",
+    "typeEmail": "tapez votre email"
   },
   "italian": {
     "english": "🇬🇧",
@@ -92,8 +92,8 @@
     "desktop": "computer",
     "typeCity": "digitare il nome di una città",
     "signIn": "registrazione",
-    "typeEmail": "digita la tua email",
-    "getCode": "ottenere il codice"    
+    "signInWithGithub": "accedi con github",
+    "typeEmail": "digita la tua email"
   },
   "german": {
     "english": "🇬🇧",
@@ -124,8 +124,8 @@
     "desktop": "computer",
     "typeCity": "geben sie einen städtenamen ein",
     "signIn": "anmelden",
-    "typeEmail": "geben sie ihre e-mail ein",
-    "getCode": "code bekommen"    
+    "signInWithGithub": "melde dich mit github an",
+    "typeEmail": "geben sie ihre e-mail ein"
   },
   "spanish": {
     "english": "🇬🇧",
@@ -156,7 +156,7 @@
     "desktop": "computadora",
     "typeCity": "escriba el nombre de una ciudad",
     "signIn": "registrarse",
-    "typeEmail": "escriba su correo electrónico",
-    "getCode": "obtener código"    
+    "signInWithGithub": "iniciar sesión con github",
+    "typeEmail": "escriba su correo electrónico"
   }
 }
