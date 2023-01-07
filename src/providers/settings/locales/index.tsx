@@ -3,12 +3,17 @@ import { useSettings } from '../../../hooks'
 
 import locales from './locales.json'
 
+type LocaleMap = Record<string, JSX.Element>
+
+type LocaleData = Record<string, Record<string, string>>
+
 const buildLocaleMap = (locale: Record<string, string>, keys: string[]) => {
+	const localeMap: LocaleMap = {}
 	const reducer = (accumulator: Record<string, JSX.Element>, key: string) => {
 		accumulator[key] = <span className="text-3xl py-0 my-1">{locale[key]}</span>
 		return accumulator
 	}
-	const localeMap = keys.reduce(reducer, {})
+	keys.reduce(reducer, localeMap)
 	return localeMap
 }
 
@@ -20,9 +25,10 @@ type LocaleSettingsValue = {
 	localeMap: Record<string, JSX.Element>
 }
 
-const getLocaleInfo = () => {
-	const localeList = ['english', 'french', 'german', 'italian', 'spanish']
-	const localeMap = buildLocaleMap(locales.english, localeList)
+const getLocaleInfo = (locales: LocaleData) => {
+	const locale: Record<string, string> = locales.english
+	const localeList = Object.keys(locales)
+	const localeMap = buildLocaleMap(locale, localeList)
 	return { localeMap, localeList }
 }
 
@@ -34,8 +40,6 @@ const initialValue: LocaleSettingsValue = {
 	t: (_: string) => '',
 }
 
-type LocaleData = Record<string, Record<string, string>>
-
 const LocalesContext = createContext(initialValue)
 
 export const LocalesProvider = (props: PropsWithChildren) => {
@@ -44,7 +48,7 @@ export const LocalesProvider = (props: PropsWithChildren) => {
 		setLocale,
 	} = useSettings()
 
-	const { localeList, localeMap } = getLocaleInfo()
+	const { localeList, localeMap } = getLocaleInfo(locales)
 
 	const t = (key: string) => (locales as LocaleData)[locale][key] || key
 	const value = { locale, setLocale, localeList, localeMap, t }
