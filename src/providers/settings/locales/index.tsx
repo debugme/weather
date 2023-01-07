@@ -1,7 +1,5 @@
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { useSettings } from '../../../hooks'
-
-import locales from './locales.json'
+import { useSettings, useStorage } from '../../../hooks'
 
 type LocaleMap = Record<string, JSX.Element>
 
@@ -42,7 +40,7 @@ const initialValue: LocaleSettingsValue = {
 	setLocale: (_: string) => {},
 	localeList: [],
 	localeMap: {},
-	t: (_: string) => '',
+	t: (key: string) => key,
 }
 
 const LocalesContext = createContext(initialValue)
@@ -53,9 +51,11 @@ export const LocalesProvider = (props: PropsWithChildren) => {
 		setLocale,
 	} = useSettings()
 
-	const localeData: LocaleData = locales
+	const locales = useStorage<LocaleData>('locales')
 
-	const { localeList, localeMap, t } = getLocaleInfo(localeData, locale)
+	const { localeList, localeMap, t } = locales
+		? getLocaleInfo(locales, locale)
+		: initialValue
 
 	const value = { locale, setLocale, localeList, localeMap, t }
 
