@@ -17,13 +17,13 @@ type LocaleSettingsValue = {
 	localeMap: Record<string, JSX.Element>
 }
 
-const getLocaleInfo = (locales: LocaleData, locale: Record<string, string>) => {
+const getLocaleInfo = (locales: LocaleData, locale: string) => {
 	const localeMap: LocaleMap = {}
 	const localeList = []
 
 	if (locales) {
 		const reducer = (map: Record<string, JSX.Element>, key: string) => {
-			const value = locale[key]
+			const value = locales[locale][key]
 			const className = 'text-3xl py-0 my-1'
 			map[key] = <span className={className}>{value}</span>
 			return map
@@ -32,7 +32,9 @@ const getLocaleInfo = (locales: LocaleData, locale: Record<string, string>) => {
 		localeList.push(...Object.keys(localeMap))
 	}
 
-	return { localeMap, localeList }
+	const t = (key: string) => locales[locale][key] || key
+
+	return { localeMap, localeList, t }
 }
 
 const initialValue: LocaleSettingsValue = {
@@ -51,9 +53,10 @@ export const LocalesProvider = (props: PropsWithChildren) => {
 		setLocale,
 	} = useSettings()
 
-	const { localeList, localeMap } = getLocaleInfo(locales, locales.english)
+	const localeData: LocaleData = locales
 
-	const t = (key: string) => (locales as LocaleData)[locale][key] || key
+	const { localeList, localeMap, t } = getLocaleInfo(localeData, locale)
+
 	const value = { locale, setLocale, localeList, localeMap, t }
 
 	const { children } = props
