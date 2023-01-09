@@ -1,3 +1,5 @@
+export { CloseIcon } from './closeIcon'
 export { GithubIcon } from './githubIcon'
+export { MenuIcon } from './menuIcon'
 export { SearchIcon } from './searchIcon'
 export { SpinnerIcon } from './spinnerIcon'
