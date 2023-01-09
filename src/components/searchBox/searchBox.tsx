@@ -4,7 +4,7 @@ import { useLocales } from '../../providers'
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
-import { SearchIcon } from './searchIcon'
+import { SearchIcon } from '../../icons'
 
 export type SearchBoxProps = {
 	searchTerm: string
@@ -52,7 +52,7 @@ export const SearchBox = (props: SearchBoxProps) => {
 					setSelected={setSearchTerm}
 				/>
 			</span>
-			<SearchIcon className="absolute w-6 h-6 top-4 left-3 text-secondary-700" />
+			<SearchIcon />
 			{showSpinner || isLoading ? <SpinnerIcon /> : null}
 		</label>
 	)
