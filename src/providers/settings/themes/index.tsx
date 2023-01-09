@@ -44,10 +44,12 @@ const getThemeInfo = (themes: ThemeData, theme: string) => {
 			let updated = original
 			const byName = (info: ThemeInfo) => info.name === theme
 			const themeInfo = themes.packs.dark.find(byName)!
-			Object.entries(themeInfo.data).forEach(([key, value]) => {
-				const hexColor = value.replace('#', '%23')
-				updated = updated.replaceAll(key, hexColor)
-			})
+			Object.entries(themeInfo.data)
+				.reverse()
+				.forEach(([key, value]) => {
+					const hexColor = value.replace('#', '%23')
+					updated = updated.replaceAll(key, hexColor)
+				})
 			return updated
 		}
 	}
