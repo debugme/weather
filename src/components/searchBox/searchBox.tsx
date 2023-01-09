@@ -1,10 +1,10 @@
 import { ChangeEventHandler, useRef, useState } from 'react'
+import { SpinnerIcon } from '../../icons'
 import { useLocales } from '../../providers'
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
 import { SearchIcon } from './searchIcon'
-import { SpinnerIcon } from './spinnerIcon'
 
 export type SearchBoxProps = {
 	searchTerm: string

@@ -1,6 +1,6 @@
-import { useThemes } from '../../providers'
+import { useThemes } from '../providers'
 
-import icons from '../../assets/icons.json'
+import icons from './icons.json'
 
 export const SpinnerIcon = () => {
 	const { colorSwapper } = useThemes()
