@@ -21,12 +21,14 @@ type ThemesValue = {
 	setTheme: (_: string) => void
 	themeList: string[]
 	themeMap: Record<string, JSX.Element>
+	colorSwapper: (original: string) => string
 }
 
-const getThemeInfo = (themes: ThemeData) => {
+const getThemeInfo = (themes: ThemeData, theme: string) => {
 	const themeMap: ThemeMap = {}
 	const themeList: string[] = []
 	const themeInfoList: ThemeInfo[] = []
+	let colorSwapper = (original: string) => original
 
 	if (themes) {
 		const reducer = (map: ThemeMap, themeInfo: ThemeInfo) => {
@@ -38,9 +40,19 @@ const getThemeInfo = (themes: ThemeData) => {
 		themeInfoList.push(...themes.packs.dark)
 		themeInfoList.reduce(reducer, themeMap)
 		themeList.push(...Object.keys(themeMap))
+		colorSwapper = (original: string) => {
+			let updated = original
+			const byName = (info: ThemeInfo) => info.name === theme
+			const themeInfo = themes.packs.dark.find(byName)!
+			Object.entries(themeInfo.data).forEach(([key, value]) => {
+				const hexColor = value.replace('#', '%23')
+				updated = updated.replaceAll(key, hexColor)
+			})
+			return updated
+		}
 	}
 
-	return { themeMap, themeList, themeInfoList }
+	return { themeMap, themeList, themeInfoList, colorSwapper }
 }
 
 const initialValue: ThemesValue = {
@@ -48,6 +60,7 @@ const initialValue: ThemesValue = {
 	setTheme: (_: string) => {},
 	themeList: [],
 	themeMap: {},
+	colorSwapper: (original: string) => original,
 }
 
 const ThemesContext = createContext(initialValue)
@@ -59,7 +72,10 @@ export const ThemesProvider = (props: PropsWithChildren) => {
 	} = useSettings()
 
 	const themes = useStorage<ThemeData>('themes')!
-	const { themeList, themeMap, themeInfoList } = getThemeInfo(themes)
+	const { themeList, themeMap, themeInfoList, colorSwapper } = getThemeInfo(
+		themes,
+		theme,
+	)
 
 	const byName = (info: ThemeInfo) => info.name === theme
 
@@ -76,7 +92,7 @@ export const ThemesProvider = (props: PropsWithChildren) => {
 	const { children } = props
 	const { Provider } = ThemesContext
 
-	const value = { theme, setTheme, themeList, themeMap }
+	const value = { theme, setTheme, themeList, themeMap, colorSwapper }
 
 	return <Provider value={value}>{children}</Provider>
 }
