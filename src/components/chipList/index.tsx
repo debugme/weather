@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { titlecase } from '../../utilities'
 
 export type ChipListProps = {
 	list: string[]
@@ -12,7 +13,7 @@ export const ChipList = (props: ChipListProps) => {
 
 	const chipList = list.map((text) => {
 		const label = normaliser ? normaliser(text) : text
-		const className = `capitalize focus:outline-white py-2 rounded-lg text-secondary-800 ${
+		const className = `focus:outline-white py-2 rounded-lg text-secondary-800 ${
 			selected === text ? 'bg-primary-500' : 'bg-secondary-400'
 		}`
 		const onClick: React.MouseEventHandler = (event) => {
@@ -27,7 +28,7 @@ export const ChipList = (props: ChipListProps) => {
 				onClick={onClick}
 				tabIndex={0}
 			>
-				{label}
+				{titlecase(label)}
 			</button>
 		)
 	})

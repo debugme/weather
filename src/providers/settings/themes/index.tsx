@@ -5,6 +5,7 @@ import {
 	useLayoutEffect,
 } from 'react'
 import { useSettings, useStorage } from '../../../hooks'
+import { titlecase } from '../../../utilities'
 
 type ThemeMap = Record<string, JSX.Element>
 
@@ -33,8 +34,8 @@ const getThemeInfo = (themes: ThemeData, theme: string) => {
 	if (themes) {
 		const reducer = (map: ThemeMap, themeInfo: ThemeInfo) => {
 			const { name } = themeInfo
-			const className = 'my-2 capitalize'
-			map[name] = <span className={className}>{name}</span>
+			const className = 'my-2'
+			map[name] = <span className={className}>{titlecase(name)}</span>
 			return map
 		}
 		themeInfoList.push(...themes.packs.dark)

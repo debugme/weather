@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useRef, useState } from 'react'
 import { useIcons, useLocales } from '../../providers'
+import { titlecase } from '../../utilities'
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
@@ -54,8 +55,8 @@ export const SearchBox = (props: SearchBoxProps) => {
 			<Field value={searchTerm} onChange={onChange} />
 			<span className="hidden md:block">
 				<div className="mt-8" />
-				<h2 className="text-3xl text-secondary-400 capitalize">
-					{t('popular')}
+				<h2 className="text-3xl text-secondary-400">
+					{titlecase(t('popular'))}
 				</h2>
 				<ChipList
 					list={list}

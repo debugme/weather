@@ -6,6 +6,7 @@ import {
 	useHandle,
 	useThemes,
 } from '../../providers'
+import { titlecase } from '../../utilities'
 
 import { Handle } from '../handle'
 import { Selector } from '../selector'
@@ -58,7 +59,7 @@ export const SettingsList = () => {
 					onClick={signOut}
 					className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600"
 				>
-					{t('signOut')}
+					{titlecase(t('signOut'))}
 				</button>
 			</SettingsSection>
 		</div>

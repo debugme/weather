@@ -2,6 +2,7 @@ import { Fragment, useLayoutEffect } from 'react'
 
 import { useLocales } from '../../providers'
 import { Weather } from '../../types'
+import { titlecase } from '../../utilities'
 import { ChipList } from '../chipList'
 
 import { WeatherCardList } from './weatherCardList'
@@ -31,7 +32,7 @@ export const WeatherList = (props: WeatherListProps) => {
 	return (
 		<Fragment>
 			<div className="mt-8" />
-			<h2 className="text-3xl text-secondary-400 capitalize">{t('date')}</h2>
+			<h2 className="text-3xl text-secondary-400">{titlecase(t('date'))}</h2>
 			<ChipList
 				list={dateList}
 				selected={selectedDate}

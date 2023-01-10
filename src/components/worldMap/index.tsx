@@ -6,6 +6,7 @@ import {
 } from 'react-simple-maps'
 
 import { Weather } from '../../types'
+import { titlecase } from '../../utilities'
 import { CityInfo } from './cityInfo'
 import geoUrl from './map.json'
 
@@ -57,11 +58,11 @@ export const WorldMap = (props: WorldMapProps) => {
 			</div>
 			<span className="flex flex-col justify-center items-start">
 				<span className="flex flex-col justify-end min-w-[120px] min-h-[120px] px-3 py-2 rounded-lg bg-gradient-to-r from-secondary-700 to-secondary-600">
-					<h4 className="text-sm md:text-xl lg:text-3xl capitalize text-secondary-300">
-						{city}
+					<h4 className="text-sm md:text-xl lg:text-3xl text-secondary-300">
+						{city ? titlecase(city) : ''}
 					</h4>
-					<p className="text-xs md:text-sm lg:text-md capitalize text-secondary-400">
-						{country}
+					<p className="text-xs md:text-sm lg:text-md text-secondary-400">
+						{country ? titlecase(country) : ''}
 					</p>
 					<CityInfo countryCode={countryCode} />
 				</span>

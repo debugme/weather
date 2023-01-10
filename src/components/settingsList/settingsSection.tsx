@@ -8,7 +8,8 @@ export type SettingsSectionProps = PropsWithChildren & {
 
 export const SettingsSection = (props: SettingsSectionProps) => {
 	const { title, subtitle, children } = props
-	const text = titlecase(subtitle)
+	const normalisedTitle = titlecase(title)
+	const normalisedSubtitle = titlecase(subtitle)
 
 	return (
 		<section
@@ -16,8 +17,10 @@ export const SettingsSection = (props: SettingsSectionProps) => {
 			role="menuitem"
 		>
 			<div className="mt-8" />
-			<h3 className="text-secondary-300 capitalize">{title}</h3>
-			<p className="text-secondary-400 pt-2 pb-4 text-sm">{text}</p>
+			<h3 className="text-secondary-300">{normalisedTitle}</h3>
+			<p className="text-secondary-400 pt-2 pb-4 text-sm">
+				{normalisedSubtitle}
+			</p>
 			{children}
 		</section>
 	)
