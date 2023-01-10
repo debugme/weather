@@ -1,9 +1,7 @@
-import { useThemes } from '../providers'
-
-import icons from '../icons/icons.json'
+import { useIcons } from '../providers'
 
 export const MenuIcon = () => {
-	const { colorSwapper } = useThemes()
+	const { icons } = useIcons()
 	const className = 'h-9 cursor-pointer'
-	return <img className={className} src={colorSwapper(icons.menu)} alt="" />
+	return <img className={className} src={icons.menu} alt="" />
 }
