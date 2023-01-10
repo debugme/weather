@@ -1,1 +1,0 @@
-export { WeatherList } from './weatherList'
