@@ -1,9 +1,13 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { GithubIcon } from '../icons'
 
-import { useLocales, useSecurity } from '../providers'
+import { useIcons, useLocales, useSecurity } from '../providers'
 import { isValidEmail } from '../utilities'
+
+export const GithubIcon = () => {
+	const { icons } = useIcons()
+	return <img className="h-6 w-5" src={icons.github} alt="" />
+}
 
 export const Security = () => {
 	const { t } = useLocales()

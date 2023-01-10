@@ -1,6 +1,19 @@
 import { useLayoutEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { CloseIcon, MenuIcon } from '../../../icons'
+
+import { useIcons } from '../../../providers'
+
+export const MenuIcon = () => {
+	const { icons } = useIcons()
+	const className = 'h-9 cursor-pointer'
+	return <img className={className} src={icons.menu} alt="" />
+}
+
+export const CloseIcon = () => {
+	const { icons } = useIcons()
+	const className = 'h-9 cursor-pointer'
+	return <img className={className} src={icons.close} alt="" />
+}
 
 type MenuProps = {
 	settings: string

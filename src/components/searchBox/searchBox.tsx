@@ -1,10 +1,21 @@
 import { ChangeEventHandler, useRef, useState } from 'react'
-import { SpinnerIcon } from '../../icons'
-import { useLocales } from '../../providers'
+import { useIcons, useLocales } from '../../providers'
 
 import { ChipList } from '../chipList'
 import { Field } from './field'
-import { SearchIcon } from '../../icons'
+
+export const SpinnerIcon = () => {
+	const { icons } = useIcons()
+	const className =
+		'absolute w-6 h-6 top-4 right-[7px] animate-spin bg-secondary-400'
+	return <img className={className} src={icons.spinner} alt="" />
+}
+
+export const SearchIcon = () => {
+	const { icons } = useIcons()
+	const className = 'absolute w-6 h-6 top-4 left-3'
+	return <img className={className} src={icons.search} alt="" />
+}
 
 export type SearchBoxProps = {
 	searchTerm: string
