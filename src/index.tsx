@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
 import {
+	IconsProvider,
 	SecurityProvider,
 	SettingsProvider,
 	WeatherProvider,
@@ -20,7 +21,9 @@ root.render(
 			<SecurityProvider>
 				<SettingsProvider>
 					<WeatherProvider>
-						<Application />
+						<IconsProvider>
+							<Application />
+						</IconsProvider>
 					</WeatherProvider>
 				</SettingsProvider>
 			</SecurityProvider>

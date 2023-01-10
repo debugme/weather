@@ -1,3 +1,4 @@
+export { useIcons, IconsProvider } from './icons'
 export { useSecurity, SecurityProvider } from './security'
 export { SettingsProvider } from './settings'
 export { useWeather, WeatherProvider } from './weather'

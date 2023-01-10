@@ -2,7 +2,7 @@ import { ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { GithubIcon } from '../icons'
 
-import { useLocales, useSecurity, useThemes } from '../providers'
+import { useLocales, useSecurity } from '../providers'
 import { isValidEmail } from '../utilities'
 
 export const Security = () => {
@@ -10,7 +10,6 @@ export const Security = () => {
 	const { isSignedIn, signIn } = useSecurity()
 	const [email, setEmail] = useState('')
 	const [isValid, setIsValid] = useState(false)
-	const { colorSwapper } = useThemes()
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
 		const email = event.target.value.trim()
