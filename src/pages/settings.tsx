@@ -1,4 +1,4 @@
-import { SettingsList } from '../components'
+import { SettingList } from '../components'
 import { useLocales } from '../providers'
 import { titlecase } from '../utilities'
 
@@ -11,7 +11,7 @@ export const Settings = () => {
 				{titlecase(t('settings'))}
 			</h2>
 			<div className="flex flex-col gap-2 borderx">
-				<SettingsList />
+				<SettingList />
 			</div>
 		</section>
 	)

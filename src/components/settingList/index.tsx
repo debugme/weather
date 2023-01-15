@@ -12,9 +12,9 @@ import { Handle } from '../handle'
 import { Selector } from '../selector'
 import { Toggle } from '../toggle'
 
-import { SettingsSection } from './settingsSection'
+import { SettingSection } from './settingSection'
 
-export const SettingsList = () => {
+export const SettingList = () => {
 	const { handle, setHandle } = useHandle()
 	const { avatar, setAvatar, avatarList, avatarMap } = useAvatars()
 	const { theme, setTheme, themeList, themeMap } = useThemes()
@@ -24,44 +24,44 @@ export const SettingsList = () => {
 
 	return (
 		<div className="flex flex-col gap-2">
-			<SettingsSection title={t('name')} subtitle={t('chooseName')}>
+			<SettingSection title={t('name')} subtitle={t('chooseName')}>
 				<Handle text={handle} setText={setHandle} />
-			</SettingsSection>
-			<SettingsSection title={t('avatar')} subtitle={t('chooseAvatar')}>
+			</SettingSection>
+			<SettingSection title={t('avatar')} subtitle={t('chooseAvatar')}>
 				<Selector
 					selected={avatar}
 					setSelected={setAvatar}
 					selectionList={avatarList}
 					selectionMap={avatarMap}
 				/>
-			</SettingsSection>
-			<SettingsSection title={t('theme')} subtitle={t('chooseTheme')}>
+			</SettingSection>
+			<SettingSection title={t('theme')} subtitle={t('chooseTheme')}>
 				<Selector
 					selected={theme}
 					setSelected={setTheme}
 					selectionList={themeList}
 					selectionMap={themeMap}
 				/>
-			</SettingsSection>
-			<SettingsSection title={t('locale')} subtitle={t('chooseLocale')}>
+			</SettingSection>
+			<SettingSection title={t('locale')} subtitle={t('chooseLocale')}>
 				<Selector
 					selected={locale}
 					setSelected={setLocale}
 					selectionList={localeList}
 					selectionMap={localeMap}
 				/>
-			</SettingsSection>
-			<SettingsSection title={t('breakpoints')} subtitle={t('showBreakpoints')}>
+			</SettingSection>
+			<SettingSection title={t('breakpoints')} subtitle={t('showBreakpoints')}>
 				<Toggle isOn={breakpoints} onClick={toggleBreakpoints} />
-			</SettingsSection>
-			<SettingsSection title={t('signOut')} subtitle={t('showSignOut')}>
+			</SettingSection>
+			<SettingSection title={t('signOut')} subtitle={t('showSignOut')}>
 				<button
 					onClick={signOut}
 					className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600"
 				>
 					{titlecase(t('signOut'))}
 				</button>
-			</SettingsSection>
+			</SettingSection>
 		</div>
 	)
 }

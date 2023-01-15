@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react'
 import { titlecase } from '../../utilities'
 
-export type SettingsSectionProps = PropsWithChildren & {
+export type SettingSectionProps = PropsWithChildren & {
 	title: string
 	subtitle: string
 }
 
-export const SettingsSection = (props: SettingsSectionProps) => {
+export const SettingSection = (props: SettingSectionProps) => {
 	const { title, subtitle, children } = props
 	const normalisedTitle = titlecase(title)
 	const normalisedSubtitle = titlecase(subtitle)
