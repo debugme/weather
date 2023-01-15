@@ -1,8 +1,6 @@
 ## Introduction
 Cloudz™️ is a web application that allows a user to get weather forecasts for different cities.
 
-<img width="963" alt="cloudz" src="https://user-images.githubusercontent.com/2932374/205350652-7329d333-5f5c-4c9e-b793-147b2c20b51f.png">
-
 This information includes the following for each day for which a forecast is retrieved
 - date - the forecast day
 - time - the forecast time
@@ -49,9 +47,9 @@ This application was written using an intentionally minimal set of libraries
 
 ## Architecture
 This application follows a standard approach to building a single page application.
-- Pages - contains the home page (In the future, additional pages would be added here)
+- Pages - contains the home page, security page and settings page
 - Components - houses the components used by the pages
-- Providers - hold application state and exposes it via hooks
+- Providers - holds application state and exposes it via hooks
 - Hooks - custom hooks for fetching location and weather information
 - Types - a set of common types used across the application
 
@@ -65,24 +63,15 @@ I like to build applications that provide feedback on actions and clarity of con
 - Search - a spinner in the search field reassures the user that something is happening
 - Spacing - elements are spaced out and and easy to differentiate from each other 
 - Typography - the font used allows for easy reading on both small and large screens
+- Avatars - you can choose from a curated set of avatars
 - Theming - you can toggle between warm and cool themes via the settings menu
+- Locale - you can choose from a limited set of locales to use in the application
 
 ## Developer Experience
-Each breakpoint required potentially different styles.
-
-But it was not always clear what the active breakpoint was.
-
-To make this easier for myself, I added visual cues in the footer.
-
-That way I could resize the browser and know what breakpoint was active.
-
-You can see them in action by resizing the browser window width and looking at the changing footer icons and label.
-
-If you do not want to see them, you can click them to toggle their display.
+Each breakpoint required potentially different styles. But it was not always clear what the active breakpoint was. To make this easier for myself, I added visual cues in the footer. That way I could resize the browser and know what breakpoint was active. You can see them in action by resizing the browser window width and looking at the changing footer icons and label. If you do not want to see them, you can click them to toggle their display.
 
 ## Future Improvements
 Given more time, there are several changes I would like to make
-- I18N - Use a language/localisation library instead of hard-coded strings
 - A11Y - Add support for accessibility for users with specific impairments
 - PWA - Add support for allowing the application to behave better when offline
 - Performance - Cache responses in session storage to save on repeated network calls
