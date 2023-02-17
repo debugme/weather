@@ -14,7 +14,7 @@ export const ChipList = (props: ChipListProps) => {
 	const chipList = list.map((text) => {
 		const label = normaliser ? normaliser(text) : text
 		const className = `focus:outline-white py-2 rounded-lg text-secondary-800 ${
-			selected === text ? 'bg-primary-500' : 'bg-secondary-400'
+			selected === text ? 'bg-primary-500' : 'bg-secondary-200'
 		}`
 		const onClick: React.MouseEventHandler = (event) => {
 			setSelected(event.currentTarget.getAttribute('data-id')!)

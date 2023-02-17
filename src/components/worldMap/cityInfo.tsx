@@ -26,7 +26,7 @@ export const CityInfo = (props: CityInfoProps) => {
 	}, [countryCode])
 
 	return (
-		<p className="text-2xl tracking-widest pt-3 text-transparent bg-clip-text bg-primary-500">
+		<p className="pt-3 text-2xl tracking-widest text-transparent bg-clip-text bg-primary-500">
 			{localTime}
 		</p>
 	)

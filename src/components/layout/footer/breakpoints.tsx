@@ -14,7 +14,7 @@ export const Breakpoints = () => {
 		desktopDisabled,
 	} = icons
 
-	const className = 'w-6 h-6 ml-2 inline-flex'
+	const className = 'inline-flex w-6 h-6 ml-2'
 
 	const cellphoneAlt = '0px - 767px'
 	const tabletAlt = '768px - 1023px'

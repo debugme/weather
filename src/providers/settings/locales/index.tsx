@@ -22,7 +22,7 @@ const getLocaleInfo = (locales: LocaleData, locale: string) => {
 	if (locales) {
 		const reducer = (map: Record<string, JSX.Element>, key: string) => {
 			const value = locales[locale][key]
-			const className = 'text-3xl py-0 my-1'
+			const className = 'py-0 my-1 text-3xl'
 			map[key] = <span className={className}>{value}</span>
 			return map
 		}

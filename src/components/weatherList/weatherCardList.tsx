@@ -27,7 +27,7 @@ export const WeatherCardList = (props: WeatherCardListProps) => {
 		<Fragment>
 			<div className="mt-8" />
 			<h2 className="text-3xl text-secondary-400">{text}</h2>
-			<section className="grid w-full gap-4 p-4 mt-5 mr-auto rounded-lg grid-cols-home bg-secondary-600">
+			<section className="w-full p-4 mt-5 mr-auto rounded-lg grid gap-4 grid-cols-home bg-secondary-600">
 				{cardList}
 			</section>
 		</Fragment>

@@ -57,7 +57,7 @@ export const SettingList = () => {
 			<SettingSection title={t('signOut')} subtitle={t('showSignOut')}>
 				<button
 					onClick={signOut}
-					className="py-2 px-4 rounded-lg text-sm outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600"
+					className="px-4 py-2 text-sm rounded-lg outline-none text-primary-500 bg-secondary-600 outline-primary-600 focus:outline-white active:outline-primary-600"
 				>
 					{titlecase(t('signOut'))}
 				</button>

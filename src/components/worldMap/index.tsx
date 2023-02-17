@@ -25,14 +25,14 @@ export const WorldMap = (props: WorldMapProps) => {
 	const { city, country, countryCode, latitude, longitude, showMarker } = props
 
 	return (
-		<span className="grid grid-cols-map w-full mt-4 rounded-t-lg bg-secondary-600 text-secondary-300">
+		<span className="w-full mt-4 rounded-t-lg grid grid-cols-map bg-secondary-600 text-secondary-300">
 			<div>
 				<ComposableMap
 					projectionConfig={{ scale: 190 }}
 					width={800}
 					height={600}
 					style={{ width: '100%', height: '360' }}
-					className="fill-secondary-300 pt-8"
+					className="pt-8 fill-secondary-300"
 				>
 					<Geographies geography={geoUrl}>
 						{({ geographies }) =>
@@ -56,7 +56,7 @@ export const WorldMap = (props: WorldMapProps) => {
 					) : null}
 				</ComposableMap>
 			</div>
-			<span className="flex flex-col justify-center items-start">
+			<span className="flex flex-col items-start justify-center">
 				<span className="flex flex-col justify-end min-w-[120px] min-h-[120px] px-3 py-2 rounded-lg bg-gradient-to-r from-secondary-700 to-secondary-600">
 					<h4 className="text-sm md:text-xl lg:text-3xl text-secondary-300">
 						{city ? titlecase(city) : ''}

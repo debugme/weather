@@ -25,7 +25,7 @@ const getAvatarInfo = (avatars: AvatarData) => {
 	if (avatars) {
 		const reducer = (map: AvatarMap, avatarInfo: AvatarInfo) => {
 			const { name, data } = avatarInfo
-			const className = 'w-10 h-10 border-none my-2'
+			const className = 'w-10 h-10 my-2 border-none'
 			map[name] = <img src={data} alt={name} className={className} />
 			return map
 		}

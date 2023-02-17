@@ -18,7 +18,7 @@ export const SettingSection = (props: SettingSectionProps) => {
 		>
 			<div className="mt-8" />
 			<h3 className="text-secondary-300">{normalisedTitle}</h3>
-			<p className="text-secondary-400 pt-2 pb-4 text-sm">
+			<p className="pt-2 pb-4 text-sm text-secondary-400">
 				{normalisedSubtitle}
 			</p>
 			{children}
